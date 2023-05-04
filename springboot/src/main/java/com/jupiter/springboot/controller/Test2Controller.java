@@ -34,7 +34,7 @@ public class Test2Controller {
         URL url;
 
         ObjectMapper objMapper = new ObjectMapper();
-        objMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false); //필요한 데이터만 파싱
+//        objMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false); //필요한 데이터만 파싱
         List<Test2> testList = null;
 
         try{
