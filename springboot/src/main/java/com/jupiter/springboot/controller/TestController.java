@@ -45,7 +45,6 @@ public class TestController {
         testRepo.save(params);
     }
 
-    @ResponseBody
     @GetMapping("/api/getData")
     public List<Test2> getData() {
 
