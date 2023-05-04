@@ -1,9 +1,13 @@
 package com.jupiter.springboot.controller;
 
 import com.jupiter.springboot.domain.Test;
+import com.jupiter.springboot.domain.Test2;
+import com.jupiter.springboot.persistence.Test2Repository;
 import com.jupiter.springboot.persistence.TestRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @CrossOrigin(origins = "http://localhost:3000/")
 @RestController
@@ -12,6 +16,9 @@ public class TestController {
 
     @Autowired
     TestRepository testRepo;
+
+    @Autowired
+    Test2Repository test2Repo;
 
     @ResponseBody
     @GetMapping("/api/send/{userName}")
@@ -36,5 +43,11 @@ public class TestController {
         System.out.println(params.getPassword());
 
         testRepo.save(params);
+    }
+
+    @GetMapping("/api/getData")
+    public List<Test2> getData() {
+
+        return (List<Test2>) test2Repo.findAll();
     }
 }
