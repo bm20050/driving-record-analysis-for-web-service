@@ -8,12 +8,12 @@ function App() {
 
   useEffect(()=> {
 
-    axios.get('/api/work')
+    axios.get('/api/getData')
       .then((res) => {
         // console.log(JSON.stringify(res.data))
         // return JSON.stringify(res.data)
         // console.log(res.data)
-        setMsg(res.data.data)
+        setMsg(res.data)
       
       })
 
@@ -23,7 +23,7 @@ function App() {
   // console.log('msgArr', Object.keys(msg))
   // console.log('msgvalueArr', Object.values(msg))
 
-  let keys = Object.keys(msg)
+  // let keys = Object.keys(msg)
   let values = Object.values(msg)
 
   useEffect(() => {
@@ -33,7 +33,7 @@ function App() {
     let temp = values.map((item) => 
       <ul>
         <li>{item.age}</li>
-        <li>{item.name}</li>
+        <li>{item.userName}</li>
       </ul>
     )
 
