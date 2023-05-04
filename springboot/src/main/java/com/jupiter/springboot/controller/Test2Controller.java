@@ -1,5 +1,7 @@
 package com.jupiter.springboot.controller;
 
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.jupiter.springboot.domain.Test2;
 import com.jupiter.springboot.persistence.Test2Repository;
@@ -12,6 +14,8 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.nio.charset.StandardCharsets;
+import java.util.List;
 
 
 @RestController
@@ -30,7 +34,8 @@ public class Test2Controller {
         URL url;
 
         ObjectMapper objMapper = new ObjectMapper();
-        Test2 test = null;
+        objMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false); //필요한 데이터만 파싱
+        List<Test2> testList = null;
 
         try{
             url = new URL(urlStr);
@@ -39,13 +44,10 @@ public class Test2Controller {
             HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
             urlConnection.setRequestMethod("GET");
 
-            BufferedReader br = new BufferedReader(new InputStreamReader(urlConnection.getInputStream(), "UTF-8"));
+            BufferedReader br = new BufferedReader(new InputStreamReader(urlConnection.getInputStream(), StandardCharsets.UTF_8));
 
-            test = objMapper.readValue(br.readLine(),Test2.class);
-
-            System.out.println(test);
-
-            test2Repo.save(test);
+            testList = objMapper.readValue(br.readLine(), new TypeReference<>() {});
+            test2Repo.saveAll(testList);
 
             urlConnection.disconnect();
 
@@ -54,7 +56,7 @@ public class Test2Controller {
             e.printStackTrace();
         }
 
-        return new ResponseEntity<>(test.toString(), HttpStatus.OK);
+        return new ResponseEntity<>(testList, HttpStatus.OK);
     }
 
 }
