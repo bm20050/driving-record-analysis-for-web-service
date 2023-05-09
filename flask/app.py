@@ -6,7 +6,7 @@ app = Flask(__name__)
 
 CORS(app)
 
-test2 = [
+test = [
     {
         'seq': -1,
         'age': 14,
@@ -22,7 +22,7 @@ test2 = [
 # @app.route('/get', methods=['GET'])
 @app.route('/get', methods=['GET'])
 def get():
-    return test2
+    return test
     # return jsonify({"test2": test2['data1']})
 # , "status": HTTPStatus.OK
 
