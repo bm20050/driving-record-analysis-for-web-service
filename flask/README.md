@@ -32,8 +32,8 @@ $ (venv) pip install -r .\requirements.txt
 ## 차량별 노선 시각화
 > ./notebooks/scatter.map.ipynb
 
-## 시간별 평균속도 추출
-> ./notebooks/data_extract.ipynb
+## 날짜, 시간별 평균속도 추출
+> ./notebooks/data_extract_all.ipynb
 
 ## 데이터 데이터베이스에 넣기
 > ./preprocessing/to_database.py
