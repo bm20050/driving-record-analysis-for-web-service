@@ -13,13 +13,13 @@ import javax.persistence.Id;
 @Setter
 @Getter
 @Entity
-public class Test {
+public class Message {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long seq;
 
-    private String userName;
+    private String date;
 
-    private Integer age;
+    private String time;
 }

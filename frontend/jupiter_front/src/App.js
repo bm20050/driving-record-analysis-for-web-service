@@ -6,24 +6,25 @@ function App() {
   const [msg, setMsg] = useState([]);
   const [msgData, setMsgData] = useState([]);
 
+  // console.log('msg', msg)
+  // console.log('msgArr', Object.keys(msg))
+  // console.log('msgvalueArr', Object.values(msg))
+
+  // let keys = Object.keys(msg)
+  //스프링부트에서 데이터 받아오기
   useEffect(()=> {
 
     axios.get('/api/getData')
       .then((res) => {
         // console.log(JSON.stringify(res.data))
         // return JSON.stringify(res.data)
-        // console.log(res.data)
+        console.log('res', res.data)
         setMsg(res.data)
       
       })
 
   }, []);
 
-  // console.log('msg', msg)
-  // console.log('msgArr', Object.keys(msg))
-  // console.log('msgvalueArr', Object.values(msg))
-
-  // let keys = Object.keys(msg)
   let values = Object.values(msg)
 
   useEffect(() => {
@@ -41,15 +42,16 @@ function App() {
     setMsgData(temp)
 
   }, [msg])
-
+  
+  // 리액트에서 스프링부트로 데이터 전송
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     await axios
-        .post("http://localhost:8080/api/send1",
+        .post("http://localhost:8080/api/sendData",
             {
-            "userName": "hello",
-            "password": "1234"
+            "date": "2023-01-01",
+            "time": "17"
             }
         )
         .then((response) => {
