@@ -30,10 +30,10 @@ const DrawingMap = () => {
         const map = new kakao.maps.Map(container, options)
 
         // 마커 이미지
-        let imgSuddenAcc = "https://github.com/beeguriri/beeguriri/blob/main/dot_image/SuddenAcc.png?raw=true";
-        let imgSuddenDrop = "https://github.com/beeguriri/beeguriri/blob/main/dot_image/SuddenDrop.png?raw=true";
-        let imgSuddenDeparture = "https://github.com/beeguriri/beeguriri/blob/main/dot_image/SuddenDeparture.png?raw=true";
-        let imgSuddenStop = "https://github.com/beeguriri/beeguriri/blob/main/dot_image/SuddenStop.png?raw=true";
+        let imgSuddenAcc = "https://github.com/beeguriri/driving-record-analysis-for-web-service/blob/main/frontend/jupiter_front/src/image/SuddenAcc.png?raw=true";
+        let imgSuddenDrop = "https://github.com/beeguriri/driving-record-analysis-for-web-service/blob/main/frontend/jupiter_front/src/image/SuddenDrop.png?raw=true";
+        let imgSuddenDeparture = "https://github.com/beeguriri/driving-record-analysis-for-web-service/blob/main/frontend/jupiter_front/src/image/SuddenDeparture.png?raw=true";
+        let imgSuddenStop = "https://github.com/beeguriri/driving-record-analysis-for-web-service/blob/main/frontend/jupiter_front/src/image/SuddenStop.png?raw=true";
         let imageSize = new kakao.maps.Size(40, 40);
 
         // 마커 이미지 생성
@@ -91,7 +91,7 @@ const DrawingMap = () => {
                 title: "급정지", // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
                 image: SuddenStopmarker // 마커 이미지 
             })
-            Stopmarker.idx = ++StopIdx;
+            Stopmarker.idx = 'Stopmarker' + ++StopIdx;
 
             return Stopmarker;
 
