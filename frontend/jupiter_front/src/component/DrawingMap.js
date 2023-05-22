@@ -124,8 +124,7 @@ const DrawingMap = () => {
 
     return (
 
-        <div id="map" className="map"
-            style={{ width: "60vw", height: "80vh", border: "solid black 1px", margin: "10px 10px 10px 10px" }}>
+        <div id="map" className="map">
  
         </div>
 
