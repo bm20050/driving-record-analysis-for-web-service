@@ -1,6 +1,7 @@
 package com.jupiter.springboot.controller;
 
 import com.jupiter.springboot.domain.Driving;
+import com.jupiter.springboot.domain.ReqParams;
 import com.jupiter.springboot.domain.Reqlog;
 import com.jupiter.springboot.service.DrivingService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +27,11 @@ public class DrivingController {
     @GetMapping("/api/yesterday")
     public List<Driving> yesterday() {
         return drivingService.yesterday();
+    }
+
+    @GetMapping("/api/totalcount")
+    public List<Driving> totalCount(@RequestParam ReqParams params) {
+        return drivingService.totalcount(params);
     }
 
     @ResponseBody

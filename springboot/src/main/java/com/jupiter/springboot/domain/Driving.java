@@ -30,17 +30,17 @@ public class Driving {
     @Column(name = "시")
     private String time;
 
-    @Column(name = "정보발생일시")
-    private String infoTime;
+//    @Column(name = "정보발생일시")
+//    private String infoTime;
+//
+//    @Column(name = "운행회차")
+//    private int trip;
 
-    @Column(name = "운행회차")
-    private int trip;
-
-    @Column(name = "운행거리")
+    @Column(name = "일일주행거리")
     private int drivingDistance;
 
-    @Column(name = "주행시간")
-    private int drivingTime;
+//    @Column(name = "주행시간")
+//    private int drivingTime;
 
     @Column(name = "급가속")
     private int suddenAcc;
@@ -54,8 +54,8 @@ public class Driving {
     @Column(name = "급정지")
     private int suddenStop;
 
-    @Column(name = "이상여부")
-    private String abnormal;
+//    @Column(name = "이상여부")
+//    private String abnormal;
 
     @Column(name = "GPS_X")
     private String gpsX;
