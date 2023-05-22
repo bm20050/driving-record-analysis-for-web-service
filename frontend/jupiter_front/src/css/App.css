@@ -1,0 +1,76 @@
+* {
+
+    margin: 0px;
+    padding: 0px;
+}
+
+.all {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.header {
+    width : 90vw;
+    height: 10vh;
+    background-color: aqua;
+}
+
+.body {
+    width : 90vw;
+    height : 90vh;
+    background-color: yellow;
+}
+
+.main {
+    width : 100%;
+    height : 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.left {
+    width : 60%;
+    height : 90vh;
+    padding-left: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    align-items: center;
+    
+}
+
+.right {
+    width : 40%;
+    height : 90vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: top;
+    align-items: center;
+}
+
+.map {
+    width : 100%;
+    height : 100%;
+}
+
+.selectbox {
+    width : 80%;
+    height : 10%;
+    margin-top: 20px;
+    border: 1px solid red;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.chart {
+    width : 80%;
+    height : 80%;
+    border: 1px solid black;
+}
