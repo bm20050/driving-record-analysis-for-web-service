@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@CrossOrigin(origins = "http://localhost:3000/")
 @RestController
 public class DrivingController {
 
@@ -29,9 +30,12 @@ public class DrivingController {
         return drivingService.yesterday();
     }
 
-    @GetMapping("/api/totalcount")
-    public List<Driving> totalCount(@RequestParam ReqParams params) {
-        return drivingService.totalcount(params);
+    @ResponseBody
+    @PostMapping("/api/totalCount")
+    public List<Driving> totalCount(@RequestBody ReqParams params) {
+        System.out.println("진입했니?");
+        System.out.println(params.toString());
+        return drivingService.totalCount(params);
     }
 
     @ResponseBody

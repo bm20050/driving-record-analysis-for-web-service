@@ -125,7 +125,6 @@ const DrawingMap = () => {
     return (
 
         <div id="map" className="map">
- 
         </div>
 
     );

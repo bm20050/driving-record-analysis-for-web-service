@@ -36,7 +36,7 @@ public class DrivingService {
         return drivingRepository.findByPlateAndYearAndMonthAndDay("부산70자1854", "22", "12", "02");
     }
 
-    public List<Driving> totalcount(ReqParams params) {
+    public List<Driving> totalCount(ReqParams params) {
 
         String year = params.getYear();
         String month = params.getMonth();
