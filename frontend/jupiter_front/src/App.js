@@ -1,12 +1,19 @@
 import React from "react";
-import DrawingMap from "./component/DrawingMap";
+import Header from "./component/Header";
+import Main from "./component/Main";
+import './css/App.css';
 
 function App() {
 
   return (
-    <>
-      <DrawingMap />
-    </>
+    <div className="all">
+      <div className="header">
+          <Header />
+      </div>
+      <div className="body">
+          <Main />
+      </div>
+    </div>
   );
 }
 

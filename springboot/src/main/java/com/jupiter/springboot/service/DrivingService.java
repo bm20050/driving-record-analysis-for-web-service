@@ -1,6 +1,7 @@
 package com.jupiter.springboot.service;
 
 import com.jupiter.springboot.domain.Driving;
+import com.jupiter.springboot.domain.ReqParams;
 import com.jupiter.springboot.persistence.DrivingRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -35,4 +36,12 @@ public class DrivingService {
         return drivingRepository.findByPlateAndYearAndMonthAndDay("부산70자1854", "22", "12", "02");
     }
 
+    public List<Driving> totalCount(ReqParams params) {
+
+        String year = params.getYear();
+        String month = params.getMonth();
+        String day = params.getDay();
+
+        return drivingRepository.findByYearAndMonthAndDay(year, month, day);
+    }
 }
