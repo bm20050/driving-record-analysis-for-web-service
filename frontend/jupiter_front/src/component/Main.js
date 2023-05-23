@@ -27,26 +27,26 @@ const Main = () => {
         const [data, setData] = useState();
 
         //temp...!
-        let [temp, setTemp] = useState(0);
-    
+        let [next, setNext] = useState(0);
+        let [prev, setPrev] = useState(0);
         
         // 검색버튼
-        const searchData = (e) => {
+        const searchData = async (e) => {
             e.preventDefault();
             // setTargetDt(reqDate.current.value);
             console.log("targetDt", targetDt)
-            setTemp (++temp);
+            setPrev(++prev);
 
-            axios
+            await axios
                 .post("http://localhost:8080/api/totalCount",
     
                     // console.log('year', targetDt.substring(2,4)),
                     {
-                        "year": targetDt.substring(2,4),
-                        "month": targetDt.substring(5,7),
-                        "day": targetDt.substring(8,10),
-                        // "busNumber": "부산70자1854",
-                        "busNumber": "전체",
+                        "year": parseInt(targetDt.substring(2,4)),
+                        "month": parseInt(targetDt.substring(5,7)),
+                        "day": parseInt(targetDt.substring(8,10)),
+                        "busNumber": "부산70자1854",
+                        // "busNumber": "전체",
                     }
                 )
                 .then((response) => {
@@ -58,14 +58,14 @@ const Main = () => {
                     console.log(error);
                 });
             
-            setTemp(++temp);
+            setNext(++next);
             // console.log(temp);
         }
 
     return (
         <div className="main">
             <div className="left">
-                <DrawingMap targetDt={targetDt} data={data} temp={temp} />
+                <DrawingMap targetDt={targetDt} data={data} next={next} prev={prev} />
             </div>
             <div className="right">
                 <Right reqDate={reqDate} searchData={searchData} handleDate={handleDate} />
