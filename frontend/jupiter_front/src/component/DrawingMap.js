@@ -137,6 +137,7 @@ const DrawingMap = (probs) => {
 
     }, []);
 
+ 
     useEffect(() => {
 
         if(probs.targetDt==="2023-01-01") {
@@ -146,6 +147,8 @@ const DrawingMap = (probs) => {
         if(!probs.data) {
             return;
         }
+
+        console.log('data', probs.data)
 
         let suddenAcc = probs.data.filter((i) => i.suddenAcc === 1)
         let suddenDrop = probs.data.filter((i) => i.suddenDrop === 1)

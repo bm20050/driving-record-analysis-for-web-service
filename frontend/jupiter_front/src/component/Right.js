@@ -47,7 +47,7 @@ const Right = (probs) => {
         <>
             <div className="selectbox">
                 <form>
-                    <input type="date" ref={probs.reqDate} name="reqdate" />
+                    <input type="date" ref={probs.reqDate} onChange={probs.handleDate} name="reqdate" />
                     <select>
                         <option key="banana" value="banana">전체</option>
                         <option key="apple" value="apple">사과</option>

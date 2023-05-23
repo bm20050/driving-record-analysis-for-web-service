@@ -7,20 +7,21 @@ import Right from "./Right";
 const Main = () => {
 
         //날짜선택 state 변수
-        const [targetDt, setTargetDt] = useState("2023-01-01");
+        let [targetDt, setTargetDt] = useState("2023-01-01");
 
         //날짜선택박스 제어
         const reqDate = useRef();
     
         // //targetDt 변경 시
-        // useEffect ( () => {
-        //     console.log('targetDt', targetDt)
-        // },[targetDt]);
+        useEffect ( () => {
+            console.log('useEffect내 targetDt', targetDt)
+
+        },[targetDt]);
     
         //날짜선택박스 이벤트
-        // const handleDate = () => {
-        //     setTargetDt(reqDate.current.value);
-        // };
+        const handleDate = () => {
+            setTargetDt(reqDate.current.value);
+        };
 
         //백엔드 응답 state 변수
         const [data, setData] = useState();
@@ -28,13 +29,15 @@ const Main = () => {
         //temp...!
         let [temp, setTemp] = useState(0);
     
+        
         // 검색버튼
-        const searchData = async (e) => {
+        const searchData = (e) => {
             e.preventDefault();
-            setTargetDt(reqDate.current.value);
+            // setTargetDt(reqDate.current.value);
             console.log("targetDt", targetDt)
+            setTemp (++temp);
 
-            await axios
+            axios
                 .post("http://localhost:8080/api/totalCount",
     
                     // console.log('year', targetDt.substring(2,4)),
@@ -42,7 +45,8 @@ const Main = () => {
                         "year": targetDt.substring(2,4),
                         "month": targetDt.substring(5,7),
                         "day": targetDt.substring(8,10),
-                        "busNumber": "부산70자1854",
+                        // "busNumber": "부산70자1854",
+                        "busNumber": "전체",
                     }
                 )
                 .then((response) => {
@@ -55,15 +59,16 @@ const Main = () => {
                 });
             
             setTemp(++temp);
+            // console.log(temp);
         }
 
     return (
         <div className="main">
             <div className="left">
-                <DrawingMap targetDt={targetDt} data={data} temp={temp}/>
+                <DrawingMap targetDt={targetDt} data={data} temp={temp} />
             </div>
             <div className="right">
-                <Right reqDate={reqDate} searchData={searchData} />
+                <Right reqDate={reqDate} searchData={searchData} handleDate={handleDate} />
             </div>
         </div>
 
