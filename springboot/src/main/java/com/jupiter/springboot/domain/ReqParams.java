@@ -1,5 +1,6 @@
 package com.jupiter.springboot.domain;
 
+
 public class ReqParams {
 
     private String year;
@@ -21,5 +22,15 @@ public class ReqParams {
 
     public String getBusNumber() {
         return busNumber;
+    }
+
+    @Override
+    public String toString() {
+        return "ReqParams{" +
+                "year='" + year + '\'' +
+                ", month='" + month + '\'' +
+                ", day='" + day + '\'' +
+                ", busNumber='" + busNumber + '\'' +
+                '}';
     }
 }

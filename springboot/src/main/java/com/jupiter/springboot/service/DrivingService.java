@@ -41,7 +41,11 @@ public class DrivingService {
         String year = params.getYear();
         String month = params.getMonth();
         String day = params.getDay();
+        String plate = params.getBusNumber();
 
-        return drivingRepository.findByYearAndMonthAndDay(year, month, day);
+//        return drivingRepository.findByYearAndMonthAndDayAndSuddenAccGreaterThanEqual(year, month, day, 1);
+//        return drivingRepository.findByYearAndMonthAndDayAndSuddenAccGreaterThanEqualOrSuddenDepartureGreaterThanEqual(year, month, day, 1, 1);
+//        return drivingRepository.findByYearAndMonthAndDay(year, month, day);
+        return plate.contains("전체")? drivingRepository.findByYearAndMonthAndDayAndSuddenAccGreaterThanEqual(year, month, day, 1) : drivingRepository.findByPlateLikeAndYearAndMonthAndDayAndSuddenAccGreaterThanEqual(plate, year, month, day, 1);
     }
 }
