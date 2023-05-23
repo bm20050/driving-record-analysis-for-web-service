@@ -1,9 +1,7 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 // import data from '../data/위험운전행동_GPS.json'
 
 const { kakao } = window;
-
-let map = null;
 
 const DrawingMap = (probs) => {
 
@@ -11,6 +9,8 @@ const DrawingMap = (probs) => {
     // console.log(suddenDrop)
     // console.log(suddenDeparture)
     // console.log(suddenStop)
+    
+    let [map, setMap] = useState();
 
     useEffect(() => {
 
@@ -40,7 +40,7 @@ const DrawingMap = (probs) => {
             }
 
             // 지도 생성
-            map = new kakao.maps.Map(container, options)
+            setMap(new kakao.maps.Map(container, options))
 
         })
 
@@ -135,11 +135,10 @@ const DrawingMap = (probs) => {
         // });
 
 
-    }, []);
+    }, [probs.prev]);
 
  
     useEffect(() => {
-
         if(probs.targetDt==="2023-01-01") {
             return;
         }
@@ -147,9 +146,9 @@ const DrawingMap = (probs) => {
         if(!probs.data) {
             return;
         }
-
-        console.log('data', probs.data)
-
+        
+        // console.log('data', probs.data)
+        
         let suddenAcc = probs.data.filter((i) => i.suddenAcc === 1)
         let suddenDrop = probs.data.filter((i) => i.suddenDrop === 1)
         let suddenDeparture = probs.data.filter((i) => i.suddenDeparture === 1)
@@ -244,8 +243,8 @@ const DrawingMap = (probs) => {
             console.log(cluster.getMarkers());
             cluster.getMarkers().forEach(marker => console.log(marker.idx));
         });
-
-    }, [probs.temp])
+        
+    }, [probs.next])
 
 
     return (
