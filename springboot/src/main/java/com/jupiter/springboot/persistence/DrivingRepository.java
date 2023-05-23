@@ -9,6 +9,16 @@ public interface DrivingRepository extends JpaRepository<Driving, Long> {
 
     List<Driving> findByPlateAndYearAndMonthAndDay(String plate, String year, String month, String day);
 
+    List<Driving> findByPlateLikeAndYearAndMonthAndDay(String plate, String year, String month, String day);
+
     List<Driving> findByYearAndMonthAndDay(String year, String month, String day);
+
+    List<Driving> findByYearAndMonthAndDayAndSuddenAccGreaterThanEqual(String year, String month, String day, int acc);
+
+    List<Driving> findByPlateLikeAndYearAndMonthAndDayAndSuddenAccGreaterThanEqual(String plate, String year, String month, String day, int acc);
+
+    List<Driving> findByYearAndMonthAndDayAndSuddenAccGreaterThanEqualOrSuddenDepartureGreaterThanEqual(String year, String month, String day, int acc, int dep);
+
+
 
 }
