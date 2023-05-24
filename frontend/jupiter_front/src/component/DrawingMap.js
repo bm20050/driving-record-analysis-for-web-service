@@ -36,6 +36,7 @@ const DrawingMap = (probs) => {
 
             // 지도 생성
             setMap(new kakao.maps.Map(container, options))
+            console.log(map)
 
         })
 

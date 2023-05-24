@@ -28,7 +28,7 @@ const Main = () => {
 
         //targetDt 변경 시
         useEffect ( () => {
-            console.log('useEffect내 targetDt', targetDt)
+            // console.log('useEffect내 targetDt', targetDt)
 
         },[targetDt]);
     
