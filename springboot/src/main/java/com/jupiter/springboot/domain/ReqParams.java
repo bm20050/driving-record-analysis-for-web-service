@@ -1,6 +1,10 @@
 package com.jupiter.springboot.domain;
 
+import lombok.Getter;
+import lombok.ToString;
 
+@ToString
+@Getter
 public class ReqParams {
 
     private String year;
@@ -8,29 +12,4 @@ public class ReqParams {
     private String day;
     private String busNumber;
 
-    public String getYear() {
-        return year;
-    }
-
-    public String getMonth() {
-        return month;
-    }
-
-    public String getDay() {
-        return day;
-    }
-
-    public String getBusNumber() {
-        return busNumber;
-    }
-
-    @Override
-    public String toString() {
-        return "ReqParams{" +
-                "year='" + year + '\'' +
-                ", month='" + month + '\'' +
-                ", day='" + day + '\'' +
-                ", busNumber='" + busNumber + '\'' +
-                '}';
-    }
 }

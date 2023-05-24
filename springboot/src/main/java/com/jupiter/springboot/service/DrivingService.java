@@ -42,10 +42,6 @@ public class DrivingService {
         String day = params.getDay();
         String plate = params.getBusNumber();
 
-//        return drivingRepository.findByYearAndMonthAndDayAndSuddenAccGreaterThanEqual(year, month, day, 1);
-//        return drivingRepository.findByYearAndMonthAndDayAndSuddenAccGreaterThanEqualOrSuddenDepartureGreaterThanEqual(year, month, day, 1, 1);
-//        return drivingRepository.findByYearAndMonthAndDay(year, month, day);
-//        return plate.contains("전체")? drivingRepository.findByYearAndMonthAndDayAndSuddenAccGreaterThanEqual(year, month, day, 1) : drivingRepository.findByPlateLikeAndYearAndMonthAndDayAndSuddenAccGreaterThanEqual(plate, year, month, day, 1);
         return plate.contains("total")? drivingRepository.findTotal(year, month, day, 1, 1, 1, 1): drivingRepository.findPlate(year, month, day, 1, 1, 1, 1, plate);
     }
 }
