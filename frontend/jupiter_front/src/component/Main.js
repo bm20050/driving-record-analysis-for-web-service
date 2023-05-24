@@ -45,7 +45,7 @@ const Main = () => {
                         "year": parseInt(targetDt.substring(2,4)),
                         "month": parseInt(targetDt.substring(5,7)),
                         "day": parseInt(targetDt.substring(8,10)),
-                        "busNumber": "부산70자1854",
+                        "busNumber": "전체",
                         // "busNumber": "전체",
                     }
                 )
