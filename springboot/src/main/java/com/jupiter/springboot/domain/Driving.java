@@ -12,7 +12,7 @@ import javax.persistence.*;
 public class Driving {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long seq;
+    private Long id;
 
     @Column(name = "차량번호")
     private String plate;
@@ -29,17 +29,17 @@ public class Driving {
     @Column(name = "시")
     private String time;
 
-//    @Column(name = "정보발생일시")
-//    private String infoTime;
-//
-//    @Column(name = "운행회차")
-//    private int trip;
+    @Column(name = "시분초")
+    private String hms;
 
-    @Column(name = "일일주행거리")
-    private int drivingDistance;
+    @Column(name = "차량속도")
+    private int velocity;
 
-//    @Column(name = "주행시간")
-//    private int drivingTime;
+    @Column(name = "가속도")
+    private int acceleration;
+
+    @Column(name = "RPM")
+    private int rpm;
 
     @Column(name = "급가속")
     private int suddenAcc;
@@ -52,9 +52,6 @@ public class Driving {
 
     @Column(name = "급정지")
     private int suddenStop;
-
-//    @Column(name = "이상여부")
-//    private String abnormal;
 
     @Column(name = "GPS_X")
     private String gpsX;
