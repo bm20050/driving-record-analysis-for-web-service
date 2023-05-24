@@ -36,7 +36,7 @@ const DrawingMap = (probs) => {
 
             // 지도 생성
             setMap(new kakao.maps.Map(container, options))
-            console.log(map)
+            // console.log(map)
 
         })
 
@@ -77,10 +77,11 @@ const DrawingMap = (probs) => {
           let Accmarker = new kakao.maps.Marker({
                 // map: map, // 마커를 표시할 지도
                 position: new kakao.maps.LatLng(i.gpsY, i.gpsX), // 마커를 표시할 위치
-                title: "급가속\n"+i.time+"\n"+"오잉", // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
+                // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
+                title: "급가속\n"+"차량번호: "+i.plate+"\n발생시각: "+i.hms+"\n차량속도: "+i.velocity+"km/h\n가속도: "+Math.round(i.acceleration*0.27778*10)/10+"㎨\nRPM: "+i.rpm, 
                 image: SuddenAccmarker // 마커 이미지 
             })
-            Accmarker.idx = i.seq;
+            Accmarker.idx = i.id;
             Accmarker.time = i.time;
             Accmarker.title = "급가속";
             return Accmarker;
@@ -91,7 +92,7 @@ const DrawingMap = (probs) => {
             let Dropmarker = new kakao.maps.Marker({
                 // map: map, // 마커를 표시할 지도
                 position: new kakao.maps.LatLng(i.gpsY, i.gpsX), // 마커를 표시할 위치
-                title: "급감속", // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
+                title: "급감속\n"+"차량번호: "+i.plate+"\n발생시각: "+i.hms+"\n차량속도: "+i.velocity+"km/h\n가속도: "+Math.round(i.acceleration*0.27778*10)/10+"㎨\nRPM: "+i.rpm, 
                 image: SuddenDropmarker // 마커 이미지 
             })
             Dropmarker.idx = i.seq;
@@ -105,7 +106,7 @@ const DrawingMap = (probs) => {
             let Depmarker = new kakao.maps.Marker({
                 // map: map, // 마커를 표시할 지도
                 position: new kakao.maps.LatLng(i.gpsY, i.gpsX), // 마커를 표시할 위치
-                title: "급출발", // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
+                title: "급출발\n"+"차량번호: "+i.plate+"\n발생시각: "+i.hms+"\n차량속도: "+i.velocity+"km/h\n가속도: "+Math.round(i.acceleration*0.27778*10)/10+"㎨\nRPM: "+i.rpm, 
                 image: SuddenDeparturemarker // 마커 이미지 
             })
             Depmarker.idx = i.seq;
@@ -120,7 +121,7 @@ const DrawingMap = (probs) => {
             let Stopmarker = new kakao.maps.Marker({
                 // map: map, // 마커를 표시할 지도
                 position: new kakao.maps.LatLng(i.gpsY, i.gpsX), // 마커를 표시할 위치
-                title: "급정지", // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
+                title: "급정지\n"+"차량번호: "+i.plate+"\n발생시각: "+i.hms+"\n차량속도: "+i.velocity+"km/h\n가속도: "+Math.round(i.acceleration*0.27778*10)/10+"㎨\nRPM: "+i.rpm, 
                 image: SuddenStopmarker // 마커 이미지 
             })
             Stopmarker.idx = i.seq;
