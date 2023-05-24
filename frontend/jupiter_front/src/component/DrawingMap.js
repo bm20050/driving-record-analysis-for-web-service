@@ -81,6 +81,7 @@ const DrawingMap = (probs) => {
             })
             Accmarker.idx = i.seq;
             Accmarker.time = i.time;
+            Accmarker.title = "급가속";
             return Accmarker;
         }
         );
@@ -94,6 +95,7 @@ const DrawingMap = (probs) => {
             })
             Dropmarker.idx = i.seq;
             Dropmarker.time = i.time;
+            Dropmarker.title = "급감속";
             return Dropmarker;
         }
         );
@@ -107,6 +109,7 @@ const DrawingMap = (probs) => {
             })
             Depmarker.idx = i.seq;
             Depmarker.time = i.time;
+            Depmarker.title = "급출발";
             return Depmarker;
         }
         );
@@ -121,6 +124,7 @@ const DrawingMap = (probs) => {
             })
             Stopmarker.idx = i.seq;
             Stopmarker.time = i.time;
+            Stopmarker.title = "급정지";
             return Stopmarker;
 
         });
@@ -144,7 +148,21 @@ const DrawingMap = (probs) => {
         // 마커 클러스터러에 클릭이벤트를 등록합니다
         kakao.maps.event.addListener(clusterer, 'clusterclick', function(cluster) {
             console.log(cluster.getMarkers());
-            cluster.getMarkers().forEach(marker => console.log(marker.idx+ ':'+ marker.time));
+            let marker = cluster.getMarkers().map((marker) => {
+                
+                let temp = {}
+                temp['idx']=marker.idx
+                temp['위험']=marker.title
+                temp['시간']=marker.time
+
+                return temp
+            })
+            
+            // forEach(marker => {
+            //     console.log(marker.idx+ ':' + marker.time + ':' + marker.title)
+            //     temp.append(marker)
+            // })
+            probs.setChart(marker)
         });
         
     }, [probs.next])

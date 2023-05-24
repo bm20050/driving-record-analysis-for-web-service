@@ -17,7 +17,8 @@ const Main = () => {
         let [prev, setPrev] = useState(0);
 
         //클러스터 선택하면 변수 담아줄거
-        
+        let [chart, setChart] = useState();
+
         //날짜선택박스 제어
         const reqDate = useRef();
     
@@ -72,10 +73,10 @@ const Main = () => {
     return (
         <div className="main">
             <div className="left">
-                <DrawingMap targetDt={targetDt} data={data} next={next} prev={prev} />
+                <DrawingMap targetDt={targetDt} data={data} next={next} prev={prev} setChart={setChart} />
             </div>
             <div className="right">
-                <Right reqDate={reqDate} plate={plate} danger={danger} searchData={searchData} handleDate={handleDate} />
+                <Right reqDate={reqDate} plate={plate} danger={danger} chart={chart} searchData={searchData} handleDate={handleDate} />
             </div>
         </div>
 
