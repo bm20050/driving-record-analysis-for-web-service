@@ -8,11 +8,24 @@ const Main = () => {
 
         //날짜선택 state 변수
         let [targetDt, setTargetDt] = useState("2023-01-01");
+        
+        //백엔드 응답 state 변수
+        const [data, setData] = useState();
 
+        //temp...!
+        let [next, setNext] = useState(0);
+        let [prev, setPrev] = useState(0);
+
+        //클러스터 선택하면 변수 담아줄거
+        
         //날짜선택박스 제어
         const reqDate = useRef();
     
-        // //targetDt 변경 시
+        //셀렉트박스 제어
+        const plate = useRef();
+        const danger = useRef();
+
+        //targetDt 변경 시
         useEffect ( () => {
             console.log('useEffect내 targetDt', targetDt)
 
@@ -22,19 +35,13 @@ const Main = () => {
         const handleDate = () => {
             setTargetDt(reqDate.current.value);
         };
-
-        //백엔드 응답 state 변수
-        const [data, setData] = useState();
-
-        //temp...!
-        let [next, setNext] = useState(0);
-        let [prev, setPrev] = useState(0);
         
         // 검색버튼
         const searchData = async (e) => {
             e.preventDefault();
             // setTargetDt(reqDate.current.value);
             console.log("targetDt", targetDt)
+            console.log("plate", plate.current.value)
             setPrev(++prev);
 
             await axios
@@ -45,8 +52,8 @@ const Main = () => {
                         "year": parseInt(targetDt.substring(2,4)),
                         "month": parseInt(targetDt.substring(5,7)),
                         "day": parseInt(targetDt.substring(8,10)),
-                        "busNumber": "전체",
-                        // "busNumber": "전체",
+                        "busNumber": plate.current.value,
+                        // "danger": danger.current.value
                     }
                 )
                 .then((response) => {
@@ -68,7 +75,7 @@ const Main = () => {
                 <DrawingMap targetDt={targetDt} data={data} next={next} prev={prev} />
             </div>
             <div className="right">
-                <Right reqDate={reqDate} searchData={searchData} handleDate={handleDate} />
+                <Right reqDate={reqDate} plate={plate} danger={danger} searchData={searchData} handleDate={handleDate} />
             </div>
         </div>
 
