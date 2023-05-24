@@ -149,7 +149,7 @@ const DrawingMap = (probs) => {
         kakao.maps.event.addListener(clusterer, 'clusterclick', function(cluster) {
             console.log(cluster.getMarkers());
             let marker = cluster.getMarkers().map((marker) => {
-                
+
                 let temp = {}
                 temp['idx']=marker.idx
                 temp['위험']=marker.title
@@ -162,7 +162,7 @@ const DrawingMap = (probs) => {
             //     console.log(marker.idx+ ':' + marker.time + ':' + marker.title)
             //     temp.append(marker)
             // })
-            probs.setChart(marker)
+            probs.setChartData(marker)
         });
         
     }, [probs.next])

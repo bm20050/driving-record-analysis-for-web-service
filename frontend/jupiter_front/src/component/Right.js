@@ -27,7 +27,7 @@ const Right = (probs) => {
                 </form>
             </div>
             <div className="chart">
-                <Chart chart={probs.chart} />
+                <Chart chartData={probs.chartData} />
             </div>
         </>
     )
