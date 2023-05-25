@@ -11,5 +11,5 @@ public class ReqParams {
     private String month;
     private String day;
     private String busNumber;
-
+    private String danger;
 }
