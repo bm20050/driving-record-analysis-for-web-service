@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-// import data from '../data/위험운전행동_GPS.json'
 
 const { kakao } = window;
 
@@ -8,19 +7,6 @@ const DrawingMap = (probs) => {
     let [map, setMap] = useState();
 
     useEffect(() => {
-
-        // // 지도를 표시할 div 
-        // const container = document.getElementById('map');
-
-        // // 지도 그리기
-        // const options = {
-        //     center: new kakao.maps.LatLng(35.204771, 129.166241), // 지도의 중심좌표
-        //     level: 7 // 지도의 확대 레벨
-        // }
-
-        // // 지도 생성
-        // const map = new kakao.maps.Map(container, options)
-
 
         // 지도 호출
         kakao.maps.load(() => {
@@ -149,7 +135,7 @@ const DrawingMap = (probs) => {
         // console.log('Stopmarker: ', Stopmarkers[3].idx)
         // 마커 클러스터러에 클릭이벤트를 등록합니다
         kakao.maps.event.addListener(clusterer, 'clusterclick', function(cluster) {
-            console.log(cluster.getMarkers());
+            // console.log(cluster.getMarkers());
             let marker = cluster.getMarkers().map((marker) => {
 
                 let temp = {}
