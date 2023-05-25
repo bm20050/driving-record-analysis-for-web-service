@@ -19,6 +19,12 @@ $ mvn spring-boot:run
 ```
 
 - FE
+   - 실행 전 설치
+```bash
+$ npm install axios
+$ npm install apexcharts
+```
+   - 실행
 ```bash
 $ npm start
 ```
