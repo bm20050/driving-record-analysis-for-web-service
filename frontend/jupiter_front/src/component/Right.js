@@ -28,7 +28,7 @@ const Right = (probs) => {
                         </select>
                     </div>
                     <div className="col-auto">
-                        <button type="button" class="btn btn-outline-primary btn-sm" onClick={probs.searchData}>조회</button>
+                        <button type="button" className="btn btn-outline-primary btn-sm" onClick={probs.searchData}>조회</button>
                     </div>
                 </form>
             </div>
