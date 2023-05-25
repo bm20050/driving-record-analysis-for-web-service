@@ -54,7 +54,7 @@ const Main = () => {
                         "month": parseInt(targetDt.substring(5,7)),
                         "day": parseInt(targetDt.substring(8,10)),
                         "busNumber": plate.current.value,
-                        // "danger": danger.current.value
+                        "danger": danger.current.value
                     }
                 )
                 .then((response) => {

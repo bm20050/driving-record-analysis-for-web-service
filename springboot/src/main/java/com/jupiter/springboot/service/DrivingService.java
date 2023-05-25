@@ -41,7 +41,31 @@ public class DrivingService {
         String month = params.getMonth();
         String day = params.getDay();
         String plate = params.getBusNumber();
+        String danger = params.getDanger();
 
-        return plate.contains("total")? drivingRepository.findTotal(year, month, day, 1, 1, 1, 1): drivingRepository.findPlate(year, month, day, 1, 1, 1, 1, plate);
+        if (plate.contains("total")) {
+            if (danger.contains("totalDan"))
+                return drivingRepository.findTotal(year, month, day, 1, 1, 1, 1);
+            else if (danger.contains("suddenAcc"))
+                return drivingRepository.findByYearAndMonthAndDayAndSuddenAcc(year, month, day, 1);
+            else if (danger.contains("suddenDeparture"))
+                return drivingRepository.findByYearAndMonthAndDayAndSuddenDeparture(year, month, day, 1);
+            else if (danger.contains("suddenDrop"))
+                return drivingRepository.findByYearAndMonthAndDayAndSuddenDrop(year, month, day, 1);
+            else
+                return drivingRepository.findByYearAndMonthAndDayAndSuddenStop(year, month, day, 1);
+        } else {
+            if (danger.contains("totalDan"))
+                return drivingRepository.findTotalPlate(year, month, day, 1, 1, 1, 1, plate);
+            else if (danger.contains("suddenAcc"))
+                return drivingRepository.findByPlateLikeAndYearAndMonthAndDayAndSuddenAcc(plate, year, month, day, 1);
+            else if (danger.contains("suddenDeparture"))
+                return drivingRepository.findByPlateLikeAndYearAndMonthAndDayAndSuddenDeparture(plate, year, month, day, 1);
+            else if (danger.contains("suddenDrop"))
+                return drivingRepository.findByPlateLikeAndYearAndMonthAndDayAndSuddenDrop(plate, year, month, day, 1);
+            else
+                return drivingRepository.findByPlateLikeAndYearAndMonthAndDayAndSuddenStop(plate, year, month, day, 1);
+
+        }
     }
 }
