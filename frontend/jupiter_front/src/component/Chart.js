@@ -158,36 +158,43 @@ const Chart = (probs) => {
                     type: 'bar',
                     height: '80%',
                     stacked: true,
+                    fontFamily: "D2Coding",
                 },
                 series: [{
                     name: '급가속',
-                    data: [0,0,0,0,0,0,0,0,0]
+                    data: [0, 0, 0, 0, 0, 0, 0, 0, 0]
                 }, {
                     name: '급출발',
-                    data: [0,0,0,0,0,0,0,0,0]
+                    data: [0, 0, 0, 0, 0, 0, 0, 0, 0]
                 }, {
                     name: '급감속',
-                    data: [0,0,0,0,0,0,0,0,0]
+                    data: [0, 0, 0, 0, 0, 0, 0, 0, 0]
                 }, {
                     name: '급정지',
-                    data: [0,0,0,0,0,0,0,0,0]
+                    data: [0, 0, 0, 0, 0, 0, 0, 0, 0]
                 }],
                 xaxis: {
                     categories: ['5-7', '7-9', '9-11', '11-13', '13-15', '15-17', '17-19', '19-21', '21-23']
                 },
                 yaxis: {
                     max: 10,
-                    tickAmount: 5
+                    tickAmount: 5,
+                    labels: {
+                        formatter: function (val) {
+                            return val.toFixed(0);
+                        }
+                    }
                 }
             }
 
         } else {
-            
+
             options = {
                 chart: {
                     type: 'bar',
                     height: '80%',
                     stacked: true,
+                    fontFamily: "D2Coding",
                 },
                 series: [{
                     name: '급가속',
@@ -206,17 +213,25 @@ const Chart = (probs) => {
                     categories: ['5-7', '7-9', '9-11', '11-13', '13-15', '15-17', '17-19', '19-21', '21-23']
                 },
 
-                // 10 이하의 숫자에서 소수말고 정수로 나오게 하고싶은데..!!!
                 yaxis: {
-                    floating: false
+                    max: function (max) {
+                        if (max <= 5)
+                            return 5;
+                        else
+                            return max + 5;
+                    },
+                    labels: {
+                        formatter: function (val) {
+                            return val.toFixed(0);
+                        }
+                    }
                 }
             }
-
         }
-        
+
         let chart = new ApexCharts(document.getElementById('chart'), options);
         // console.log('chart', chart);
-        chart.render(); 
+        chart.render();
 
         return () => {
             chart.destroy();
@@ -225,7 +240,7 @@ const Chart = (probs) => {
 
     }, [probs.chartData])
 
-    
+
 
     return (
         <>
