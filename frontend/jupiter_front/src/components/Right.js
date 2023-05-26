@@ -1,7 +1,10 @@
 import Chart from "./Chart";
 import LoadingButton from "./LoadingButton";
+import SelectPlate from "./SelectPlate";
+import SelectDanger from "./SelectDanger";
 // import 'bootstrap/dist/css/bootstrap.min.css'
 import React from "react";
+
 
 const Right = (probs) => {
 
@@ -13,22 +16,10 @@ const Right = (probs) => {
                         <input className="form-select-sm" type="date" ref={probs.reqDate} onChange={probs.handleDate} name="reqdate" style={{ border: "1px lightgray solid" }} />
                     </div>
                     <div className="col-auto">
-                        <select className="form-select form-select-sm" ref={probs.plate}>
-                            <option key="total" value="total">전체</option>
-                            <option key="부산70자1854" value="부산70자1854">부산70자1854</option>
-                            <option key="부산70자1860" value="부산70자1860">부산70자1860</option>
-                            <option key="부산70자1893" value="부산70자1893">부산70자1893</option>
-                            <option key="부산70자1894" value="부산70자1894">부산70자1894</option>
-                        </select>
+                        <SelectPlate plate={probs.plate}/>
                     </div>
                     <div className="col-auto">
-                        <select className="form-select form-select-sm" ref={probs.danger}>
-                            <option key="totalDan" value="totalDan">전체</option>
-                            <option key="suddenAcc" value="suddenAcc">급가속</option>
-                            <option key="suddenDrop" value="suddenDrop">급감속</option>
-                            <option key="suddenDeparture" value="suddenDeparture">급출발</option>
-                            <option key="suddenStop" value="suddenStop">급정지</option>
-                        </select>
+                        <SelectDanger danger={probs.danger} />
                     </div>
                     <div className="col-auto">
                         <LoadingButton searchData={probs.searchData} next={probs.next}/>
