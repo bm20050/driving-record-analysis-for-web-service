@@ -39,7 +39,7 @@ const Main = () => {
         
         // 검색버튼
         const searchData = async (e) => {
-            e.preventDefault();
+            // e.preventDefault();
             // setTargetDt(reqDate.current.value);
             console.log("targetDt", targetDt)
             console.log("plate", plate.current.value)
@@ -76,7 +76,7 @@ const Main = () => {
                 <DrawingMap targetDt={targetDt} data={data} next={next} prev={prev} setChartData={setChartData} />
             </div>
             <div className="right">
-                <Right reqDate={reqDate} plate={plate} danger={danger} chartData={chartData} searchData={searchData} handleDate={handleDate} />
+                <Right reqDate={reqDate} plate={plate} danger={danger} chartData={chartData} searchData={searchData} handleDate={handleDate} next={next} />
             </div>
         </div>
 
