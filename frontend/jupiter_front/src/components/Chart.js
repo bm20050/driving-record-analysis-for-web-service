@@ -1,4 +1,5 @@
 import ApexCharts from "apexcharts";
+
 import React, { useEffect, useState } from "react";
 
 const Chart = (probs) => {

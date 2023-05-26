@@ -1,4 +1,7 @@
 import Chart from "./Chart";
+import LoadingButton from "./LoadingButton";
+// import 'bootstrap/dist/css/bootstrap.min.css'
+import React from "react";
 
 const Right = (probs) => {
 
@@ -7,7 +10,7 @@ const Right = (probs) => {
             <div className="selectbox">
                 <form className="row gy-2 gx-3 align-items-center">
                     <div className="col-auto">
-                        <input className="form-select-sm" type="date" ref={probs.reqDate} onChange={probs.handleDate} name="reqdate" style={{border: "1px lightgray solid"}}/>
+                        <input className="form-select-sm" type="date" ref={probs.reqDate} onChange={probs.handleDate} name="reqdate" style={{ border: "1px lightgray solid" }} />
                     </div>
                     <div className="col-auto">
                         <select className="form-select form-select-sm" ref={probs.plate}>
@@ -28,7 +31,7 @@ const Right = (probs) => {
                         </select>
                     </div>
                     <div className="col-auto">
-                        <button type="button" className="btn btn-outline-primary btn-sm" onClick={probs.searchData}>조회</button>
+                        <LoadingButton searchData={probs.searchData} next={probs.next}/>
                     </div>
                 </form>
             </div>
