@@ -124,3 +124,31 @@
     font-family: 'D2Coding';
     font-size: 1.1em;
 }
+.infowindow{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: left;
+    width: 180px;
+    height: auto;
+}
+
+.suddenAcc {
+    background-color: rgb(38, 160, 252);
+    color: white;
+    width: 100%;
+    padding-left: 5px;
+}
+
+.suddenAccinfo{
+    font-size: 0.9em;
+    font-family: 'D2Coding';
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: left;
+}
+
+.suddenAccinfo span {
+    padding-left: 5px;
+}
