@@ -11,78 +11,120 @@
 }
 
 .header {
-    width: 90vw;
-    height: 15vh;
+    width: 80vw;
+    height: 12vh;
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
     /* background-color: rgb(236, 241, 248); */
-}
-
-.body {
-    width: 90vw;
-    height: 85vh;
+    border-bottom: 1px lightgray solid;
 }
 
 .main {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-}
-
-.left {
-    width: 55%;
-    height: 90vh;
-    padding-left: 10px;
-    display: flex;
-    flex-direction: row;
-    justify-content: left;
-    align-items: center;
-}
-
-.right {
-    width: 40%;
-    height: 90vh;
+    width: 80vw;
+    height: 85vh;
     display: flex;
     flex-direction: column;
     justify-content: top;
     align-items: center;
 }
 
-.map {
-    width: 100%;
-    height: 90%;
-    margin-right: 10px;
-}
-
 .selectbox {
     width: 100%;
-    height: 10%;
-    margin-top: 20px;
+    height: 7vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    border: 1px lightgray solid;
+    border-radius: 10px;
+    padding-top: 7px;
+    margin-top: 10px;
+}
+
+.content {
+    width: 100%;
+    height: 50vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: top;
+    align-items: center;
+    /* border: 1px lightgray solid; */
+    border-radius: 10px;
+}
+
+.gragh {
+    display: flex;
+    flex-direction: row;
+    justify-content: top;
+    align-items: center;
+    width: 100%;
+    height: 25vh;
+    /* border: 1px lightgray solid; */
+    border-radius: 10px;
+    /* padding: 10px 5px 10px 5px; */
+}
+
+.left {
+    width: 50%;
+    height: 90%;
+    justify-content: center;
+    align-items: top;
+    padding-right: 5px;
+}
+
+.right {
+    width: 50%;
+    height: 90%;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: top;
+}
+
+.map {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    border: 1px lightgray solid;
+}
+
+.chartarea {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: top;
     align-items: center;
-    margin-left: 30px;
+    padding-left: 5px;
 }
 
 .chart {
+    border: 1px lightgray solid;
+    border-radius: 10px;
     width: 100%;
-    height: 80%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    height: 100%;
+    padding: 5px 0px 5px 0px;
 }
 
 .col-auto {
-    padding: 0px 0px 0px 3px;
-    margin: 0px 0px 0px 3px;
     font-family: "D2Coding";
+    width: 200px;
+}
+
+#button {
+    width: 75px;
+}
+
+.form-select-sm{
+    padding: 7.5px;
+    border-radius: 6px;
+    width: 200px;
+}
+
+#calendar {
+    margin-right: 16px;
 }
 
 .apexcharts-legend-text {
@@ -96,7 +138,6 @@
     align-items: center;
     height: 100%;
     width: 30%;
-    margin-left: 40px;
     padding: 10px;
 }
 
@@ -112,10 +153,15 @@
 .headerbutton {
     margin: 0px 80px 0px 80px;
     font-family: 'D2Coding';
-    font-size: 1.3em;
+    font-size: 1.6em;
+    font-weight: bold;
 }
 
 .signbutton {
+    display: flex;
+    flex-direction: row;
+    justify-content: right;
+    align-items: center;
     margin: 0px 20px 0px 80px;
 }
 
@@ -124,3 +170,68 @@
     font-family: 'D2Coding';
     font-size: 1.1em;
 }
+.infowindow{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: left;
+    width: 200px;
+    height: auto;
+    font-family: 'D2Coding';
+    font-size: 1.1em;
+}
+
+.suddenAcc {
+    background-color: rgb(38, 160, 252);
+    color: white;
+    width: 100%;
+    padding-left: 5px;
+}
+
+.suddenDrop {
+    background-color: rgb(254, 188, 59);
+    color: white;
+    width: 100%;
+    padding-left: 5px;
+}
+
+.suddenDep {
+    background-color: rgb(38, 231, 166);
+    color: white;
+    width: 100%;
+    padding-left: 5px;
+}
+
+.suddenStop {
+    background-color: rgb(255, 97, 120);
+    color: white;
+    width: 100%;
+    padding-left: 5px;
+}
+
+.suddenAccinfo, .suddenDropinfo, .suddenDepinfo, .suddenStopinfo {
+    font-size: 0.9em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: left;
+}
+
+.infowindow span {
+    padding-left: 5px;
+}
+
+#gragh1, #gragh2, #gragh3, #gragh4 {
+    flex: 1;
+    border: 1px lightgray solid;
+    border-radius: 10px;
+    padding: 5px 0px 5px 0px;
+}
+
+#gragh1, #gragh2, #gragh3 {
+    margin: 0px 10px 0px 0px;
+}
+
+/* #gragh2, #gragh3 {
+    margin: 0px 10px 0px 10px;
+} */
