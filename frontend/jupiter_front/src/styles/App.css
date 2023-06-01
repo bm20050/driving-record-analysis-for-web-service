@@ -109,9 +109,22 @@
 }
 
 .col-auto {
-    padding: 0px 0px 0px 3px;
-    margin: 0px 0px 0px 10px;
     font-family: "D2Coding";
+    width: 200px;
+}
+
+#button {
+    width: 75px;
+}
+
+.form-select-sm{
+    padding: 7.5px;
+    border-radius: 6px;
+    width: 200px;
+}
+
+#calendar {
+    margin-right: 16px;
 }
 
 .apexcharts-legend-text {

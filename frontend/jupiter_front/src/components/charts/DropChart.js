@@ -74,7 +74,10 @@ const DropChart = (probs) => {
                     }
                 },
                 stroke: {
-                    width: 2,
+                    width: 1,
+                    colors: ['#FEBC3B']
+                },
+                markers: {
                     colors: ['#FEBC3B']
                 },
             }
@@ -113,6 +116,9 @@ const DropChart = (probs) => {
                 }, 
                 stroke: {
                     width: 2,
+                    colors: ['#FEBC3B']
+                },
+                markers: {
                     colors: ['#FEBC3B']
                 },
             }

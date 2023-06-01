@@ -74,7 +74,7 @@ const AccChart = (probs) => {
                     }
                 }, 
                 stroke: {
-                    width: 2,
+                    width: 1,
                     colors: ['#26A0FC']
                 },
             }

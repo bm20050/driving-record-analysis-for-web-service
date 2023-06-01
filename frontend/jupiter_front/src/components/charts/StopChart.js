@@ -77,9 +77,12 @@ const StopChart = (probs) => {
                     }
                 },
                 stroke: {
-                    width: 2,
+                    width: 1,
                     colors: ['#FF6178']
                 },
+                markers: {
+                    colors: ['#FF6178']
+                }
             }
 
         } else {
@@ -95,7 +98,8 @@ const StopChart = (probs) => {
                 },
                 series: [{
                     name: '급정지',
-                    data: Object.values(cat.stop)
+                    data: Object.values(cat.stop),
+                    colors: ['#FF6178']
                 }],
                 xaxis: {
                     categories: ['5-7', '7-9', '9-11', '11-13', '13-15', '15-17', '17-19', '19-21', '21-23'],
@@ -115,6 +119,9 @@ const StopChart = (probs) => {
                 }, 
                 stroke: {
                     width: 2,
+                    colors: ['#FF6178']
+                },
+                markers: {
                     colors: ['#FF6178']
                 },
             }

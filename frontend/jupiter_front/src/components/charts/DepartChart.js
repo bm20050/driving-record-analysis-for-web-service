@@ -74,7 +74,10 @@ const DepartChart = (probs) => {
                     }
                 },
                 stroke: {
-                    width: 2,
+                    width: 1,
+                    colors: ['#26E7A6']
+                },
+                markers: {
                     colors: ['#26E7A6']
                 },
             }
@@ -113,6 +116,9 @@ const DepartChart = (probs) => {
                 }, 
                 stroke: {
                     width: 2,
+                    colors: ['#26E7A6']
+                },
+                markers: {
                     colors: ['#26E7A6']
                 },
             }
