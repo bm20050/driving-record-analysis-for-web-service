@@ -17,7 +17,7 @@ const DrawingMap = (probs) => {
             // 지도 그리기
             const options = {
                 center: new kakao.maps.LatLng(35.204771, 129.166241), // 지도의 중심좌표
-                level: 7 // 지도의 확대 레벨
+                level: 8 // 지도의 확대 레벨
             }
 
             // 지도 생성
