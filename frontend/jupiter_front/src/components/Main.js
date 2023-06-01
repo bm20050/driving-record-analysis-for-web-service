@@ -3,6 +3,7 @@ import { useState, useEffect, useRef } from "react";
 
 import DrawingMap from "./DrawingMap";
 import Right from "./Right";
+import SelectBox from "./SelectBox";
 
 const Main = () => {
 
@@ -71,14 +72,22 @@ const Main = () => {
         }
 
     return (
-        <div className="main">
-            <div className="left">
-                <DrawingMap targetDt={targetDt} data={data} next={next} prev={prev} setChartData={setChartData} />
+        <>
+            <div className="selectbox">
+                <SelectBox reqDate={reqDate} plate={plate} danger={danger} chartData={chartData} searchData={searchData} handleDate={handleDate} next={next} />
             </div>
-            <div className="right">
-                <Right reqDate={reqDate} plate={plate} danger={danger} chartData={chartData} searchData={searchData} handleDate={handleDate} next={next} />
+            <div className="content">
+                <div className="left">
+                    <DrawingMap targetDt={targetDt} data={data} next={next} prev={prev} setChartData={setChartData} />
+                </div>
+                <div className="right">
+                    <Right reqDate={reqDate} plate={plate} danger={danger} chartData={chartData} searchData={searchData} handleDate={handleDate} next={next} />
+                </div>
             </div>
-        </div>
+            <div className="gragh">
+
+            </div>
+        </>
 
     )
 

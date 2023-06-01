@@ -12,7 +12,7 @@ function App() {
                 <div className="header">
                     <Header />
                 </div>
-                <div className="body">
+                <div className="main">
                     <Main />
                 </div>
             </div>

@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import Button from 'react-bootstrap/Button';
 import bus from '../image/bus.jpg'
+import logo from '../image/logo.png'
 
 const Header = () => {
 
@@ -8,7 +9,7 @@ const Header = () => {
     return (
         <>
             <div className='headerimage'>
-                <Link to="/"><img src={bus} width="150" /></Link>
+                <Link to="/"><img src={logo} width="200" /></Link>
             </div>
             <div className='headerdetail'>
                 <div className='headerbutton'>
