@@ -156,7 +156,8 @@ const Chart = (probs) => {
             options = {
                 chart: {
                     type: 'bar',
-                    height: '80%',
+                    height: '96%',
+                    width: '100%',
                     stacked: true,
                     fontFamily: "D2Coding",
                 },
@@ -192,7 +193,8 @@ const Chart = (probs) => {
             options = {
                 chart: {
                     type: 'bar',
-                    height: '80%',
+                    height: '96%',
+                    width: '100%',
                     stacked: true,
                     fontFamily: "D2Coding",
                 },

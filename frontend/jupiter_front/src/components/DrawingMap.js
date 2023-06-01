@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 const { kakao } = window;
 
 const DrawingMap = (probs) => {
-    
+
     let [map, setMap] = useState();
 
     useEffect(() => {
@@ -28,18 +28,18 @@ const DrawingMap = (probs) => {
 
     }, [probs.prev]);
 
- 
+
     useEffect(() => {
-        if(probs.targetDt==="2023-01-01") {
+        if (probs.targetDt === "2023-01-01") {
             return;
         }
 
-        if(!probs.data) {
+        if (!probs.data) {
             return;
         }
-        
+
         // console.log('data', probs.data)
-        
+
         let suddenAcc = probs.data.filter((i) => i.suddenAcc)
         let suddenDrop = probs.data.filter((i) => i.suddenDrop)
         let suddenDeparture = probs.data.filter((i) => i.suddenDeparture)
@@ -50,7 +50,7 @@ const DrawingMap = (probs) => {
         let imgSuddenDrop = "https://github.com/beeguriri/driving-record-analysis-for-web-service/blob/main/frontend/jupiter_front/src/image/SuddenDrop.png?raw=true";
         let imgSuddenDeparture = "https://github.com/beeguriri/driving-record-analysis-for-web-service/blob/main/frontend/jupiter_front/src/image/SuddenDeparture.png?raw=true";
         let imgSuddenStop = "https://github.com/beeguriri/driving-record-analysis-for-web-service/blob/main/frontend/jupiter_front/src/image/SuddenStop.png?raw=true";
-        let imageSize = new kakao.maps.Size(40, 40);
+        let imageSize = new kakao.maps.Size(50, 50);
 
         // 마커 이미지 생성
         let SuddenAccmarker = new kakao.maps.MarkerImage(imgSuddenAcc, imageSize);
@@ -60,59 +60,137 @@ const DrawingMap = (probs) => {
 
         // 마커를 생성
         let Accmarkers = suddenAcc.map((i) => {
-          let Accmarker = new kakao.maps.Marker({
+
+            let Accmarker = new kakao.maps.Marker({
                 // map: map, // 마커를 표시할 지도
                 position: new kakao.maps.LatLng(i.gpsY, i.gpsX), // 마커를 표시할 위치
-                // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
-                title: "급가속\n"+"차량번호: "+i.plate+"\n발생시각: "+i.hms+"\n차량속도: "+i.velocity+"km/h\n가속도: "+Math.round(i.acceleration*0.27778*10)/10+"㎨\nRPM: "+i.rpm, 
-                image: SuddenAccmarker // 마커 이미지 
+                image: SuddenAccmarker, // 마커 이미지 
+                clickable: true
             })
+            // Accmarker.setMap(map)
+
+            let iwContent = '<div class="infowindow">' +
+                '    <div class="suddenAcc">급가속</div><div class="suddenAccinfo">' +
+                '        <span class="number">차량번호: ' + i.plate + '</span>' +
+                '        <span class="number">발생시각: ' + i.hms + '</span>' +
+                '        <span class="number">차량속도: ' + i.velocity + ' km/h </span>' +
+                '        <span class="number">가속도: ' + Math.round(i.acceleration * 0.27778 * 10) / 10 + ' ㎨ </span>' +
+                '        <span class="number">RPM: ' + i.rpm + '</span></div>' +
+                '</div>', iwRemovable = true
+
+            let infowindow = new kakao.maps.InfoWindow({
+                content: iwContent,
+                removable: iwRemovable
+            })
+
+            kakao.maps.event.addListener(Accmarker, 'click', function () {
+                infowindow.open(map, Accmarker)
+            })
+
             Accmarker.idx = i.id;
             Accmarker.time = i.time;
             Accmarker.title = "급가속";
+
             return Accmarker;
-        }
-        );
+        });
 
         let Dropmarkers = suddenDrop.map((i) => {
             let Dropmarker = new kakao.maps.Marker({
                 // map: map, // 마커를 표시할 지도
                 position: new kakao.maps.LatLng(i.gpsY, i.gpsX), // 마커를 표시할 위치
-                title: "급감속\n"+"차량번호: "+i.plate+"\n발생시각: "+i.hms+"\n차량속도: "+i.velocity+"km/h\n가속도: "+Math.round(i.acceleration*0.27778*10)/10+"㎨\nRPM: "+i.rpm, 
-                image: SuddenDropmarker // 마커 이미지 
+                image: SuddenDropmarker, // 마커 이미지 
+                clickable: true
             })
+
+            let iwContent = '<div class="infowindow">' +
+                '    <div class="suddenDrop">급감속</div><div class="suddenDropinfo">' +
+                '        <span class="number">차량번호: ' + i.plate + '</span>' +
+                '        <span class="number">발생시각: ' + i.hms + '</span>' +
+                '        <span class="number">차량속도: ' + i.velocity + ' km/h </span>' +
+                '        <span class="number">가속도: ' + Math.round(i.acceleration * 0.27778 * 10) / 10 + ' ㎨ </span>' +
+                '        <span class="number">RPM: ' + i.rpm + '</span></div>' +
+                '</div>', iwRemovable = true
+
+            let infowindow = new kakao.maps.InfoWindow({
+                content: iwContent,
+                removable: iwRemovable
+            })
+
+            kakao.maps.event.addListener(Dropmarker, 'click', function () {
+                infowindow.open(map, Dropmarker)
+            })
+
             Dropmarker.idx = i.seq;
             Dropmarker.time = i.time;
             Dropmarker.title = "급감속";
+
             return Dropmarker;
-        }
-        );
+        });
 
         let Depmarkers = suddenDeparture.map((i) => {
             let Depmarker = new kakao.maps.Marker({
                 // map: map, // 마커를 표시할 지도
                 position: new kakao.maps.LatLng(i.gpsY, i.gpsX), // 마커를 표시할 위치
-                title: "급출발\n"+"차량번호: "+i.plate+"\n발생시각: "+i.hms+"\n차량속도: "+i.velocity+"km/h\n가속도: "+Math.round(i.acceleration*0.27778*10)/10+"㎨\nRPM: "+i.rpm, 
-                image: SuddenDeparturemarker // 마커 이미지 
+                image: SuddenDeparturemarker, // 마커 이미지 
+                clickable: true
             })
+
+            let iwContent = '<div class="infowindow">' +
+                '    <div class="suddenDep">급출발</div><div class="suddenDepinfo">' +
+                '        <span class="number">차량번호: ' + i.plate + '</span>' +
+                '        <span class="number">발생시각: ' + i.hms + '</span>' +
+                '        <span class="number">차량속도: ' + i.velocity + ' km/h </span>' +
+                '        <span class="number">가속도: ' + Math.round(i.acceleration * 0.27778 * 10) / 10 + ' ㎨ </span>' +
+                '        <span class="number">RPM: ' + i.rpm + '</span></div>' +
+                '</div>', iwRemovable = true
+
+            let infowindow = new kakao.maps.InfoWindow({
+                content: iwContent,
+                removable: iwRemovable
+            })
+
+            kakao.maps.event.addListener(Depmarker, 'click', function () {
+                infowindow.open(map, Depmarker)
+            })
+
             Depmarker.idx = i.seq;
             Depmarker.time = i.time;
             Depmarker.title = "급출발";
+
             return Depmarker;
-        }
-        );
+        });
 
         let Stopmarkers = suddenStop.map((i) => {
-            
+
             let Stopmarker = new kakao.maps.Marker({
                 // map: map, // 마커를 표시할 지도
                 position: new kakao.maps.LatLng(i.gpsY, i.gpsX), // 마커를 표시할 위치
-                title: "급정지\n"+"차량번호: "+i.plate+"\n발생시각: "+i.hms+"\n차량속도: "+i.velocity+"km/h\n가속도: "+Math.round(i.acceleration*0.27778*10)/10+"㎨\nRPM: "+i.rpm, 
-                image: SuddenStopmarker // 마커 이미지 
+                image: SuddenStopmarker, // 마커 이미지 
+                clickable: true
             })
+
+            let iwContent = '<div class="infowindow">' +
+                '    <div class="suddenStop">급정지</div><div class="suddenStopinfo">' +
+                '        <span class="number">차량번호: ' + i.plate + '</span>' +
+                '        <span class="number">발생시각: ' + i.hms + '</span>' +
+                '        <span class="number">차량속도: ' + i.velocity + ' km/h </span>' +
+                '        <span class="number">가속도: ' + Math.round(i.acceleration * 0.27778 * 10) / 10 + ' ㎨ </span>' +
+                '        <span class="number">RPM: ' + i.rpm + '</span></div>' +
+                '</div>', iwRemovable = true
+
+            let infowindow = new kakao.maps.InfoWindow({
+                content: iwContent,
+                removable: iwRemovable
+            })
+
+            kakao.maps.event.addListener(Stopmarker, 'click', function () {
+                infowindow.open(map, Stopmarker)
+            })
+
             Stopmarker.idx = i.seq;
             Stopmarker.time = i.time;
             Stopmarker.title = "급정지";
+
             return Stopmarker;
 
         });
@@ -134,25 +212,25 @@ const DrawingMap = (probs) => {
 
         // console.log('Stopmarker: ', Stopmarkers[3].idx)
         // 마커 클러스터러에 클릭이벤트를 등록합니다
-        kakao.maps.event.addListener(clusterer, 'clusterclick', function(cluster) {
+        kakao.maps.event.addListener(clusterer, 'clusterclick', function (cluster) {
             // console.log(cluster.getMarkers());
             let marker = cluster.getMarkers().map((marker) => {
 
                 let temp = {}
-                temp['idx']=marker.idx
-                temp['위험']=marker.title
-                temp['시간']=marker.time
+                temp['idx'] = marker.idx
+                temp['위험'] = marker.title
+                temp['시간'] = marker.time
 
                 return temp
             })
-            
+
             // forEach(marker => {
             //     console.log(marker.idx+ ':' + marker.time + ':' + marker.title)
             //     temp.append(marker)
             // })
             probs.setChartData(marker)
         });
-        
+
     }, [probs.next])
 
 
