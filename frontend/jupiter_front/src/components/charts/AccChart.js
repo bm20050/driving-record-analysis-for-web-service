@@ -77,6 +77,11 @@ const AccChart = (probs) => {
                     width: 1,
                     colors: ['#26A0FC']
                 },
+                legend: {
+                    show: true,
+                    showForSingleSeries: true,
+                    position: 'bottom',
+                }
             }
 
         } else {
@@ -112,8 +117,12 @@ const AccChart = (probs) => {
                 }, 
                 stroke: {
                     width: 2,
-                    colors: ['#26A0FC']
                 },
+                legend: {
+                    show: true,
+                    showForSingleSeries: true,
+                    position: 'bottom',
+                }
             }
         }
 

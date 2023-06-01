@@ -48,6 +48,7 @@ const DropChart = (probs) => {
         if (Object.keys(cat).length === 0) {
 
             options = {
+                colors: ['#FEBC3B'],
                 chart: {
                     type: 'line',
                     height: '100%',
@@ -75,15 +76,17 @@ const DropChart = (probs) => {
                 },
                 stroke: {
                     width: 1,
-                    colors: ['#FEBC3B']
                 },
-                markers: {
-                    colors: ['#FEBC3B']
-                },
+                legend: {
+                    show: true,
+                    showForSingleSeries: true,
+                    position: 'bottom',
+                }
             }
 
         } else {
             options = {
+                colors: ['#FEBC3B'],
                 chart: {
                     type: 'line',
                     height: '100%',
@@ -116,11 +119,12 @@ const DropChart = (probs) => {
                 }, 
                 stroke: {
                     width: 2,
-                    colors: ['#FEBC3B']
                 },
-                markers: {
-                    colors: ['#FEBC3B']
-                },
+                legend: {
+                    show: true,
+                    showForSingleSeries: true,
+                    position: 'bottom',
+                }
             }
         }
 

@@ -153,10 +153,15 @@
 .headerbutton {
     margin: 0px 80px 0px 80px;
     font-family: 'D2Coding';
-    font-size: 1.3em;
+    font-size: 1.6em;
+    font-weight: bold;
 }
 
 .signbutton {
+    display: flex;
+    flex-direction: row;
+    justify-content: right;
+    align-items: center;
     margin: 0px 20px 0px 80px;
 }
 
@@ -220,6 +225,7 @@
     flex: 1;
     border: 1px lightgray solid;
     border-radius: 10px;
+    padding: 5px 0px 5px 0px;
 }
 
 #gragh1, #gragh2, #gragh3 {

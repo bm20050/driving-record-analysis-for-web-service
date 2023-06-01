@@ -48,6 +48,7 @@ const StopChart = (probs) => {
         if (Object.keys(cat).length === 0) {
 
             options = {
+                colors: ['#FF6178'],
                 chart: {
                     type: 'line',
                     height: '100%',
@@ -78,15 +79,17 @@ const StopChart = (probs) => {
                 },
                 stroke: {
                     width: 1,
-                    colors: ['#FF6178']
                 },
-                markers: {
-                    colors: ['#FF6178']
+                legend: {
+                    show: true,
+                    showForSingleSeries: true,
+                    position: 'bottom',
                 }
             }
 
         } else {
             options = {
+                colors: ['#FF6178'],
                 chart: {
                     type: 'line',
                     height: '100%',
@@ -119,11 +122,12 @@ const StopChart = (probs) => {
                 }, 
                 stroke: {
                     width: 2,
-                    colors: ['#FF6178']
                 },
-                markers: {
-                    colors: ['#FF6178']
-                },
+                legend: {
+                    show: true,
+                    showForSingleSeries: true,
+                    position: 'bottom',
+                }
             }
         }
 

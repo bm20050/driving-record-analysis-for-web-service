@@ -48,6 +48,7 @@ const DepartChart = (probs) => {
         if (Object.keys(cat).length === 0) {
 
             options = {
+                colors: ['#26E7A6'],
                 chart: {
                     type: 'line',
                     height: '100%',
@@ -75,15 +76,17 @@ const DepartChart = (probs) => {
                 },
                 stroke: {
                     width: 1,
-                    colors: ['#26E7A6']
                 },
-                markers: {
-                    colors: ['#26E7A6']
-                },
+                legend: {
+                    show: true,
+                    showForSingleSeries: true,
+                    position: 'bottom',
+                }
             }
 
         } else {
             options = {
+                colors: ['#26E7A6'],
                 chart: {
                     type: 'line',
                     height: '100%',
@@ -116,11 +119,12 @@ const DepartChart = (probs) => {
                 }, 
                 stroke: {
                     width: 2,
-                    colors: ['#26E7A6']
                 },
-                markers: {
-                    colors: ['#26E7A6']
-                },
+                legend: {
+                    show: true,
+                    showForSingleSeries: true,
+                    position: 'bottom',
+                }
             }
         }
 
