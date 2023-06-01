@@ -129,8 +129,10 @@
     flex-direction: column;
     justify-content: center;
     align-items: left;
-    width: 180px;
+    width: 200px;
     height: auto;
+    font-family: 'D2Coding';
+    font-size: 1.1em;
 }
 
 .suddenAcc {
@@ -140,15 +142,35 @@
     padding-left: 5px;
 }
 
-.suddenAccinfo{
+.suddenDrop {
+    background-color: rgb(254, 188, 59);
+    color: white;
+    width: 100%;
+    padding-left: 5px;
+}
+
+.suddenDep {
+    background-color: rgb(38, 231, 166);
+    color: white;
+    width: 100%;
+    padding-left: 5px;
+}
+
+.suddenStop {
+    background-color: rgb(255, 97, 120);
+    color: white;
+    width: 100%;
+    padding-left: 5px;
+}
+
+.suddenAccinfo, .suddenDropinfo, .suddenDepinfo, .suddenStopinfo {
     font-size: 0.9em;
-    font-family: 'D2Coding';
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: left;
 }
 
-.suddenAccinfo span {
+.infowindow span {
     padding-left: 5px;
 }
