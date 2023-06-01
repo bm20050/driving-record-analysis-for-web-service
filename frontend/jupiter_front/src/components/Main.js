@@ -4,6 +4,10 @@ import { useState, useEffect, useRef } from "react";
 import DrawingMap from "./DrawingMap";
 import Right from "./Right";
 import SelectBox from "./SelectBox";
+import AccChart from "./charts/AccChart";
+import DepartChart from "./charts/DepartChart";
+import DropChart from "./charts/DropChart";
+import StopChart from "./charts/StopChart";
 
 const Main = () => {
 
@@ -85,7 +89,10 @@ const Main = () => {
                 </div>
             </div>
             <div className="gragh">
-
+                <AccChart chartData={chartData} />
+                <DepartChart chartData={chartData} />
+                <DropChart chartData={chartData} />
+                <StopChart chartData={chartData} />
             </div>
         </>
 

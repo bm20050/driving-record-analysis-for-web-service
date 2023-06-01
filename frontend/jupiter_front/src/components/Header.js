@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom'
 import Button from 'react-bootstrap/Button';
-import bus from '../image/bus.jpg'
 import logo from '../image/logo.png'
 
 const Header = () => {

@@ -1,8 +1,5 @@
-import Chart from "./Chart";
-
+import Chart from "./charts/Chart";
 // import 'bootstrap/dist/css/bootstrap.min.css'
-import React from "react";
-
 
 const Right = (probs) => {
 
