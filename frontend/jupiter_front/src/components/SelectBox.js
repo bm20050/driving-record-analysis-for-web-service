@@ -8,7 +8,7 @@ const SelectBox = (probs) => {
         <>
             <form className="row gy-2 gx-3 align-items-center">
                 <div className="col-auto" id="calendar">
-                    <input className="form-select-sm" type="date" ref={probs.reqDate} onChange={probs.handleDate} name="reqdate" style={{ border: "1px lightgray solid" }} />
+                    <input className="form-select-sm" type="date" defaultValue={"2022-12-01"} ref={probs.reqDate} onChange={probs.handleDate} name="reqdate" style={{ border: "1px lightgray solid" }} />
                 </div>
                 <div className="col-auto">
                     <SelectPlate plate={probs.plate} />
