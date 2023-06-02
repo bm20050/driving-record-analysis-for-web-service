@@ -30,9 +30,9 @@ const DrawingMap = (probs) => {
 
 
     useEffect(() => {
-        if (probs.targetDt === "2023-01-01") {
-            return;
-        }
+        // if (probs.targetDt === "2023-01-01") {
+        //     return;
+        // }
 
         if (!probs.data) {
             return;
@@ -50,7 +50,7 @@ const DrawingMap = (probs) => {
         let imgSuddenDrop = "https://github.com/beeguriri/driving-record-analysis-for-web-service/blob/main/frontend/jupiter_front/src/image/SuddenDrop.png?raw=true";
         let imgSuddenDeparture = "https://github.com/beeguriri/driving-record-analysis-for-web-service/blob/main/frontend/jupiter_front/src/image/SuddenDeparture.png?raw=true";
         let imgSuddenStop = "https://github.com/beeguriri/driving-record-analysis-for-web-service/blob/main/frontend/jupiter_front/src/image/SuddenStop.png?raw=true";
-        let imageSize = new kakao.maps.Size(50, 50);
+        let imageSize = new kakao.maps.Size(30, 30);
 
         // 마커 이미지 생성
         let SuddenAccmarker = new kakao.maps.MarkerImage(imgSuddenAcc, imageSize);

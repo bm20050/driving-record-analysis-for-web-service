@@ -12,7 +12,7 @@ import StopChart from "./charts/StopChart";
 const Main = () => {
 
         //날짜선택 state 변수
-        let [targetDt, setTargetDt] = useState("2023-01-01");
+        let [targetDt, setTargetDt] = useState("2022-12-01");
         
         //백엔드 응답 state 변수
         const [data, setData] = useState();
@@ -42,6 +42,10 @@ const Main = () => {
             setTargetDt(reqDate.current.value);
         };
         
+        useEffect(()=> {
+            searchData()
+        },[])
+
         // 검색버튼
         const searchData = async (e) => {
             // e.preventDefault();
