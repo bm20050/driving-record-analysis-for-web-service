@@ -1,8 +1,8 @@
-from flask import Flask, request, jsonify, render_template, request, url_for
-
-from http import HTTPStatus
+from flask import Flask, jsonify, request
+# from http import HTTPStatus
 from flask_cors import CORS
-import pandas as pd
+from preprocessing import file_processing, prediction
+
 app = Flask(__name__)
 
 CORS(app)
@@ -31,6 +31,16 @@ def test():
     # print("len", len(request.data))
 
     return "hello"
+
+@app.route('/file_processing', methods=['POST'])
+def file_processing():
+    lst = request.data
+    return jsonify(file_processing(lst))
+
+@app.route('/prediction', methods=['POST'])
+def prediction():
+    data = request.data
+    return prediction([data['hour'], data['minute'], data['x'], data['y']])
 
 
 if __name__ == '__main__':
