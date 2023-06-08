@@ -6,6 +6,7 @@
 *.csv
 origin/
 .gradle/
+*.
 
 ### Gradle ###
 .gradle
