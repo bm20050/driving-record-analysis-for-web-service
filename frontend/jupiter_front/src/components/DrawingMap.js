@@ -5,6 +5,7 @@ const { kakao } = window;
 const DrawingMap = (probs) => {
 
     let [map, setMap] = useState();
+    console.log("map", probs.data)
 
     useEffect(() => {
 
@@ -120,7 +121,7 @@ const DrawingMap = (probs) => {
                 infowindow.open(map, Dropmarker)
             })
 
-            Dropmarker.idx = i.seq;
+            Dropmarker.idx = i.id;
             Dropmarker.time = i.time;
             Dropmarker.title = "급감속";
 
@@ -153,7 +154,7 @@ const DrawingMap = (probs) => {
                 infowindow.open(map, Depmarker)
             })
 
-            Depmarker.idx = i.seq;
+            Depmarker.idx = i.id;
             Depmarker.time = i.time;
             Depmarker.title = "급출발";
 
@@ -187,7 +188,7 @@ const DrawingMap = (probs) => {
                 infowindow.open(map, Stopmarker)
             })
 
-            Stopmarker.idx = i.seq;
+            Stopmarker.idx = i.id;
             Stopmarker.time = i.time;
             Stopmarker.title = "급정지";
 

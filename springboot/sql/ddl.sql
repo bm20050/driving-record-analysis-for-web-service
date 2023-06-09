@@ -30,3 +30,53 @@ CREATE TABLE `reqlog` (
           PRIMARY KEY (`seq`)
 );
 
+Hibernate:
+
+create table member (
+                        member_id bigint not null auto_increment,
+                        email varchar(255),
+                        password varchar(255),
+                        roles varchar(255),
+                        userid varchar(255),
+                        username varchar(255),
+                        primary key (member_id)
+) engine=InnoDB
+Hibernate:
+
+create table my_file_list (
+                              file_id bigint not null auto_increment,
+                              file_extension varchar(255),
+                              file_size bigint not null,
+                              new_name varchar(255),
+                              origin_name varchar(255),
+                              upload_id bigint,
+                              primary key (file_id)
+) engine=InnoDB
+Hibernate:
+
+create table upload_list (
+                             upload_id bigint not null auto_increment,
+                             request_date datetime(6),
+                             member_id bigint,
+                             primary key (upload_id)
+) engine=InnoDB
+Hibernate:
+
+alter table member
+drop index UK_6yhxjegychh1rq9jfynisnhro
+    Hibernate:
+
+alter table member
+    add constraint UK_6yhxjegychh1rq9jfynisnhro unique (userid)
+    Hibernate:
+
+alter table my_file_list
+    add constraint FK8kedpihxotws42foqryh0hqrk
+        foreign key (upload_id)
+            references upload_list (upload_id)
+    Hibernate:
+
+alter table upload_list
+    add constraint FKger9h8khg4egenfr4v93wohxn
+        foreign key (member_id)
+            references member (member_id)
