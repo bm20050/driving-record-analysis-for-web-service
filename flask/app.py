@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, request
+from flask import Flask, request
 # from http import HTTPStatus
 from flask_cors import CORS
 from preprocessing import file_processing, prediction
@@ -33,9 +33,10 @@ def test():
     return "hello"
 
 @app.route('/file_processing', methods=['POST'])
-def file_processing():
-    lst = request.data
-    return jsonify(file_processing(lst))
+def req_file_processing():
+    lst = request.get_json()['data']
+
+    return file_processing.file_processing(lst).to_json(orient='records', force_ascii=False)
 
 @app.route('/prediction', methods=['POST'])
 def prediction():
