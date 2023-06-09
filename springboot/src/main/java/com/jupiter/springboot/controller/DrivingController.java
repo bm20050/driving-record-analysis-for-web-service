@@ -1,7 +1,7 @@
 package com.jupiter.springboot.controller;
 
 import com.jupiter.springboot.domain.Driving;
-import com.jupiter.springboot.domain.ReqParams;
+import com.jupiter.springboot.dto.ReqParams;
 import com.jupiter.springboot.domain.Reqlog;
 import com.jupiter.springboot.service.DrivingService;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,4 +1,4 @@
-package com.jupiter.springboot.domain;
+package com.jupiter.springboot.dto;
 
 import lombok.Getter;
 import lombok.ToString;
