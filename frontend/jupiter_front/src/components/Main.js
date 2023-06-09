@@ -4,12 +4,17 @@ import { useState, useEffect, useRef } from "react";
 import DrawingMap from "./DrawingMap";
 import Right from "./Right";
 import SelectBox from "./SelectBox";
+import UploadForm from "./UploadForm";
 import AccChart from "./charts/AccChart";
 import DepartChart from "./charts/DepartChart";
 import DropChart from "./charts/DropChart";
 import StopChart from "./charts/StopChart";
 
 const Main = () => {
+
+        //test중
+        // sessionStorage.setItem('userid', 'user1');
+        // sessionStorage.setItem('isLoggedIn',true);
 
         //날짜선택 state 변수
         let [targetDt, setTargetDt] = useState("2022-12-01");
@@ -82,7 +87,10 @@ const Main = () => {
     return (
         <>
             <div className="selectbox">
-                <SelectBox reqDate={reqDate} plate={plate} danger={danger} chartData={chartData} searchData={searchData} handleDate={handleDate} next={next} />
+                {/* { sessionStorage.getItem('isLoggedIn') ?  */}
+                <SelectBox reqDate={reqDate} plate={plate} danger={danger} chartData={chartData} searchData={searchData} handleDate={handleDate} next={next} /> :
+                <UploadForm setData={setData} setPrev={setPrev} setNext={setNext} prev={prev} next={next} /> 
+                {/* } */}
             </div>
             <div className="content">
                 <div className="left">
