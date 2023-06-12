@@ -30,8 +30,8 @@ public class MemberController {
         return ResponseEntity.ok().body(memberService.login(params, request));
     }
 
-    @GetMapping("/api/logout")
-    public Member logout() {
-        return memberService.logout();
+    @PostMapping("/api/logout")
+    public void logout(HttpServletRequest request) {
+        memberService.logout(request);
     }
 }

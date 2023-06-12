@@ -12,8 +12,6 @@ const Login = () => {
 
     const handleLogin = async () => {
         console.log('로그인 버튼클릭')
-        console.log('userid', userid)
-        console.log('password', password)
 
         await axios
             .post('/api/login', {
@@ -21,12 +19,26 @@ const Login = () => {
                 'password': password,
             })
             .then((response) => {
-                console.log(response.data)
+                console.log(response)
             })
             .catch((error) => {
                 console.log(error)
             })
 
+    }
+
+    const handleLogout = async () => {
+        console.log('로그아웃 버튼클릭')
+
+        await axios
+        .post('/api/logout')
+        .then((response) => {
+            console.log(response)
+        })
+        .catch((error) => {
+            setShowErrorMessage(true)
+            console.log(error)
+        })
     }
 
     return (
@@ -46,6 +58,7 @@ const Login = () => {
                 </Form.Group>
             </Form>
             <Button onClick={handleLogin}>로그인</Button>
+            <Button onClick={handleLogout}>로그아웃</Button>
             <Link to="/join">
                 <Button>회원가입</Button>
             </Link>

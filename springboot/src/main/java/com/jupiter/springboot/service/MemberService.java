@@ -56,8 +56,12 @@ public class MemberService {
         } else throw new RuntimeException("아이디 없음");
     }
 
-    public Member logout(){
-        return null;
+    public void logout(HttpServletRequest request){
+
+        HttpSession session = request.getSession(false);
+
+        if(session!=null)
+            session.invalidate();
     }
 
 }
