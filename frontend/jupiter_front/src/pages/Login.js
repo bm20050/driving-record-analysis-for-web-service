@@ -26,7 +26,9 @@ const Login = () => {
             .then((response) => {
                 console.log(response.data)
                 sessionStorage.setItem('isLoggedIn', true)
-                sessionStorage.setItem('item', response.data)
+                sessionStorage.setItem('itemid', response.data.userid)
+                sessionStorage.setItem('username', response.data.username)
+                // sessionStorage.setItem('email', response.data.email)
                 setShowErrorMessage(false)
                 //email:"aaa@abc.com", userid:"user1", username: "일반사용자"
                 navigator('/')
@@ -37,21 +39,6 @@ const Login = () => {
                 console.log(error)
             })
 
-    }
-
-    const handleLogout = async () => {
-        console.log('로그아웃 버튼클릭')
-
-        await axios
-        .post('/api/logout')
-        .then((response) => {
-            console.log(response)
-            sessionStorage.removeItem('isLoggedIn', true)
-            sessionStorage.removeItem('item', response.data)
-        })
-        .catch((error) => {
-            console.log(error)
-        })
     }
 
     return (
@@ -74,7 +61,6 @@ const Login = () => {
                 <div className="loginError" style={{color:'red'}}>ID 혹은 비밀번호가 일치하지 않습니다.</div>
             )}
             <Button onClick={handleLogin}>로그인</Button>
-            <Button onClick={handleLogout}>로그아웃</Button>
             <Link to="/join">
                 <Button>회원가입</Button>
             </Link>
