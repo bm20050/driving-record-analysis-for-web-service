@@ -7,9 +7,11 @@ import com.jupiter.springboot.dto.MemberLoginRespDto;
 import com.jupiter.springboot.persistence.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.validation.annotation.Validated;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -19,22 +21,16 @@ public class MemberService {
     private final MemberRepository memberRepository;
 //    private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
-    public Long createMember(MemberJoinDto params) {
+    public void createMember(MemberJoinDto params) {
 //        String rawPassword = params.getPassword();
 //        String encodingPassword = bCryptPasswordEncoder.encode(rawPassword);
+        List<Member> findMembers = memberRepository.findByUserid(params.getUserid()).stream().toList();
 
-        //멤버 중복 체크, 컬럼에 유니크 걸어놨는데 어떻게 되지?
-//        List<Member> members = memberRepository.findAll();
-//        List<Member> collect = members.stream().filter(m -> m.getUserid().equals(params.getUserid())).collect(Collectors.toList());
-//
-//        if(collect.size()!=0)
-//            throw new RuntimeException("아이디 중복");
+        if(!findMembers.isEmpty())
+            throw new RuntimeException("이미 존재하는 회원");
 
         memberRepository.save(new Member(params.getUserid(), params.getUsername(),
                 params.getEmail(), params.getPassword(), "ROLE_USER"));
-
-        return memberRepository.findByUserid(params.getUserid()).get().getId();
-
     }
 
     public MemberLoginRespDto login(MemberLoginDto params, HttpServletRequest request){

@@ -1,16 +1,24 @@
 package com.jupiter.springboot.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
-@AllArgsConstructor
-@Getter @Setter
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+
+@Data
 public class MemberJoinDto {
 
+    @NotBlank
     private String userid;
+
+    @NotBlank
     private String username;
-    private String email;
+
+    @NotBlank
     private String password;
+
+    @Email
+    private String email;
+
 
 }
