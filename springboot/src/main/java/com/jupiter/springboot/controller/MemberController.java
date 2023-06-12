@@ -24,13 +24,13 @@ public class MemberController {
     private final MemberService memberService;
 
     @PostMapping("/api/join")
-    public ResponseEntity<Object> join (@RequestBody MemberJoinDto params){
+    public ResponseEntity<Object> join (@Validated @RequestBody MemberJoinDto params){
         memberService.createMember(params);
         return ResponseEntity.ok().body(HttpStatus.OK);
     }
 
     @PostMapping("/api/login")
-    public ResponseEntity<MemberLoginRespDto> login(@RequestBody MemberLoginDto params, HttpServletRequest request){
+    public ResponseEntity<MemberLoginRespDto> login(@Validated @RequestBody MemberLoginDto params, HttpServletRequest request){
         return ResponseEntity.ok().body(memberService.login(params, request));
     }
 
