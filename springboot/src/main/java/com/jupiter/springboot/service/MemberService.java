@@ -45,7 +45,7 @@ public class MemberService {
             if(findMember.get().getPassword().equals(params.getPassword())){
                 Member member = findMember.get();
 
-                //로그인 성공 시 세션에 JSESSIONID 보관 (<-회원정보 보관)
+                //로그인 성공 시 쿠키에 JSESSIONID 저장
                 MemberLoginRespDto loginMember = new MemberLoginRespDto(member.getUserid(), member.getUsername(), member.getEmail());
                 HttpSession session = request.getSession();
                 session.setAttribute("loginMember", loginMember);
