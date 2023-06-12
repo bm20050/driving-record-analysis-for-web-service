@@ -24,7 +24,7 @@ const Join = () => {
             })
             .then((response) => {
                 console.log(response.data)
-                navigator('/')
+                navigator('/login')
             })
             .catch((error) => {
                 console.log('에러발생화면')

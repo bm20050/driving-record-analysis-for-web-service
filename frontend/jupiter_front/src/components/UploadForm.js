@@ -1,8 +1,11 @@
 import axios from "axios";
+import { Link, useNavigate } from "react-router-dom";
 
 const UploadForm = (probs) => {
 
     let fileList = []
+
+    const navigator = useNavigate();
 
     const onSaveFile = (e) => {
 
@@ -48,6 +51,8 @@ const UploadForm = (probs) => {
             
         }).catch((error) => {
             console.log(error);
+            console.log('로그인정보 없음')
+            navigator('/login')
         });
 
         probs.setNext(probs.next + 1);
