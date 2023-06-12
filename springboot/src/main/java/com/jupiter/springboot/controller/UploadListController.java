@@ -24,17 +24,10 @@ public class UploadListController {
         Long fileListId;
 
         try{
-            System.out.println(userid.getUserid());
-            System.out.println(multipartFiles.toString());
-            System.out.println("컨트롤러");
             fileListId = uploadListService.uploadFiles(userid.getUserid(), multipartFiles);
-
         } catch (Exception e) {
-            System.out.println("에러?");
             return new ResponseEntity<Object>(null, HttpStatus.CONFLICT);
         }
-
         return ResponseEntity.ok().body(uploadListService.transferUploadList(fileListId));
-//        return ResponseEntity.ok().body(fileListId);
     }
 }

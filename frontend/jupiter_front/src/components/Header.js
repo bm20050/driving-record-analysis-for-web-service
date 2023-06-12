@@ -1,9 +1,28 @@
-import { Link } from 'react-router-dom'
+import axios from 'axios';
+import { Link, useNavigate } from 'react-router-dom'
 import Button from 'react-bootstrap/Button';
 import logo from '../image/logo.png'
 
 const Header = () => {
 
+    const navigator = useNavigate();
+
+    const handleLogout = async () => {
+        console.log('로그아웃 버튼클릭')
+
+        await axios
+        .post('/api/logout')
+        .then((response) => {
+            console.log(response)
+            sessionStorage.removeItem('isLoggedIn', true)
+            sessionStorage.removeItem('itemid', response.data.itemid)
+            sessionStorage.removeItem('username', response.data.username)
+            navigator('/')
+        })
+        .catch((error) => {
+            console.log(error)
+        })
+    }
 
     return (
         <>
@@ -21,9 +40,12 @@ const Header = () => {
                     <Link to="/myPage" style={{ textDecoration: 'none' }}>MY PAGE</Link>
                 </div>
                 <div className='signbutton'>
-                    <Button variant="outline-primary">
-                        <Link to="/login" style={{ textDecoration: 'none' }}>SIGN IN</Link>
-                    </Button>
+                    {sessionStorage.getItem('isLoggedIn') ? 
+                        <Button onClick={handleLogout}>LOGOUT</Button> :
+                        <Button variant="outline-primary">
+                            <Link to="/login" style={{ textDecoration: 'none' }}>SIGN IN</Link>
+                        </Button>
+                    }
                     <Button variant="outline-primary">
                         <Link to="/join" style={{ textDecoration: 'none' }}>SIGN UP</Link>
                     </Button>
