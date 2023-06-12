@@ -3,20 +3,23 @@ import Header from "./components/Header";
 import Main from "./components/Main";
 import './styles/App.css';
 import { BrowserRouter } from "react-router-dom";
+import RouteMain from "./routes/RouteMain";
 
 function App() {
 
     return (
-        <BrowserRouter>
+        <>
             <div className="all">
-                <div className="header">
-                    <Header />
-                </div>
-                <div className="main">
-                    <Main />
-                </div>
+                <BrowserRouter>
+                    <div className="header">
+                        <Header />
+                    </div>
+                    <div className="main">
+                        <RouteMain />
+                    </div>
+                </BrowserRouter>
             </div>
-        </BrowserRouter>
+        </>
     );
 }
 
