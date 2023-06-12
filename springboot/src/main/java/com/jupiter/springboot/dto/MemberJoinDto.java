@@ -4,13 +4,24 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+
 @AllArgsConstructor
 @Getter @Setter
 public class MemberJoinDto {
 
+    @NotBlank
     private String userid;
+
+    @NotBlank
     private String username;
-    private String email;
+
+    @NotBlank
     private String password;
+
+    @Email @NotBlank
+    private String email;
+
 
 }
