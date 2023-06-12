@@ -15,17 +15,18 @@ const Login = () => {
         console.log('userid', userid)
         console.log('password', password)
 
-        const response = await axios
-                                .post('', {
+        await axios
+            .post('/api/login', {
+                'userid' : userid,
+                'password': password,
+            })
+            .then((response) => {
+                console.log(response.data)
+            })
+            .catch((error) => {
+                console.log(error)
+            })
 
-                                })
-                                .then((response) => {
-
-                                })
-                                .catch((error) => {
-
-                                })
-        
     }
 
     return (
@@ -33,20 +34,20 @@ const Login = () => {
             <Form>
                 <Form.Group className="mb-3">
                     <Form.Label>아이디</Form.Label>
-                    <Form.Control type="text" value={userid} id="userid" 
-                                    onChange={(e) => setUserid(e.target.value)} required
-                                    placeholder="아이디를 입력하세요" />
+                    <Form.Control type="text" value={userid} id="userid"
+                        onChange={(e) => setUserid(e.target.value)} required
+                        placeholder="아이디를 입력하세요" />
                 </Form.Group>
                 <Form.Group className="mb-3">
                     <Form.Label>비밀번호</Form.Label>
-                    <Form.Control type="password"  value={password} id="password"
-                                    onChange={(e) => setPassword(e.target.value)} required
-                                    placeholder="비밀번호를 입력하세요" />
+                    <Form.Control type="password" value={password} id="password"
+                        onChange={(e) => setPassword(e.target.value)} required
+                        placeholder="비밀번호를 입력하세요" />
                 </Form.Group>
             </Form>
             <Button onClick={handleLogin}>로그인</Button>
             <Link to="/join">
-                <Button>회원가입</Button>   
+                <Button>회원가입</Button>
             </Link>
         </div>
     )

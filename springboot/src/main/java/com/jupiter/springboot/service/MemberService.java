@@ -8,6 +8,8 @@ import com.jupiter.springboot.persistence.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.Optional;
 
 @Service
@@ -35,18 +37,23 @@ public class MemberService {
 
     }
 
-    public MemberLoginRespDto login(MemberLoginDto params){
+    public MemberLoginRespDto login(MemberLoginDto params, HttpServletRequest request){
 
         Optional<Member> findMember = memberRepository.findByUserid(params.getUserid());
 
         if(findMember.isPresent()) {
             if(findMember.get().getPassword().equals(params.getPassword())){
                 Member member = findMember.get();
-                return new MemberLoginRespDto(member.getUserid(), member.getUsername(), member.getEmail());
+
+                //로그인 성공 시 세션에 JSESSIONID 보관 (<-회원정보 보관)
+                MemberLoginRespDto loginMember = new MemberLoginRespDto(member.getUserid(), member.getUsername(), member.getEmail());
+                HttpSession session = request.getSession();
+                session.setAttribute("loginMember", loginMember);
+
+                return loginMember;
             }
             else throw new RuntimeException("비밀번호 오류");
         } else throw new RuntimeException("아이디 없음");
-
     }
 
     public Member logout(){

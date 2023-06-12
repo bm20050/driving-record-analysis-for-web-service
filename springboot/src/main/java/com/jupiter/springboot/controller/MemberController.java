@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletRequest;
+
 @RestController
 @RequiredArgsConstructor
 public class MemberController {
@@ -24,8 +26,8 @@ public class MemberController {
     }
 
     @PostMapping("/api/login")
-    public ResponseEntity<MemberLoginRespDto> login(@RequestBody MemberLoginDto params){
-        return ResponseEntity.ok().body(memberService.login(params));
+    public ResponseEntity<MemberLoginRespDto> login(@RequestBody MemberLoginDto params, HttpServletRequest request){
+        return ResponseEntity.ok().body(memberService.login(params, request));
     }
 
     @GetMapping("/api/logout")
