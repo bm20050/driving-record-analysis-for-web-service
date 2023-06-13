@@ -1,23 +1,26 @@
 package com.jupiter.springboot.service;
 
 import com.jupiter.springboot.domain.Driving;
+import com.jupiter.springboot.dto.PredReqParams;
 import com.jupiter.springboot.dto.ReqParams;
 import com.jupiter.springboot.persistence.DrivingRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
 
 import java.text.SimpleDateFormat;
 import java.util.*;
 
 @Service
+@RequiredArgsConstructor
 public class DrivingService {
 
-    DrivingRepository drivingRepository;
-
-    @Autowired
-    public DrivingService(DrivingRepository drivingRepository) {
-        this.drivingRepository = drivingRepository;
-    }
+    private final DrivingRepository drivingRepository;
 
     public List<Driving> getList() {
         return drivingRepository.findAll();
@@ -67,5 +70,26 @@ public class DrivingService {
                 return drivingRepository.findByPlateLikeAndYearAndMonthAndDayAndSuddenStop(plate, year, month, day, 1);
 
         }
+    }
+
+
+    public String transferPred(PredReqParams params){
+
+        Map<String, PredReqParams> map = new HashMap<>();
+        map.put("data", params);
+
+        String flaskUrl = "http://localhost:5000/prediction";
+
+        RestTemplate restTemplate = new RestTemplate();
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+
+        HttpEntity<Map<String, PredReqParams>> request = new HttpEntity<>(map, headers);
+
+        ResponseEntity<String> response = restTemplate.postForEntity(flaskUrl, request, String.class);
+
+        return response.getBody();
+
     }
 }
