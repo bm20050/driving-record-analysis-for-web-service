@@ -29,6 +29,7 @@ public class MemberService {
 
         List<Member> findMembers = memberRepository.findByUserid(params.getUserid()).stream().toList();
 
+
         if(!findMembers.isEmpty())
             throw new RuntimeException("이미 존재하는 회원");
 
@@ -38,7 +39,7 @@ public class MemberService {
 
     public MemberLoginRespDto login(MemberLoginDto params, HttpServletRequest request){
 
-        Optional<Member> findMember = memberRepository.findByUserid(params.getUserid());
+        Optional<Member> findMember = memberRepository.findByUsername(params.getUsername());
 
         if(findMember.isPresent()) {
             if(bCryptPasswordEncoder.matches(params.getPassword(), findMember.get().getPassword())){
@@ -49,6 +50,7 @@ public class MemberService {
                 session.setAttribute("loginMember", loginMember);
 
                 return new MemberLoginRespDto(findMember.get().getUserid(), findMember.get().getUsername(), findMember.get().getEmail());
+
             }
             else throw new RuntimeException("비밀번호 오류");
         } else throw new RuntimeException("아이디 없음");

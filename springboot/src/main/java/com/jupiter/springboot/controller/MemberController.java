@@ -31,6 +31,7 @@ public class MemberController {
     public String authTest(@AuthenticationPrincipal PrincipalDetails principalDetails) {
         System.out.println(principalDetails);
         return principalDetails.getUsername();
+
     }
 
     @PostMapping("/api/join")

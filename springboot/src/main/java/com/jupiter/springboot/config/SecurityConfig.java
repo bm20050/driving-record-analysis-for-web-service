@@ -19,6 +19,7 @@ import static org.springframework.security.config.Customizer.*;
 
 //@Configuration
 //@EnableWebSecurity
+
 public class SecurityConfig {
 
     @Bean
@@ -40,6 +41,7 @@ public class SecurityConfig {
                 .and()
                 .logout(withDefaults());
         http.formLogin().disable();
+
 
 
         return http.build();
@@ -64,13 +66,4 @@ public class SecurityConfig {
 
 
 
-//    @Override
-//    public void addInterceptors(InterceptorRegistry registry) {
-//
-//        registry.addInterceptor(new LoginCheckInterceptor())
-//                .order(1)
-//                .addPathPatterns("/**") //모든 경로에 필터 적용
-//                .excludePathPatterns("/", "/api/login", "/api/logout", "/api/join",
-//                        "/api/totalCount", "/error", "/api/prediction"); //필터 적용하지않을 경로
-//    }
-}
+

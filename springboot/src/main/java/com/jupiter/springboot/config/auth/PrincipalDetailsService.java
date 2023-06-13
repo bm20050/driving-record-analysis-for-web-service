@@ -24,6 +24,7 @@ public class PrincipalDetailsService implements UserDetailsService {
         log.info("userid: "+ username);
 
         Member memberEntity = memberRepository.findByUserid(username)
+
                 .orElseThrow(() -> new NoSuchElementException("Member Not Found"));
 
         if(memberEntity!=null) {

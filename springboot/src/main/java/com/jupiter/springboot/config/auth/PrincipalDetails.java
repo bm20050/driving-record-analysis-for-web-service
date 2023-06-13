@@ -40,6 +40,7 @@ public class PrincipalDetails implements UserDetails {
     public String getUsername() {
         log.info("getUsername: " + member.getUserid());
         return member.getUserid();
+
     }
 
     @Override
