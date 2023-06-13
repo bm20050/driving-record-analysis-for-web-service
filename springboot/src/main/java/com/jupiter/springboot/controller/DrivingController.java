@@ -2,7 +2,6 @@ package com.jupiter.springboot.controller;
 
 import com.jupiter.springboot.domain.Driving;
 import com.jupiter.springboot.dto.ReqParams;
-import com.jupiter.springboot.domain.Reqlog;
 import com.jupiter.springboot.service.DrivingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -36,15 +35,5 @@ public class DrivingController {
         System.out.println(params.toString());
         return drivingService.totalCount(params);
     }
-
-    @ResponseBody
-    @PostMapping("/api/map_req")
-    public void mapReq(@RequestParam Reqlog req) {
-
-    }
-
-    @GetMapping("/api/map_resp")
-    public List<Driving> mapData(){
-        return null;
-    }
+    
 }
