@@ -254,3 +254,14 @@
 /* #gragh2, #gragh3 {
     margin: 0px 10px 0px 10px;
 } */
+
+.joindiv, .logindiv {
+    width: 25%;
+    font-family: 'D2Coding';
+    margin-top: 5%;
+}
+
+.joindiv > Button, .logindiv Button {
+    width: 45%;
+    margin: 2.5%;
+}
