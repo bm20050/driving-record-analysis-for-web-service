@@ -1,7 +1,9 @@
 package com.jupiter.springboot.config;
 
 import com.jupiter.springboot.interceptor.LoginCheckInterceptor;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
@@ -25,6 +27,9 @@ public class WebConfig implements WebMvcConfigurer {
                         "/api/totalCount", "/errors"); //필터 적용하지않을 경로
     }
 
-    
+    @Bean
+    public BCryptPasswordEncoder encoder() {
+        return new BCryptPasswordEncoder();
+    }
 
 }
