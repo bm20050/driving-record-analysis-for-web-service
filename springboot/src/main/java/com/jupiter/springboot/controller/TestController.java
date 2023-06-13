@@ -1,6 +1,5 @@
 package com.jupiter.springboot.controller;
 
-import com.jupiter.springboot.domain.Message;
 import com.jupiter.springboot.domain.Test;
 import com.jupiter.springboot.service.TestService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,16 +31,16 @@ public class TestController {
         return testService.getData();
     }
 
-    @ResponseBody
-    @PostMapping("/api/sendData")
-    public Message getMessage(@RequestBody Message params) {
-
-        System.out.println("controller : 리액트에서 데이터 받아오기");
-        System.out.println(params.getDate());
-        System.out.println(params.getTime());
-
-        return params;
-    }
+//    @ResponseBody
+//    @PostMapping("/api/sendData")
+//    public Message getMessage(@RequestBody Message params) {
+//
+//        System.out.println("controller : 리액트에서 데이터 받아오기");
+//        System.out.println(params.getDate());
+//        System.out.println(params.getTime());
+//
+//        return params;
+//    }
 
 
 }
