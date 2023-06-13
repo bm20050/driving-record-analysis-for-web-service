@@ -1,7 +1,8 @@
 from flask import Flask, request
 # from http import HTTPStatus
 from flask_cors import CORS
-from preprocessing import file_processing, prediction
+from preprocessing import file_processing
+from preprocessing import prediction as pr
 
 app = Flask(__name__)
 
@@ -40,8 +41,9 @@ def req_file_processing():
 
 @app.route('/prediction', methods=['POST'])
 def prediction():
-    data = request.data
-    return prediction([data['hour'], data['minute'], data['x'], data['y']])
+    data = request.get_json()['data']
+
+    return pr.prediction([int(data['hour']), int(data['minute']), float(data['x']), float(data['y'])])
 
 
 if __name__ == '__main__':
