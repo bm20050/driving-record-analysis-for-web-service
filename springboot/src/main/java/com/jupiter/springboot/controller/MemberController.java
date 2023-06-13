@@ -30,7 +30,7 @@ public class MemberController {
     @GetMapping("/authTest")
     public String authTest(@AuthenticationPrincipal PrincipalDetails principalDetails) {
         System.out.println(principalDetails);
-        return principalDetails.toString();
+        return principalDetails.getUsername();
     }
 
     @PostMapping("/api/join")

@@ -27,7 +27,7 @@ public class MemberService {
         String rawPassword = params.getPassword();
         String encodingPassword = bCryptPasswordEncoder.encode(rawPassword);
 
-        List<Member> findMembers = memberRepository.findByUsername(params.getUserid()).stream().toList();
+        List<Member> findMembers = memberRepository.findByUserid(params.getUserid()).stream().toList();
 
         if(!findMembers.isEmpty())
             throw new RuntimeException("이미 존재하는 회원");
@@ -38,17 +38,17 @@ public class MemberService {
 
     public MemberLoginRespDto login(MemberLoginDto params, HttpServletRequest request){
 
-        Optional<Member> findMember = memberRepository.findByUsername(params.getUsername());
+        Optional<Member> findMember = memberRepository.findByUserid(params.getUserid());
 
         if(findMember.isPresent()) {
             if(bCryptPasswordEncoder.matches(params.getPassword(), findMember.get().getPassword())){
 
 //                //로그인 성공 시 쿠키에 JSESSIONID 저장
-//                MemberLoginRespDto loginMember = new MemberLoginRespDto(findMember.get().getUserid(), findMember.get().getUsername(), findMember.get().getEmail());
-//                HttpSession session = request.getSession();
-//                session.setAttribute("loginMember", loginMember);
+                MemberLoginRespDto loginMember = new MemberLoginRespDto(findMember.get().getUserid(), findMember.get().getUserid(), findMember.get().getEmail());
+                HttpSession session = request.getSession();
+                session.setAttribute("loginMember", loginMember);
 
-                return new MemberLoginRespDto(findMember.get().getUsername(), findMember.get().getNickname(), findMember.get().getEmail());
+                return new MemberLoginRespDto(findMember.get().getUserid(), findMember.get().getUsername(), findMember.get().getEmail());
             }
             else throw new RuntimeException("비밀번호 오류");
         } else throw new RuntimeException("아이디 없음");
