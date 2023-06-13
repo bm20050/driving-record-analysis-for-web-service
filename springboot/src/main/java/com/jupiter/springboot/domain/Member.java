@@ -15,9 +15,9 @@ public class Member {
     private Long id;
 
     @Column(unique = true)
-    private String userid;
-
     private String username;
+
+    private String nickname;
 
     private String email;
 
@@ -29,8 +29,8 @@ public class Member {
     private List<UploadList> uploadList = new ArrayList<>();
 
     public Member(String userid, String username, String email, String password, String roles) {
-        this.userid = userid;
-        this.username = username;
+        this.username = userid;
+        this.nickname = username;
         this.email = email;
         this.password = password;
         this.roles = roles;

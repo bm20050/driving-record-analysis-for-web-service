@@ -1,5 +1,6 @@
 package com.jupiter.springboot.controller;
 
+import com.jupiter.springboot.config.auth.PrincipalDetails;
 import com.jupiter.springboot.dto.MemberJoinDto;
 import com.jupiter.springboot.dto.MemberLoginDto;
 import com.jupiter.springboot.dto.MemberLoginRespDto;
@@ -8,8 +9,10 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -22,6 +25,13 @@ import javax.servlet.http.HttpServletRequest;
 public class MemberController {
 
     private final MemberService memberService;
+
+
+    @GetMapping("/authTest")
+    public String authTest(@AuthenticationPrincipal PrincipalDetails principalDetails) {
+        System.out.println(principalDetails);
+        return principalDetails.toString();
+    }
 
     @PostMapping("/api/join")
     public ResponseEntity<Object> join (@Validated @RequestBody MemberJoinDto params){

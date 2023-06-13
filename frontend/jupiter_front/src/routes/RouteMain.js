@@ -3,6 +3,7 @@ import Main from "../components/Main";
 import Login from "../pages/Login";
 import Join from "../pages/Join";
 import MyPage from "../pages/MyPage";
+import Prediction from "../pages/Prediction";
 
 const RouteMain = () => {
     return (
@@ -12,7 +13,7 @@ const RouteMain = () => {
                 <Route path="/login" element={<Login />} />
                 <Route path="/join" element={<Join />}/>
                 <Route path="/myPage" element={<MyPage />} />
-                <Route path="/personalAnalysis" />
+                <Route path="/prediction" element={<Prediction />}/>
             </Routes>
         </>
     );
