@@ -27,7 +27,7 @@ public class UploadListService {
 
     public Long uploadFiles(String userid, MultipartFile[] multipartFiles) throws IOException {
 
-        String UPLOAD_PATH = "D:\\Coding Practice\\driving-record-analysis-for-web-service\\flask\\files";
+        String UPLOAD_PATH = "D:\\files";
         List<MyFileList> fileList = new ArrayList<>();
         Member member = memberRepository.findByUserid(userid).get();
 

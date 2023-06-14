@@ -4,7 +4,7 @@ import pandas as pd
 def txt_to_df(lst):
     df_list = []
     for file in lst:
-        file_path = './files/' + str(file) + '.TXT'
+        file_path = 'D:/files/' + str(file) + '.TXT'
         temp_df = pd.read_fwf(file_path, encoding='cp949', skiprows=1, header=None)  # 파일 읽기
         temp_df.columns = ['data']
         df_list.append(temp_df)
