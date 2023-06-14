@@ -19,18 +19,14 @@ const Login = () => {
         console.log('로그인 버튼클릭')
 
         response = await axios
-            .post('/api/login', {
+            .post('/api/user/login', {
                 'userid' : userid,
                 'password': password,
             })
             .then((response) => {
                 console.log(response.data)
                 sessionStorage.setItem('isLoggedIn', true)
-                sessionStorage.setItem('itemid', response.data.userid)
-                sessionStorage.setItem('username', response.data.username)
-                // sessionStorage.setItem('email', response.data.email)
                 setShowErrorMessage(false)
-                //email:"aaa@abc.com", userid:"user1", username: "일반사용자"
                 navigator('/')
             })
             .catch((error) => {
