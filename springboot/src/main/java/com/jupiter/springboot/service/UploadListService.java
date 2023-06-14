@@ -29,7 +29,7 @@ public class UploadListService {
 
         String UPLOAD_PATH = "D:\\Coding Practice\\driving-record-analysis-for-web-service\\flask\\files";
         List<MyFileList> fileList = new ArrayList<>();
-        Member member = memberRepository.findByUsername(userid).get();
+        Member member = memberRepository.findByUserid(userid).get();
 
         System.out.println("서비스 진입1");
 
