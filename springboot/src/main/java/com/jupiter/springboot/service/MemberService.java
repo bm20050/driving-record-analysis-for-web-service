@@ -39,7 +39,7 @@ public class MemberService {
 
     public MemberLoginRespDto login(MemberLoginDto params, HttpServletRequest request){
 
-        Optional<Member> findMember = memberRepository.findByUsername(params.getUsername());
+        Optional<Member> findMember = memberRepository.findByUserid(params.getUserid());
 
         if(findMember.isPresent()) {
             if(bCryptPasswordEncoder.matches(params.getPassword(), findMember.get().getPassword())){
