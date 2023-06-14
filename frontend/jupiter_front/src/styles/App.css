@@ -4,9 +4,11 @@
 }
 
 .all {
+    width: 100vw;
+    height: 100vh;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: top;
     align-items: center;
 }
 
@@ -25,7 +27,7 @@
 
 .main {
     width: 80vw;
-    height: 85vh;
+    height: 90vh;
     display: flex;
     flex-direction: column;
     justify-content: top;
@@ -64,6 +66,10 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
+}
+
+.uploadform > Button {
+    margin-left: 3%;
 }
 
 .uploadform > .col-auto {
@@ -119,11 +125,15 @@
 
 .explain {
     width: 100%;
-    height: 33%;
+    height: 13%;
     margin-bottom: 1%;  
-    border: 1px lightgray solid;
+    /* border: 1px lightgray solid; */
     border-radius: 10px;
+    font-size: 0.8em;
+    font-family: 'D2Coding';
+    z-index: 1;  
 }
+
 
 .chartarea {
     width: 100%;
@@ -139,9 +149,10 @@
     border: 1px lightgray solid;
     border-radius: 10px;
     width: 100%;
-    height: 65%;
+    height: 85%;
     padding: 5px 0px 5px 0px;
-    margin-top: 1%;  
+    margin-top: 1%;
+    z-index: -1;  
 }
 
 .col-auto {
@@ -297,4 +308,43 @@
 .joindiv > Button, .logindiv Button {
     width: 45%;
     margin: 2.5%;
+}
+
+/* .accordion-button.collapsed {
+    border: 1px lightgray solid;
+} */
+
+.accordion-button {
+    /* background-color: black; */
+    border: 1px lightgray solid;
+    font-weight: bold;
+    font-family: 'D2Coding';
+}
+
+.accordion-body {
+    background-color: white;
+}
+
+.explain td {
+    vertical-align: middle;
+}
+
+.prediction {
+    width: 100%;
+    height: 80vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    border: 1px lightgray solid;
+    border-radius: 10px;
+}
+
+.predmap, .predresult {
+    width: 50%;
+    height: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-right: 5px;
 }
