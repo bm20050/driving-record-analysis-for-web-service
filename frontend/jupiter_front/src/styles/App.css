@@ -11,14 +11,16 @@
 }
 
 .header {
-    width: 80vw;
-    height: 12vh;
+    width: 100vw;
+    height: 7vh;
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
     /* background-color: rgb(236, 241, 248); */
     border-bottom: 1px lightgray solid;
+    background-color: hsla(216, 98%, 52%, 0.776);
+    padding: 0 10%;
 }
 
 .main {
@@ -35,21 +37,37 @@
     height: 7vh;
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: left;
     align-items: center;
     border: 1px lightgray solid;
     border-radius: 10px;
     /* padding-top: 7px; */
-    margin-top: 10px;
+    margin-top: 3%;
+}
+
+.selectview {
+    width: 25%;
+    margin: 5%;
+
+}
+
+.selectview > Button {
+    margin : 5%;
+    width: 40%;
+    font-family: 'D2Coding';
 }
 
 .uploadform{
-    width: 100%;
+    width: 50%;
     height: 7vh;
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
+}
+
+.uploadform > .col-auto {
+    margin: 5%;
 }
 
 .content {
@@ -99,6 +117,14 @@
     border: 1px lightgray solid;
 }
 
+.explain {
+    width: 100%;
+    height: 33%;
+    margin-bottom: 1%;  
+    border: 1px lightgray solid;
+    border-radius: 10px;
+}
+
 .chartarea {
     width: 100%;
     height: 100%;
@@ -113,8 +139,9 @@
     border: 1px lightgray solid;
     border-radius: 10px;
     width: 100%;
-    height: 100%;
-    padding: 5px 0px 5px 0px;
+    height: 65%;
+    /* padding: 5px 0px 5px 0px; */
+    margin-top: 1%;  
 }
 
 .col-auto {
@@ -169,10 +196,14 @@
     width: 70%;
 }
 
+.headerbutton > a {
+    color: white;
+}
+
 .headerbutton {
     margin: 0px 50px;
     font-family: 'D2Coding';
-    font-size: 1.6em;
+    font-size: 1.3em;
     font-weight: bold;
 }
 
@@ -187,8 +218,9 @@
 .signbutton > Button {
     margin: 10px;
     font-family: 'D2Coding';
-    font-size: 1.1em;
+    font-size: 1em;
 }
+
 .infowindow{
     display: flex;
     flex-direction: column;

@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useState, useEffect, useRef } from "react";
-
+import { Button, Form } from "react-bootstrap";
 import DrawingMap from "./DrawingMap";
 import Right from "./Right";
 import SelectBox from "./SelectBox";
@@ -28,6 +28,9 @@ const Main = () => {
 
         //클러스터 선택하면 변수 담아줄거
         let [chartData, setChartData] = useState();
+
+        // 파일업로드, 기본 페이지 선택
+        let [selectView, setSelectView] = useState(true);
 
         //날짜선택박스 제어
         const reqDate = useRef();
@@ -84,17 +87,29 @@ const Main = () => {
             // console.log(temp);
         }
 
+        const handleSelectView1 = () => {
+            setSelectView(true);
+        }
+        const handleSelectView2 = () => {
+            setSelectView(false);
+        }
+
     return (
         <>
+           
             <div className="selectbox">
+                <div className="selectview">
+                    <Button variant="outline-primary" onClick={handleSelectView1}>전체 서비스</Button>
+                    <Button variant="outline-primary" onClick={handleSelectView2}>개인 서비스</Button> 
+                </div>
                 {/* { sessionStorage.getItem('isLoggedIn') ?  */}
-                <SelectBox reqDate={reqDate} plate={plate} danger={danger} chartData={chartData} searchData={searchData} handleDate={handleDate} next={next} /> :
-                <UploadForm setData={setData} setPrev={setPrev} setNext={setNext} prev={prev} next={next} /> 
+                {selectView && <SelectBox reqDate={reqDate} plate={plate} danger={danger} chartData={chartData} searchData={searchData} handleDate={handleDate} next={next} />}
+                {!selectView && <UploadForm setData={setData} setPrev={setPrev} setNext={setNext} prev={prev} next={next} />} 
                 {/* } */}
             </div>
             <div className="content">
                 <div className="left">
-                    <DrawingMap targetDt={targetDt} data={data} next={next} prev={prev} setChartData={setChartData} />
+                    <DrawingMap targetDt={targetDt} data={data} next={next} prev={prev} setChartData={setChartData} selectView={selectView}/>
                 </div>
                 <div className="right">
                     <Right reqDate={reqDate} plate={plate} danger={danger} chartData={chartData} searchData={searchData} handleDate={handleDate} next={next} />

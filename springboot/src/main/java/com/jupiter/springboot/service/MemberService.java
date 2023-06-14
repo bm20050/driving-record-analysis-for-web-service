@@ -4,11 +4,11 @@ import com.jupiter.springboot.domain.Member;
 import com.jupiter.springboot.dto.MemberJoinDto;
 import com.jupiter.springboot.dto.MemberLoginDto;
 import com.jupiter.springboot.dto.MemberLoginRespDto;
+import com.jupiter.springboot.dto.MemberUpdateDto;
 import com.jupiter.springboot.persistence.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
-import org.springframework.validation.annotation.Validated;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -62,6 +62,28 @@ public class MemberService {
 
         if(session!=null)
             session.invalidate();
+    }
+
+    public MemberLoginRespDto update(MemberUpdateDto params){
+
+        String rawPassword = params.getPassword();
+        String encodingPassword = bCryptPasswordEncoder.encode(rawPassword);
+
+        Optional<Member> findMember = memberRepository.findByUserid(params.getUserid());
+
+        if(findMember.isPresent()){
+
+            Member member = findMember.get();
+            member.setPassword(encodingPassword);
+            Optional.ofNullable(params.getUsername()).ifPresent(member::setUsername);
+            Optional.ofNullable(params.getEmail()).ifPresent(member::setEmail);
+
+            memberRepository.save(member);
+
+            return new MemberLoginRespDto(member.getUserid(), member.getUsername(), member.getEmail());
+
+        } else throw new RuntimeException("아이디 없음");
+
     }
 
 }
