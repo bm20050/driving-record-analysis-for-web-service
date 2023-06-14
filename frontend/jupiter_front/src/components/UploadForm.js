@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
+import { Form, Button } from "react-bootstrap";
 
 const UploadForm = (probs) => {
 
@@ -11,20 +12,20 @@ const UploadForm = (probs) => {
 
     const loginfo = async () => {
         await axios
-        .post('/api/user/getuser')
-        .then((response) => {
-            console.log(response.data)
-            setUserid(response.data.userid)
-        })
-        .catch((error) => {
-            console.log('에러1')
-            console.log(error)
-        })
+            .post('/api/user/getuser')
+            .then((response) => {
+                console.log(response.data)
+                setUserid(response.data.userid)
+            })
+            .catch((error) => {
+                console.log('에러1')
+                console.log(error)
+            })
     }
 
     useEffect(() => {
         console.log('upload form 진입')
-        if(sessionStorage.getItem('isLoggedIn')) {
+        if (sessionStorage.getItem('isLoggedIn')) {
             loginfo()
         }
 
@@ -48,7 +49,7 @@ const UploadForm = (probs) => {
 
         // JSON 형식으로 파싱 후 추가
         formData.append('userid', new Blob([JSON.stringify(userid)], { type: "application/json" }));
-        
+
         fileList.forEach((file) => {
 
             formData.append('multipartFiles', file);
@@ -71,7 +72,7 @@ const UploadForm = (probs) => {
             console.log(response.data)
             probs.setData(response.data)
             fileList = [] //첨부파일 초기화
-            
+
         }).catch((error) => {
             console.log(error);
             console.log('로그인정보 없음')
@@ -85,13 +86,10 @@ const UploadForm = (probs) => {
 
     return (
         <div className="uploadform">
-            <div className="mb-3">
-                <label htmlFor="formFileMultiple" className="form-label">txt 파일을 첨부하세요!</label>
-                <input className="form-control" type="file" id="formFileMultiple" multiple onChange={onSaveFile}></input>
-            </div>
-            <div className="col-auto">
-                <button type="button" className="btn btn-outline-primary" onClick={onFileUpload}>파일 업로드</button>
-            </div>
+            <Form.Group>
+                <Form.Control type="file" id="formFileMultiple" multiple onChange={onSaveFile} />
+            </Form.Group>
+            <Button variant="outline-primary" onClick={onFileUpload}>파일 업로드</Button>
         </div>
     )
 }
