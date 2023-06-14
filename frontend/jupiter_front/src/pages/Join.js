@@ -20,7 +20,7 @@ const Join = () => {
         console.log('회원가입 버튼클릭')
 
         await axios
-            .post('/api/join', {
+            .post('/api/user/join', {
                 'userid': userid,
                 'username': username,
                 'email': email,
