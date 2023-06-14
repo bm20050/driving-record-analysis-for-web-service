@@ -47,13 +47,24 @@ public class MemberService {
 //                //로그인 성공 시 쿠키에 JSESSIONID 저장
                 MemberLoginRespDto loginMember = new MemberLoginRespDto(findMember.get().getUserid(), findMember.get().getUserid(), findMember.get().getEmail());
                 HttpSession session = request.getSession();
-                session.setAttribute("loginMember", loginMember);
+                session.setAttribute("loginMember", loginMember.getUserid());
 
                 return new MemberLoginRespDto(findMember.get().getUserid(), findMember.get().getUsername(), findMember.get().getEmail());
 
             }
             else throw new RuntimeException("비밀번호 오류");
         } else throw new RuntimeException("아이디 없음");
+    }
+
+    public MemberLoginRespDto getUser(HttpServletRequest request){
+
+        HttpSession session = request.getSession(false);
+        String loginMemberId = session.getAttribute("loginMember").toString();
+        Optional<Member> findMember = memberRepository.findByUserid(loginMemberId);
+
+        if(findMember.isPresent())
+            return new MemberLoginRespDto(findMember.get().getUserid(), findMember.get().getUsername(), findMember.get().getEmail());
+        else throw new RuntimeException("사용자 없음");
     }
 
     public void logout(HttpServletRequest request){

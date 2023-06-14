@@ -23,12 +23,15 @@ public class MemberController {
 
     private final MemberService memberService;
 
-
     @GetMapping("/authTest")
     public String authTest(@AuthenticationPrincipal PrincipalDetails principalDetails) {
         System.out.println(principalDetails);
         return principalDetails.getUsername();
+    }
 
+    @PostMapping("/api/user/getuser")
+    public ResponseEntity<MemberLoginRespDto> getUser (HttpServletRequest request){
+        return ResponseEntity.ok().body(memberService.getUser(request));
     }
 
     @PostMapping("/api/user/join")
@@ -50,7 +53,6 @@ public class MemberController {
     @PutMapping("/api/user/update")
     public ResponseEntity<MemberLoginRespDto> update(@Validated @RequestBody MemberUpdateDto params){
         return ResponseEntity.ok().body(memberService.update(params));
-
     }
 
 }
