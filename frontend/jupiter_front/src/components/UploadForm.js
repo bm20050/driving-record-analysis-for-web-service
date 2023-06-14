@@ -24,7 +24,7 @@ const UploadForm = (probs) => {
         console.log(sessionStorage.getItem('userid'))
 
         // JSON 형식으로 파싱 후 추가
-        formData.append('userid', new Blob([JSON.stringify('user1')], { type: "application/json" }));
+        formData.append('userid', new Blob([JSON.stringify(sessionStorage.getItem('itemid'))], { type: "application/json" }));
         
         fileList.forEach((file) => {
 
