@@ -64,7 +64,7 @@ public class MemberService {
             session.invalidate();
     }
 
-    public void update(MemberUpdateDto params){
+    public MemberLoginRespDto update(MemberUpdateDto params){
 
         String rawPassword = params.getPassword();
         String encodingPassword = bCryptPasswordEncoder.encode(rawPassword);
@@ -80,8 +80,9 @@ public class MemberService {
 
             memberRepository.save(member);
 
-        } else throw new RuntimeException("아이디 없음");
+            return new MemberLoginRespDto(member.getUserid(), member.getUsername(), member.getEmail());
 
+        } else throw new RuntimeException("아이디 없음");
 
     }
 

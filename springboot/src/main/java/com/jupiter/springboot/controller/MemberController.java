@@ -11,7 +11,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -32,26 +31,25 @@ public class MemberController {
 
     }
 
-    @PostMapping("/api/join")
+    @PostMapping("/api/user/join")
     public ResponseEntity<Object> join (@Validated @RequestBody MemberJoinDto params){
         memberService.createMember(params);
         return ResponseEntity.ok().body(HttpStatus.OK);
     }
 
-    @PostMapping("/api/login")
+    @PostMapping("/api/user/login")
     public ResponseEntity<MemberLoginRespDto> login(@Validated @RequestBody MemberLoginDto params, HttpServletRequest request){
         return ResponseEntity.ok().body(memberService.login(params, request));
     }
 
-    @PostMapping("/api/logout")
+    @PostMapping("/api/user/logout")
     public void logout(HttpServletRequest request) {
         memberService.logout(request);
     }
 
-    @PutMapping("/api/userupdate")
-    public ResponseEntity<Object> update(@Validated @RequestBody MemberUpdateDto params){
-        memberService.update(params);
-        return ResponseEntity.ok().body(HttpStatus.OK);
+    @PutMapping("/api/user/update")
+    public ResponseEntity<MemberLoginRespDto> update(@Validated @RequestBody MemberUpdateDto params){
+        return ResponseEntity.ok().body(memberService.update(params));
 
     }
 
