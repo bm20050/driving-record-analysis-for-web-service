@@ -1,11 +1,34 @@
 import axios from "axios";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
 
 const UploadForm = (probs) => {
 
     let fileList = []
 
     const navigator = useNavigate();
+    const [userid, setUserid] = useState("");
+
+    const loginfo = async () => {
+        await axios
+        .post('/api/user/getuser')
+        .then((response) => {
+            console.log(response.data)
+            setUserid(response.data.userid)
+        })
+        .catch((error) => {
+            console.log('에러1')
+            console.log(error)
+        })
+    }
+
+    useEffect(() => {
+        console.log('upload form 진입')
+        if(sessionStorage.getItem('isLoggedIn')) {
+            loginfo()
+        }
+
+    }, [])
 
     const onSaveFile = (e) => {
 
@@ -24,7 +47,7 @@ const UploadForm = (probs) => {
         console.log(sessionStorage.getItem('userid'))
 
         // JSON 형식으로 파싱 후 추가
-        formData.append('userid', new Blob([JSON.stringify(sessionStorage.getItem('itemid'))], { type: "application/json" }));
+        formData.append('userid', new Blob([JSON.stringify(userid)], { type: "application/json" }));
         
         fileList.forEach((file) => {
 

@@ -11,12 +11,10 @@ const Header = () => {
         console.log('로그아웃 버튼클릭')
 
         await axios
-        .post('/api/logout')
+        .post('/api/user/logout')
         .then((response) => {
             console.log(response)
-            sessionStorage.removeItem('isLoggedIn', true)
-            sessionStorage.removeItem('itemid', response.data.itemid)
-            sessionStorage.removeItem('username', response.data.username)
+            sessionStorage.removeItem('isLoggedIn')
             navigator('/')
         })
         .catch((error) => {
@@ -41,12 +39,12 @@ const Header = () => {
                 </div>
                 <div className='signbutton'>
                     {sessionStorage.getItem('isLoggedIn') ? 
-                        <Button onClick={handleLogout}>LOGOUT</Button> :
-                        <Button variant="light">
+                        <Button variant="outline-primary" onClick={handleLogout}>LOGOUT</Button> :
+                        <Button variant="outline-primary">
                             <Link to="/login" style={{ textDecoration: 'none' }}>SIGN IN</Link>
                         </Button>
                     }
-                    <Button variant="light">
+                    <Button variant="outline-primary">
                         <Link to="/join" style={{ textDecoration: 'none' }}>SIGN UP</Link>
                     </Button>
                 </div>
