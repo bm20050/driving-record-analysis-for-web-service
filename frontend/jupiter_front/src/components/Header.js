@@ -32,7 +32,7 @@ const Header = () => {
                     <Link to="/" style={{ textDecoration: 'none' }}>HOME</Link>
                 </div>
                 <div className='headerbutton'>
-                    <Link to="/personalAnalysis" style={{ textDecoration: 'none' }}>PRIVATE</Link>
+                    <Link to="/prediction" style={{ textDecoration: 'none' }}>PRIVATE</Link>
                 </div>
                 <div className='headerbutton'>
                     <Link to="/myPage" style={{ textDecoration: 'none' }}>MY PAGE</Link>
