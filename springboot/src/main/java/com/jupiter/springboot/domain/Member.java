@@ -1,6 +1,9 @@
 package com.jupiter.springboot.domain;
 
 import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -8,6 +11,7 @@ import java.util.List;
 
 @Getter
 @Entity
+@ToString
 public class Member {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,10 +21,13 @@ public class Member {
     @Column(unique = true)
     private String userid;
 
+    @Setter
     private String username;
 
+    @Setter
     private String email;
 
+    @Setter
     private String password;
 
     private String roles;

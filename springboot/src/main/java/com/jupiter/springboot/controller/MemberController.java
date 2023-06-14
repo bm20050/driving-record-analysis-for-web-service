@@ -4,6 +4,7 @@ import com.jupiter.springboot.config.auth.PrincipalDetails;
 import com.jupiter.springboot.dto.MemberJoinDto;
 import com.jupiter.springboot.dto.MemberLoginDto;
 import com.jupiter.springboot.dto.MemberLoginRespDto;
+import com.jupiter.springboot.dto.MemberUpdateDto;
 import com.jupiter.springboot.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -12,10 +13,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -49,4 +47,12 @@ public class MemberController {
     public void logout(HttpServletRequest request) {
         memberService.logout(request);
     }
+
+    @PutMapping("/api/userupdate")
+    public ResponseEntity<Object> update(@Validated @RequestBody MemberUpdateDto params){
+        memberService.update(params);
+        return ResponseEntity.ok().body(HttpStatus.OK);
+
+    }
+
 }

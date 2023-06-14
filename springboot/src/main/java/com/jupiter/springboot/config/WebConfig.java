@@ -25,7 +25,7 @@ public class WebConfig implements WebMvcConfigurer {
                 .addPathPatterns("/**") //모든 경로에 필터 적용
                 .excludePathPatterns("/", "/api/login", "/api/logout", "/api/join",
                         "/api/totalCount", "/error",
-                        "api/prediction"
+                        "/api/prediction", "/api/userupdate"
                 ); //필터 적용하지않을 경로
     }
 
