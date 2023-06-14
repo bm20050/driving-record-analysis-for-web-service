@@ -15,6 +15,7 @@ const Join = () => {
     const [nameBlankError, setNameBlankError] = useState(false);
     const [passwordBlankError, setPasswordBlankError] = useState(false);
     const [passwordValidationError, setPasswordValidationError] = useState(false);
+    
     const handleJoin = async () => {
         console.log('회원가입 버튼클릭')
 

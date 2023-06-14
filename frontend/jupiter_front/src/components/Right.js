@@ -5,7 +5,11 @@ const Right = (probs) => {
 
     return (
         <>
+
             <div className="chartarea">
+                <div className="explain">
+                    설명
+                </div>
                 <Chart chartData={probs.chartData} />
             </div>
         </>

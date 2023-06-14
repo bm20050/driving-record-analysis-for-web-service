@@ -27,10 +27,11 @@ const DrawingMap = (probs) => {
 
         })
 
-    }, [probs.prev]);
+    }, [probs.prev, probs.selectView]);
 
 
     useEffect(() => {
+
         // if (probs.targetDt === "2023-01-01") {
         //     return;
         // }

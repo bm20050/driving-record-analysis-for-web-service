@@ -42,11 +42,11 @@ const Header = () => {
                 <div className='signbutton'>
                     {sessionStorage.getItem('isLoggedIn') ? 
                         <Button onClick={handleLogout}>LOGOUT</Button> :
-                        <Button variant="outline-primary">
+                        <Button variant="light">
                             <Link to="/login" style={{ textDecoration: 'none' }}>SIGN IN</Link>
                         </Button>
                     }
-                    <Button variant="outline-primary">
+                    <Button variant="light">
                         <Link to="/join" style={{ textDecoration: 'none' }}>SIGN UP</Link>
                     </Button>
                 </div>
