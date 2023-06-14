@@ -43,7 +43,6 @@ public class SecurityConfig {
         http.formLogin().disable();
 
 
-
         return http.build();
     }
 
@@ -52,7 +51,7 @@ public class SecurityConfig {
 
         CustomUsernamePasswordAuthenticationFilter authFilter = new CustomUsernamePasswordAuthenticationFilter(new ObjectMapper());
 
-        try{
+        try {
             authFilter.setFilterProcessesUrl("/login");
             authFilter.setAuthenticationManager((AuthenticationManager) getAuthenticationFilter());
             authFilter.setUsernameParameter("username");
@@ -62,6 +61,7 @@ public class SecurityConfig {
         }
         return authFilter;
     }
+}
 
 
 
