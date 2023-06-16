@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom'
 import Button from 'react-bootstrap/Button';
-import logo from '../image/logo.png'
+import logo from '../image/logo1.png'
 
 const Header = () => {
 
@@ -45,7 +45,7 @@ const Header = () => {
                 </div>
                 <div className='signbutton'>
                     {sessionStorage.getItem('isLoggedIn') ?
-                        <Button variant="outline-primary" onClick={handleLogout}>LOGOUT</Button> :
+                        <Button variant="outline-primary" onClick={handleLogout}>SIGN OUT</Button> :
                         <Button variant="outline-primary">
                             <Link to="/login" style={{ textDecoration: 'none' }}>SIGN IN</Link>
                         </Button>
