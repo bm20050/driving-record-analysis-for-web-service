@@ -8,23 +8,23 @@ const Prediction = () => {
 
     let [data, setData] = useState("")
     let [now, setNow] = useState(new Date());
-    let [index, setIndex] = useState(160);
-    const [flag, setFlag] = useState(false);
+    let [index, setIndex] = useState(500);
+    let [flag, setFlag] = useState(false);
     let interval = useRef(now.getSeconds());
-
 
     useEffect(() => {
 
-        interval.current = setInterval(() => {
+        flag && (interval.current = setInterval(() => {
             setNow(new Date())
             handlePred()
             setIndex(index++)
-        }, 1000)
+        }, 1000))
 
         return () => {
             clearInterval(interval.current);
         }
-    }, [])
+
+    }, [flag])
 
     const handlePred = async () => {
 
@@ -46,22 +46,47 @@ const Prediction = () => {
             })
     }
 
+    const startInterval = () => {
+        setFlag(true)
+        handlePred()
+    }
+
     const stopInterval = () => {
+        setFlag(false)
         clearInterval(interval.current);
+    }
+
+    const makeTag = (data) => {
+
+        if (data === "안전")
+            return "predinfo-green"
+
+        else if (data === "주의")
+            return "predinfo-yellow"
+
+        else if (data === "위험")
+            return "predinfo-orange"
+
+        else if (data === "매우 위험")
+            return "predinfo-red"
     }
 
     return (
         <div className="prediction">
-            <PredictMap data={data} x={tempData[index].GPS_X} y={tempData[index].GPS_Y} />
             <div className="predresult">
-                {now.getSeconds()}
-                <Button onClick={setFlag(true)}>
-                    예측결과 찍기
-                </Button>
-                <Button onClick={stopInterval}>
-                    정지
-                </Button>
+                <div className="predbutton">
+                    <Button onClick={startInterval} variant="outline-primary">
+                        예측결과 분석
+                    </Button>
+                    <Button onClick={stopInterval} variant="outline-primary">
+                        정지
+                    </Button>
+                </div>
+                <div className="predinfo">
+                    <span className={makeTag(data)}>{data}</span> 운전 예측 구간입니다.
+                </div>
             </div>
+            <PredictMap data={data} x={tempData[index].GPS_X} y={tempData[index].GPS_Y} />
         </div>
     )
 
