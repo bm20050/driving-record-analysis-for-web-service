@@ -17,8 +17,8 @@ def prediction(input_data):
     pred_drop = model_drop.predict(X)[0]
     pred_rotation = model_rotation.predict(X)[0]
 
-    pred = pred_acc * 0.4 + pred_drop * 0.5 + pred_rotation * 0.1
-
+    pred = pred_acc * 0.6 + pred_drop * 0.5 + pred_rotation * 0.2
+    # pred = pred_acc * 0.4 + pred_drop * 0.5 + pred_rotation * 0.1
 
     pacc.append(pred_acc)
     pdrop.append(pred_drop)
