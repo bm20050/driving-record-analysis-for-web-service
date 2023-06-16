@@ -6,6 +6,8 @@ const PredictMap = (probs) => {
 
     let [map, setMap] = useState();
 
+    console.log('data', probs.data, ",", probs.x, ", ", probs.y)
+
     useEffect(() => {
 
         // 지도 호출
@@ -28,15 +30,26 @@ const PredictMap = (probs) => {
 
     }, []);
 
-    // useEffect(() => {
+    useEffect(() => {
 
-    //     let imgTag = "https://github.com/beeguriri/driving-record-analysis-for-web-service/blob/main/frontend/jupiter_front/src/image/SuddenAcc.png?raw=true";
-    //     let imageSize = new kakao.maps.Size(30, 30);
+        if (!probs.data) {
+            return;
+        }
 
-    //     // 마커 이미지 생성
-    //     let imgMarker = new kakao.maps.MarkerImage(imgTag, imageSize);
+        let imgTag = "https://github.com/beeguriri/driving-record-analysis-for-web-service/blob/main/frontend/jupiter_front/src/image/SuddenAcc.png?raw=true";
+        let imageSize = new kakao.maps.Size(30, 30);
 
-    // }, [])
+        // 마커 이미지 생성
+        let imgMarker = new kakao.maps.MarkerImage(imgTag, imageSize);
+
+        // 마커 생성
+        let marker = new kakao.maps.Marker({
+            map: map,
+            position: new kakao.maps.LatLng(probs.y, probs.x),
+            images: imgMarker,
+        })
+
+    }, [probs.y, probs.x])
 
 
     return (
