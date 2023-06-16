@@ -195,7 +195,8 @@
     padding: 10px;
 }
 .headerimage img {
-    width: 35%;
+    width: 20%;
+    /* height: 10%; */
 }
 
 .headerdetail {
@@ -305,7 +306,7 @@
     margin-top: 5%;
 }
 
-.joindiv > Button, .logindiv Button {
+.joindiv Button, .logindiv Button {
     width: 45%;
     margin: 2.5%;
 }
@@ -331,20 +332,81 @@
 
 .prediction {
     width: 100%;
-    height: 80vh;
+    height: 100%;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    border: 1px lightgray solid;
-    border-radius: 10px;
 }
 
-.predmap, .predresult {
-    width: 50%;
-    height: 90%;
+.predmap {
+    width: 100%;
+    height: 85%;
     display: flex;
     justify-content: center;
     align-items: center;
     padding-right: 5px;
+    border: 1px lightgray solid;
+    border-radius: 10px;
+}
+
+.predresult {
+    border: 1px lightgray solid;
+    border-radius: 10px;
+    margin-bottom: 2%;
+    margin-top: 2%;
+    width: 100%;
+    height: 13%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.predbutton {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.predbutton Button{
+    width: 30%;
+    margin: 0% 2%;
+}
+
+.predinfo {
+    width: 50%;
+    font-family: 'D2Coding';
+}
+
+.predinfo-green {
+    width: 100%;
+    color: green;
+    font-weight: bold;
+    font-size: 1.8em;
+}
+
+.predinfo-yellow{
+    width: 100%;
+    background-color: yellow;
+    color: black;
+    font-weight: bold;
+    font-size: 1.8em;
+}
+
+.predinfo-orange{
+    width: 100%;
+    background-color: orange;
+    color: black;
+    font-weight: bold;
+    font-size: 1.8em;
+}
+
+.predinfo-red {
+    width: 100%;
+    background-color: red;
+    color: black;
+    font-weight: bold;
+    font-size: 1.8em;
 }
