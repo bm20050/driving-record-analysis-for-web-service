@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useState, useEffect, useRef } from "react";
+import { useNavigate } from 'react-router-dom';
 import { Button, Form } from "react-bootstrap";
 import DrawingMap from "./DrawingMap";
 import Right from "./Right";
@@ -15,6 +16,7 @@ const Main = () => {
         //test중
         // sessionStorage.setItem('userid', 'user1');
         // sessionStorage.setItem('isLoggedIn',true);
+        const navigator = useNavigate();
 
         //날짜선택 state 변수
         let [targetDt, setTargetDt] = useState("2022-12-01");
@@ -91,6 +93,9 @@ const Main = () => {
             setSelectView(true);
         }
         const handleSelectView2 = () => {
+            if(!sessionStorage.getItem('isLoggedIn'))
+                navigator('/login')
+
             setSelectView(false);
         }
 
