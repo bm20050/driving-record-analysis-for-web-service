@@ -1,47 +1,44 @@
 import { useEffect, useState, useRef } from "react";
 import PredictMap from "../components/PredictMap";
-import tempData from "../data/위험운전행동_GPS.json"
+import tempData from "../data/tempData.json"
 import { Button } from "react-bootstrap";
 import axios from "axios";
 
 const Prediction = () => {
 
-    const [data, setData] = useState("")
-    const [now, setNow] = useState(new Date());
-    const [seconds, setSeconds] = useState(now.getSeconds())
-    const [flag, SetFlag] = useState(false)
-    const interval = useRef(now.getSeconds());
+    let [data, setData] = useState("")
+    let [now, setNow] = useState(new Date());
+    let [index, setIndex] = useState(500);
+    let [flag, setFlag] = useState(false);
+    let interval = useRef(now.getSeconds());
 
     useEffect(() => {
-        interval.current = setInterval(() => {
-            setSeconds(prev => prev + 1);
-            timerCheck()
-        }, 1000)
+
+        flag && (interval.current = setInterval(() => {
+            setNow(new Date())
+            handlePred()
+            setIndex(index++)
+        }, 1000))
+
         return () => {
             clearInterval(interval.current);
         }
-    },[])
 
-
-
-    const timerCheck = () => {
-        console.log('hihi')
-    }
+    }, [flag])
 
     const handlePred = async () => {
- 
-        console.log('예측버튼 클릭')
-        tempData.map()
-        
+
+        // console.log('예측버튼 클릭')        
         await axios
             .post('/api/prediction', {
                 'hour': now.getHours(),
                 'minute': now.getMinutes(),
-                'x': "",
-                'y': "",
+                'x': tempData[index].GPS_X,
+                'y': tempData[index].GPS_Y,
             })
             .then((response) => {
-                setData(response.date)
+                setData(response.data)
+                console.log(tempData[index].index, " : ", response.data)
             })
             .catch((error) => {
                 console.log('prediction error')
@@ -49,18 +46,47 @@ const Prediction = () => {
             })
     }
 
+    const startInterval = () => {
+        setFlag(true)
+        handlePred()
+    }
+
+    const stopInterval = () => {
+        setFlag(false)
+        clearInterval(interval.current);
+    }
+
+    const makeTag = (data) => {
+
+        if (data === "안전")
+            return "predinfo-green"
+
+        else if (data === "주의")
+            return "predinfo-yellow"
+
+        else if (data === "위험")
+            return "predinfo-orange"
+
+        else if (data === "매우 위험")
+            return "predinfo-red"
+    }
+
     return (
         <div className="prediction">
-            <PredictMap data={data} />
             <div className="predresult">
-                {seconds}
-                <Button onClick={handlePred}>
-                    예측결과 찍기
-                </Button>
-                <Button onClick={handlePred}>
-                    정지
-                </Button>
+                <div className="predbutton">
+                    <Button onClick={startInterval} variant="outline-primary">
+                        예측결과 분석
+                    </Button>
+                    <Button onClick={stopInterval} variant="outline-primary">
+                        정지
+                    </Button>
+                </div>
+                <div className="predinfo">
+                    <span className={makeTag(data)}>{data}</span> 운전 예측 구간입니다.
+                </div>
             </div>
+            <PredictMap data={data} x={tempData[index].GPS_X} y={tempData[index].GPS_Y} />
         </div>
     )
 
