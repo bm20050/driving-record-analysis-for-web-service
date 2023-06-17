@@ -5,13 +5,11 @@ import com.jupiter.springboot.dto.PredReqParams;
 import com.jupiter.springboot.dto.ReqParams;
 import com.jupiter.springboot.service.DrivingService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-//@CrossOrigin(origins = "http://localhost:3000/")
 @RestController
 @RequiredArgsConstructor
 public class DrivingController {
@@ -25,7 +23,7 @@ public class DrivingController {
     }
 
     @PostMapping("/api/prediction")
-    public ResponseEntity<?> login(@RequestBody PredReqParams params){
+    public ResponseEntity<?> prediction(@RequestBody PredReqParams params){
         return ResponseEntity.ok().body(drivingService.transferPred(params));
     }
 
