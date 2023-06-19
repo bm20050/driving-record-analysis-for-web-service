@@ -44,8 +44,8 @@ public class ExControllerAdvice {
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<ErrorResult> methodValidException(MethodArgumentNotValidException e, HttpServletRequest request){
-        log.warn("MethodArgumentNotValidException 발생!!! [url:{}], [trace:{}]",request.getRequestURI(), e.getStackTrace());
-        ErrorResult errorResult = er.makeErrorResponse(e.getBindingResult());
+        log.error("[exceptionHandler] ex [getCode={}][getField={}][getDefaultMessage={}]", e.getFieldError().getCode(), e.getFieldError().getField(), e.getFieldError().getDefaultMessage());
+        ErrorResult errorResult = new ErrorResult(e.getFieldError().getCode(), e.getFieldError().getDefaultMessage());
         return new ResponseEntity<ErrorResult>(errorResult, HttpStatus.BAD_REQUEST);
     }
 }
