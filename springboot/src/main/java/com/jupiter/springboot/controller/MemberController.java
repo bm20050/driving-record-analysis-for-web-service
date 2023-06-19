@@ -1,7 +1,5 @@
 package com.jupiter.springboot.controller;
 
-import com.jupiter.springboot.config.auth.PrincipalDetails;
-import com.jupiter.springboot.domain.Driving;
 import com.jupiter.springboot.dto.MemberJoinDto;
 import com.jupiter.springboot.dto.MemberLoginDto;
 import com.jupiter.springboot.dto.MemberLoginRespDto;
@@ -12,7 +10,6 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
