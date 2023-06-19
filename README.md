@@ -33,6 +33,6 @@ $ npm start
 - DE : `http://localhost:5000/api/prediction`
    - `POST` 만 사용
 - BE : `http://localhost:8080/...`
-   - API 명세 (작성예정)
+   - [API 명세](https://github.com/bm20050/driving-record-analysis-for-web-service/blob/main/springboot/API%EB%AA%85%EC%84%B8_v0.1_20230619.pdf)
 - FE : `http://localhost:3000`
    - `Routers` 내부 링크
