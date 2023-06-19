@@ -20,7 +20,8 @@ public class MemberJoinDto {
     @NotBlank
     private String password;
 
-    @Email @NotBlank
+    @Email(message = "WrongEmail")
+    @NotBlank
     private String email;
 
 
