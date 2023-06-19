@@ -14,6 +14,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 
 @Slf4j
 @RestController
@@ -36,14 +37,14 @@ public class MemberController {
 
     @ApiOperation(value = "회원가입", response = HttpStatus.class)
     @PostMapping("/api/user/join")
-    public ResponseEntity<Object> join (@Validated @RequestBody MemberJoinDto params){
+    public ResponseEntity<Object> join (@Valid @RequestBody MemberJoinDto params){
         memberService.createMember(params);
         return ResponseEntity.ok().body(HttpStatus.OK);
     }
 
     @ApiOperation(value = "로그인", response = MemberLoginRespDto.class)
     @PostMapping("/api/user/login")
-    public ResponseEntity<MemberLoginRespDto> login(@Validated @RequestBody MemberLoginDto params, HttpServletRequest request){
+    public ResponseEntity<MemberLoginRespDto> login(@Valid @RequestBody MemberLoginDto params, HttpServletRequest request){
         return ResponseEntity.ok().body(memberService.login(params, request));
     }
 
@@ -55,7 +56,7 @@ public class MemberController {
 
     @ApiOperation(value = "회원정보 수정", notes = "이름, 이메일주소, 비밀번호 수정", response = MemberLoginRespDto.class)
     @PutMapping("/api/user/update")
-    public ResponseEntity<MemberLoginRespDto> update(@Validated @RequestBody MemberUpdateDto params){
+    public ResponseEntity<MemberLoginRespDto> update(@Valid @RequestBody MemberUpdateDto params){
         return ResponseEntity.ok().body(memberService.update(params));
     }
 

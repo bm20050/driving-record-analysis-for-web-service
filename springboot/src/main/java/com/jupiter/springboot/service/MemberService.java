@@ -5,6 +5,9 @@ import com.jupiter.springboot.dto.MemberJoinDto;
 import com.jupiter.springboot.dto.MemberLoginDto;
 import com.jupiter.springboot.dto.MemberLoginRespDto;
 import com.jupiter.springboot.dto.MemberUpdateDto;
+import com.jupiter.springboot.exception.DupUserException;
+import com.jupiter.springboot.exception.NoUserException;
+import com.jupiter.springboot.exception.WrongPasswordException;
 import com.jupiter.springboot.persistence.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -31,7 +34,7 @@ public class MemberService {
 
 
         if(!findMembers.isEmpty())
-            throw new RuntimeException("이미 존재하는 회원");
+            throw new DupUserException("아이디 중복");
 
         memberRepository.save(new Member(params.getUserid(), params.getUsername(),
                 params.getEmail(), encodingPassword, "ROLE_USER"));
@@ -52,8 +55,8 @@ public class MemberService {
                 return new MemberLoginRespDto(findMember.get().getUserid(), findMember.get().getUsername(), findMember.get().getEmail());
 
             }
-            else throw new RuntimeException("비밀번호 오류");
-        } else throw new RuntimeException("아이디 없음");
+            else throw new WrongPasswordException("비밀번호 오류");
+        } else throw new NoUserException("사용자 없음");
     }
 
     public MemberLoginRespDto getUser(HttpServletRequest request){
@@ -64,7 +67,7 @@ public class MemberService {
 
         if(findMember.isPresent())
             return new MemberLoginRespDto(findMember.get().getUserid(), findMember.get().getUsername(), findMember.get().getEmail());
-        else throw new RuntimeException("사용자 없음");
+        else throw new NoUserException("사용자 없음");
     }
 
     public void logout(HttpServletRequest request){
@@ -93,7 +96,7 @@ public class MemberService {
 
             return new MemberLoginRespDto(member.getUserid(), member.getUsername(), member.getEmail());
 
-        } else throw new RuntimeException("아이디 없음");
+        } else throw new NoUserException("사용자 없음");
 
     }
 

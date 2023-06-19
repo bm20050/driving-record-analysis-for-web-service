@@ -15,7 +15,7 @@ const Join = () => {
     const [nameBlankError, setNameBlankError] = useState(false);
     const [passwordBlankError, setPasswordBlankError] = useState(false);
     const [passwordValidationError, setPasswordValidationError] = useState(false);
-    
+
     const handleJoin = async () => {
         console.log('회원가입 버튼클릭')
 
@@ -31,9 +31,9 @@ const Join = () => {
                 navigator('/login')
             })
             .catch((error) => {
-                console.log('에러발생화면')
-                alert('아이디가 중복입니다.')
                 console.log(error)
+                if (error.response.data.code === 'DupUser')
+                    alert('아이디가 중복입니다.')
             })
 
     }

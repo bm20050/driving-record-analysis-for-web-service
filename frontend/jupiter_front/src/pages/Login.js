@@ -30,9 +30,12 @@ const Login = () => {
                 navigator('/')
             })
             .catch((error) => {
-                console.log('에러발생화면')
                 setShowErrorMessage(true)
                 console.log(error)
+                if(error.response.data.code === 'NoUser')
+                    console.log('사용자 없음')
+                if(error.response.data.code === 'WrongPassword')
+                    console.log('비밀번호 오류')
             })
 
     }
