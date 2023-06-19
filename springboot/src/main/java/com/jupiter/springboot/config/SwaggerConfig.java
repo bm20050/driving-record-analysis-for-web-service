@@ -14,10 +14,10 @@ import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
-@EnableSwagger2
-@Configuration
-@EnableAsync
-@EnableWebMvc
+//@EnableSwagger2
+//@Configuration
+//@EnableAsync
+//@EnableWebMvc
 public class SwaggerConfig implements WebMvcConfigurer {
 
     @Bean
