@@ -43,8 +43,13 @@ const MyPage = () => {
     const handleUpdate = async () => {
         console.log('수정버튼 버튼클릭')
 
+        if(username.includes(" ") || email.includes(" ") || password.includes(" ")) {
+            alert('올바른 양식으로 입력해주세요.')
+            return;
+        }
+
         if(password !== password2) {
-            alert('비밀번호를 입력해주세요!')
+            alert('비밀번호를 동일하게 입력해주세요!')
             return;
         }
 
@@ -61,8 +66,9 @@ const MyPage = () => {
             })
             .catch((error) => {
                 console.log('에러발생화면')
-                alert('비밀번호를 입력해주세요!')
                 console.log(error)
+                if (error.response.data.code === 'email')
+                    alert('이메일 양식이 올바르지 않습니다.')
             })
 
     }

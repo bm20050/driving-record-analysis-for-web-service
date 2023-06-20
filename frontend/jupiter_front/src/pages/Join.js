@@ -19,6 +19,16 @@ const Join = () => {
     const handleJoin = async () => {
         console.log('회원가입 버튼클릭')
 
+        if(userid.includes(" ") || username.includes(" ") || email.includes(" ") || password.includes(" ")) {
+            alert('올바른 양식으로 입력해주세요.')
+            return;
+        }
+
+        if(password !== password2) {
+            alert('비밀번호를 동일하게 입력해주세요.')
+            return;
+        }
+
         await axios
             .post('/api/user/join', {
                 'userid': userid,
@@ -34,8 +44,9 @@ const Join = () => {
                 console.log(error)
                 if (error.response.data.code === 'DupUser')
                     alert('아이디가 중복입니다.')
+                if (error.response.data.code === 'email')
+                    alert('이메일 양식이 올바르지 않습니다.')
             })
-
     }
 
     useEffect(() => {
