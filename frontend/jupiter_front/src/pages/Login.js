@@ -16,7 +16,7 @@ const Login = () => {
     useEffect(() => {}, [response])
 
     const handleLogin = async () => {
-        console.log('로그인 버튼클릭')
+        // console.log('로그인 버튼클릭')
 
         response = await axios
             .post('/api/user/login', {
@@ -24,14 +24,14 @@ const Login = () => {
                 'password': password,
             })
             .then((response) => {
-                console.log(response.data)
+                // console.log(response.data)
                 sessionStorage.setItem('isLoggedIn', true)
                 setShowErrorMessage(false)
                 navigator('/')
             })
             .catch((error) => {
                 setShowErrorMessage(true)
-                console.log(error)
+                // console.log(error)
                 if(error.response.data.code === 'NoUser')
                     console.log('사용자 없음')
                 if(error.response.data.code === 'WrongPassword')

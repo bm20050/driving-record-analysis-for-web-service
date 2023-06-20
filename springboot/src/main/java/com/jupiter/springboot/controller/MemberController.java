@@ -10,7 +10,6 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
@@ -38,13 +37,15 @@ public class MemberController {
     @ApiOperation(value = "회원가입", response = HttpStatus.class)
     @PostMapping("/api/user/join")
     public ResponseEntity<Object> join (@Valid @RequestBody MemberJoinDto params){
+
         memberService.createMember(params);
+
         return ResponseEntity.ok().body(HttpStatus.OK);
     }
 
     @ApiOperation(value = "로그인", response = MemberLoginRespDto.class)
     @PostMapping("/api/user/login")
-    public ResponseEntity<MemberLoginRespDto> login(@Valid @RequestBody MemberLoginDto params, HttpServletRequest request){
+    public ResponseEntity<MemberLoginRespDto> login(@RequestBody MemberLoginDto params, HttpServletRequest request){
         return ResponseEntity.ok().body(memberService.login(params, request));
     }
 

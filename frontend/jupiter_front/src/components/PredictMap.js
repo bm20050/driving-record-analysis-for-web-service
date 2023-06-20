@@ -10,7 +10,7 @@ const PredictMap = (probs) => {
 
     // let [map, setMap] = useState();
 
-    console.log('data', probs.data, ",", probs.x, ", ", probs.y)
+    // console.log('data', probs.data, ",", probs.x, ", ", probs.y)
 
     useEffect(() => {
 

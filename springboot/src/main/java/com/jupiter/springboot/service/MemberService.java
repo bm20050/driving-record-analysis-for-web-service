@@ -12,12 +12,15 @@ import com.jupiter.springboot.persistence.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.validation.annotation.Validated;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
 
+@Validated
 @Service
 @RequiredArgsConstructor
 public class MemberService {
@@ -25,14 +28,13 @@ public class MemberService {
     private final MemberRepository memberRepository;
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
-    public void createMember(MemberJoinDto params) {
+    public void createMember(@Valid MemberJoinDto params) {
 
         String rawPassword = params.getPassword();
         String encodingPassword = bCryptPasswordEncoder.encode(rawPassword);
 
         List<Member> findMembers = memberRepository.findByUserid(params.getUserid()).stream().toList();
-
-
+        
         if(!findMembers.isEmpty())
             throw new DupUserException("아이디 중복");
 
@@ -78,7 +80,7 @@ public class MemberService {
             session.invalidate();
     }
 
-    public MemberLoginRespDto update(MemberUpdateDto params){
+    public MemberLoginRespDto update(@Valid MemberUpdateDto params){
 
         String rawPassword = params.getPassword();
         String encodingPassword = bCryptPasswordEncoder.encode(rawPassword);
