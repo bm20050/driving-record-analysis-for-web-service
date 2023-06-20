@@ -12,12 +12,15 @@ import com.jupiter.springboot.persistence.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.validation.annotation.Validated;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
 
+@Validated
 @Service
 @RequiredArgsConstructor
 public class MemberService {
@@ -25,7 +28,7 @@ public class MemberService {
     private final MemberRepository memberRepository;
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
-    public void createMember(MemberJoinDto params) {
+    public void createMember(@Valid MemberJoinDto params) {
 
         String rawPassword = params.getPassword();
         String encodingPassword = bCryptPasswordEncoder.encode(rawPassword);
