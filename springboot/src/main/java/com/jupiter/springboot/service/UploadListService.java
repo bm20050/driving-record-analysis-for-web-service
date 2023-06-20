@@ -71,16 +71,11 @@ public class UploadListService {
         String flaskUrl = "http://localhost:5000/file_processing";
 
         RestTemplate restTemplate = new RestTemplate();
-        System.out.println("지점1");
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
-        System.out.println("지점2");
 
         HttpEntity<Map<String, List<String>>> request = new HttpEntity<>(map, headers);
-        System.out.println("지점3");
         ResponseEntity<String> response = restTemplate.postForEntity(flaskUrl, request, String.class);
-        System.out.println("지점4");
-        System.out.println(response);
 
         return response.getBody();
     }
