@@ -16,14 +16,12 @@ public class MemberJoinDto {
     @NotBlank(message = "빈칸 허용 안함")
     private String userid;
 
-    @NotBlank(message = "빈칸 허용 안함")
     private String username;
 
     @NotBlank(message = "빈칸 허용 안함")
     private String password;
 
     @Email(message = "잘못된 이메일 형식")
-    @NotBlank(message = "빈칸 허용 안함")
     private String email;
-    
+
 }

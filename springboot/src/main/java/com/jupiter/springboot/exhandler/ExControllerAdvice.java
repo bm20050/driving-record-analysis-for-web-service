@@ -1,19 +1,16 @@
 package com.jupiter.springboot.exhandler;
 
-import com.jupiter.springboot.exception.BlankException;
 import com.jupiter.springboot.exception.DupUserException;
 import com.jupiter.springboot.exception.NoUserException;
 import com.jupiter.springboot.exception.WrongPasswordException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.validation.ConstraintViolationException;
 
 @RequiredArgsConstructor
@@ -51,10 +48,11 @@ public class ExControllerAdvice {
         return new ResponseEntity<>(errorResult, HttpStatus.BAD_REQUEST);
     }
 
-//    @ExceptionHandler
-//    public ResponseEntity<ErrorResult> blankExHandler(BlankException e) {
-//        log.error("[exceptionHandler] ex", e);
-//        ErrorResult errorResult = new ErrorResult(e.getMessage(), "notEmpty");
-//        return new ResponseEntity<>(errorResult, HttpStatus.BAD_REQUEST);
-//    }
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    public ResponseEntity<ErrorResult> validException(MethodArgumentNotValidException e){
+        log.error("[exceptionHandler] ex [getMessage={}]", e.getMessage());
+        ErrorResult errorResult = new ErrorResult(e.getFieldError().getField(), e.getFieldError().getDefaultMessage());
+        return new ResponseEntity<>(errorResult, HttpStatus.BAD_REQUEST);
+    }
+
 }

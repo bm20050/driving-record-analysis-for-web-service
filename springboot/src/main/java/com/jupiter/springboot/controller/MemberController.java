@@ -4,15 +4,12 @@ import com.jupiter.springboot.dto.MemberJoinDto;
 import com.jupiter.springboot.dto.MemberLoginDto;
 import com.jupiter.springboot.dto.MemberLoginRespDto;
 import com.jupiter.springboot.dto.MemberUpdateDto;
-import com.jupiter.springboot.exception.BlankException;
 import com.jupiter.springboot.service.MemberService;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.BindingResult;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
@@ -39,12 +36,7 @@ public class MemberController {
 
     @ApiOperation(value = "회원가입", response = HttpStatus.class)
     @PostMapping("/api/user/join")
-    public ResponseEntity<Object> join (@Valid @RequestBody MemberJoinDto params, BindingResult bindingResult){
-
-//        if(bindingResult.hasErrors()) {
-//            log.info("컨트롤러: " + bindingResult.getFieldError());
-//            throw new BlankException(bindingResult.getFieldError().getField());
-//        }
+    public ResponseEntity<Object> join (@Valid @RequestBody MemberJoinDto params){
 
         memberService.createMember(params);
 
@@ -53,7 +45,7 @@ public class MemberController {
 
     @ApiOperation(value = "로그인", response = MemberLoginRespDto.class)
     @PostMapping("/api/user/login")
-    public ResponseEntity<MemberLoginRespDto> login(@Valid @RequestBody MemberLoginDto params, HttpServletRequest request){
+    public ResponseEntity<MemberLoginRespDto> login(@RequestBody MemberLoginDto params, HttpServletRequest request){
         return ResponseEntity.ok().body(memberService.login(params, request));
     }
 

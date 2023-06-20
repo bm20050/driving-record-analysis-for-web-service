@@ -81,7 +81,7 @@ public class MemberService {
             session.invalidate();
     }
 
-    public MemberLoginRespDto update(MemberUpdateDto params){
+    public MemberLoginRespDto update(@Valid MemberUpdateDto params){
 
         String rawPassword = params.getPassword();
         String encodingPassword = bCryptPasswordEncoder.encode(rawPassword);
