@@ -38,11 +38,11 @@ const Prediction = () => {
             })
             .then((response) => {
                 setData(response.data)
-                console.log(tempData[index].index, " : ", response.data)
+                // console.log(tempData[index].index, " : ", response.data)
             })
             .catch((error) => {
-                console.log('prediction error')
-                console.log(error)
+                // console.log('prediction error')
+                // console.log(error)
             })
     }
 

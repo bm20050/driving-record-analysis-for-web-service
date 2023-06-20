@@ -21,19 +21,19 @@ const MyPage = () => {
         await axios
         .post('/api/user/getuser')
         .then((response) => {
-            console.log(response.data)
+            // console.log(response.data)
             setUserid(response.data.userid)
             setUsername(response.data.username)
             setEmail(response.data.email)
         })
         .catch((error) => {
-            console.log('에러1')
-            console.log(error)
+            // console.log('에러1')
+            // console.log(error)
         })
     }
 
     useEffect(() => {
-        console.log('MyPage 진입')
+        // console.log('MyPage 진입')
         if(sessionStorage.getItem('isLoggedIn')) {
             loginfo()
         }
@@ -41,7 +41,7 @@ const MyPage = () => {
     }, [])
 
     const handleUpdate = async () => {
-        console.log('수정버튼 버튼클릭')
+        // console.log('수정버튼 버튼클릭')
 
         if(username.includes(" ") || email.includes(" ") || password.includes(" ")) {
             alert('올바른 양식으로 입력해주세요.')
@@ -61,12 +61,12 @@ const MyPage = () => {
                 'password': password,
             })
             .then((response) => {
-                console.log(response.data)
+                // console.log(response.data)
                 navigator('/')
             })
             .catch((error) => {
-                console.log('에러발생화면')
-                console.log(error)
+                // console.log('에러발생화면')
+                // console.log(error)
                 if (error.response.data.code === 'email')
                     alert('이메일 양식이 올바르지 않습니다.')
             })

@@ -60,8 +60,8 @@ const Main = () => {
         const searchData = async (e) => {
             // e.preventDefault();
             // setTargetDt(reqDate.current.value);
-            console.log("targetDt", targetDt)
-            console.log("plate", plate.current.value)
+            // console.log("targetDt", targetDt)
+            // console.log("plate", plate.current.value)
             setPrev(++prev);
 
             await axios
@@ -77,12 +77,12 @@ const Main = () => {
                     }
                 )
                 .then((response) => {
-                    console.log("response ok")
-                    console.log(response.data)
+                    // console.log("response ok")
+                    // console.log(response.data)
                     setData(response.data)
                 })
                 .catch((error) => {
-                    console.log(error);
+                    // console.log(error);
                 });
             
             setNext(++next);

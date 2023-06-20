@@ -14,17 +14,17 @@ const UploadForm = (probs) => {
         await axios
             .post('/api/user/getuser')
             .then((response) => {
-                console.log(response.data)
+                // console.log(response.data)
                 setUserid(response.data.userid)
             })
             .catch((error) => {
-                console.log('에러1')
-                console.log(error)
+                // console.log('에러')
+                // console.log(error)
             })
     }
 
     useEffect(() => {
-        console.log('upload form 진입')
+        // console.log('upload form 진입')
         if (sessionStorage.getItem('isLoggedIn')) {
             loginfo()
         }
@@ -45,7 +45,7 @@ const UploadForm = (probs) => {
 
         const formData = new FormData();
 
-        console.log(sessionStorage.getItem('userid'))
+        // console.log(sessionStorage.getItem('userid'))
 
         // JSON 형식으로 파싱 후 추가
         formData.append('userid', new Blob([JSON.stringify(userid)], { type: "application/json" }));
@@ -68,13 +68,13 @@ const UploadForm = (probs) => {
 
         }).then((response) => {
 
-            console.log("response ok")
-            console.log(response.data)
+            // console.log("response ok")
+            // console.log(response.data)
             probs.setData(response.data)
             fileList = [] //첨부파일 초기화
 
         }).catch((error) => {
-            console.log(error);
+            // console.log(error);
             if (error.response.data.code === 'wrongFile')
                 alert("첨부파일을 확인해 주세요.\n사용가능한 파일 확장자:*.TXT,\n사용가능한 파일 양식:교통안전법 시행규칙 별표5에 따른 운행기록의 배열 순서")
             if (error.response.data.code === 'NoUser') {
