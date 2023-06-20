@@ -8,17 +8,17 @@ const Header = () => {
     const navigator = useNavigate();
 
     const handleLogout = async () => {
-        console.log('로그아웃 버튼클릭')
+        // console.log('로그아웃 버튼클릭')
 
         await axios
             .post('/api/user/logout')
             .then((response) => {
-                console.log(response)
+                // console.log(response)
                 sessionStorage.removeItem('isLoggedIn')
                 navigator('/')
             })
             .catch((error) => {
-                console.log(error)
+                // console.log(error)
             })
     }
 

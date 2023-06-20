@@ -5,7 +5,7 @@ const { kakao } = window;
 const DrawingMap = (probs) => {
 
     let [map, setMap] = useState();
-    console.log("map", probs.data)
+    // console.log("map", probs.data)
 
     useEffect(() => {
 

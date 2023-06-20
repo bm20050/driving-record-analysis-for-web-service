@@ -1,28 +1,27 @@
 package com.jupiter.springboot.dto;
 
 import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 
+@Data
 @AllArgsConstructor
 @Getter @Setter
 public class MemberJoinDto {
 
-    @NotBlank
+    @NotBlank(message = "빈칸 허용 안함")
     private String userid;
 
-    @NotBlank
     private String username;
 
-    @NotBlank
+    @NotBlank(message = "빈칸 허용 안함")
     private String password;
 
-    @Email(message = "WrongEmail")
-    @NotBlank
+    @Email(message = "잘못된 이메일 형식")
     private String email;
-
 
 }
