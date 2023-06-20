@@ -34,8 +34,7 @@ public class MemberService {
         String encodingPassword = bCryptPasswordEncoder.encode(rawPassword);
 
         List<Member> findMembers = memberRepository.findByUserid(params.getUserid()).stream().toList();
-
-
+        
         if(!findMembers.isEmpty())
             throw new DupUserException("아이디 중복");
 

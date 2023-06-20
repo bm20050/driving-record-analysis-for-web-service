@@ -31,8 +31,6 @@ public class UploadListService {
         List<MyFileList> fileList = new ArrayList<>();
         Member member = memberRepository.findByUserid(userid).get();
 
-        System.out.println("서비스 진입1");
-
         for(MultipartFile file : multipartFiles){
 
             String originName = file.getOriginalFilename(); // ex) 파일.jpg
@@ -48,8 +46,6 @@ public class UploadListService {
             if (!fileSave.exists()) { // 폴더가 없을 경우 폴더 만들기
                 fileSave.mkdirs();
             }
-
-            System.out.println("서비스 진입2");
 
             file.transferTo(fileSave); // fileSave의 형태로 파일 저장
 
@@ -75,13 +71,16 @@ public class UploadListService {
         String flaskUrl = "http://localhost:5000/file_processing";
 
         RestTemplate restTemplate = new RestTemplate();
-
+        System.out.println("지점1");
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
+        System.out.println("지점2");
 
         HttpEntity<Map<String, List<String>>> request = new HttpEntity<>(map, headers);
-
+        System.out.println("지점3");
         ResponseEntity<String> response = restTemplate.postForEntity(flaskUrl, request, String.class);
+        System.out.println("지점4");
+        System.out.println(response);
 
         return response.getBody();
     }
