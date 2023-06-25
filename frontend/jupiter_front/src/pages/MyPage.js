@@ -61,12 +61,9 @@ const MyPage = () => {
                 'password': password,
             })
             .then((response) => {
-                // console.log(response.data)
                 navigator('/')
             })
             .catch((error) => {
-                // console.log('에러발생화면')
-                // console.log(error)
                 if (error.response.data.code === 'email')
                     alert('이메일 양식이 올바르지 않습니다.')
             })

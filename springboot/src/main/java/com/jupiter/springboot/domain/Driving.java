@@ -1,14 +1,19 @@
 package com.jupiter.springboot.domain;
 
 import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.*;
 
-@ToString
 @Getter
 @Entity
+@Table(indexes = {
+        @Index(columnList = "차량번호"),
+        @Index(columnList = "년"),
+        @Index(columnList = "월"),
+        @Index(columnList = "일")
+})
+@Transactional(readOnly = true)
 public class Driving {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -77,10 +77,12 @@ const UploadForm = (probs) => {
             // console.log(error);
             if (error.response.data.code === 'wrongFile')
                 alert("첨부파일을 확인해 주세요.\n사용가능한 파일 확장자:*.TXT,\n사용가능한 파일 양식:교통안전법 시행규칙 별표5에 따른 운행기록의 배열 순서")
-            if (error.response.data.code === 'NoUser') {
+            else if (error.response.data.code === 'NoUser') {
                 alert("로그인 정보가 없습니다.")
                 navigator('/login')
             }
+            else
+                alert('다시 시도해주세요')
         });
 
         probs.setNext(probs.next + 1);
