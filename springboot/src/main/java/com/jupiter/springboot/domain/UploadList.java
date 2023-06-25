@@ -2,6 +2,8 @@ package com.jupiter.springboot.domain;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -9,13 +11,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Getter @Setter
+@Getter
+@EntityListeners(AuditingEntityListener.class)
 public class UploadList {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "upload_id")
     private Long id;
 
+    @CreatedDate
     private LocalDateTime requestDate;
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -42,7 +46,7 @@ public class UploadList {
         UploadList uploadList = new UploadList();
 
         uploadList.setMember(member);
-        uploadList.setRequestDate(LocalDateTime.now());
+//        uploadList.setRequestDate(LocalDateTime.now());
 
         for (MyFileList myFile : list)
             uploadList.addFileItem(myFile);
