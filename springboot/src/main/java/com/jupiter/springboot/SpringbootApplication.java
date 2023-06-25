@@ -18,8 +18,8 @@ public class SpringbootApplication {
 		SpringApplication.run(SpringbootApplication.class, args);
 	}
 
-	@Bean
-	public AuditorAware<String> auditorProvider(HttpServletRequest request) {
-		return () -> Optional.of(request.getSession(false).getAttribute("loginMember").toString());
-	}
+//	@Bean
+//	public AuditorAware<String> auditorProvider(HttpServletRequest request) {
+//		return () -> Optional.of(request.getSession(false).getAttribute("loginMember").toString());
+//	}
 }
