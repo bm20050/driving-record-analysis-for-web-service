@@ -12,15 +12,11 @@ import java.util.List;
 
 @Entity
 @Getter
-@EntityListeners(AuditingEntityListener.class)
 public class UploadList extends AuditingFields{
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "upload_id")
     private Long id;
-
-    @CreatedDate
-    private LocalDateTime requestDate;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "member_id")
