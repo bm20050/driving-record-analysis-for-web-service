@@ -16,7 +16,6 @@ const Login = () => {
     useEffect(() => {}, [response])
 
     const handleLogin = async () => {
-        // console.log('로그인 버튼클릭')
 
         response = await axios
             .post('/api/user/login', {
@@ -33,9 +32,9 @@ const Login = () => {
                 setShowErrorMessage(true)
                 // console.log(error)
                 if(error.response.data.code === 'NoUser')
-                    console.log('사용자 없음')
+                    alert('등록된 사용자 없음')
                 if(error.response.data.code === 'WrongPassword')
-                    console.log('비밀번호 오류')
+                    alert('비밀번호 오류')
             })
 
     }
