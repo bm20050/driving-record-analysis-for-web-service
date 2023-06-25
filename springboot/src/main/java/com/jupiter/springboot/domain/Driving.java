@@ -6,7 +6,6 @@ import lombok.ToString;
 
 import javax.persistence.*;
 
-@ToString
 @Getter
 @Entity
 public class Driving {
