@@ -19,6 +19,8 @@ const Header = () => {
             })
             .catch((error) => {
                 // console.log(error)
+                sessionStorage.removeItem('isLoggedIn')
+                navigator('/')
             })
     }
 

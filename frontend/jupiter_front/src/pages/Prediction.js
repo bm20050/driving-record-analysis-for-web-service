@@ -28,7 +28,6 @@ const Prediction = () => {
 
     const handlePred = async () => {
 
-        // console.log('예측버튼 클릭')        
         await axios
             .post('/api/prediction', {
                 'hour': now.getHours(),
@@ -38,11 +37,9 @@ const Prediction = () => {
             })
             .then((response) => {
                 setData(response.data)
-                // console.log(tempData[index].index, " : ", response.data)
             })
             .catch((error) => {
-                // console.log('prediction error')
-                // console.log(error)
+                alert('알수없는 오류 발생')
             })
     }
 

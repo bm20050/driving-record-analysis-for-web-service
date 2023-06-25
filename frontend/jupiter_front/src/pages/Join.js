@@ -17,7 +17,6 @@ const Join = () => {
     const [passwordValidationError, setPasswordValidationError] = useState(false);
 
     const handleJoin = async () => {
-        console.log('회원가입 버튼클릭')
 
         if(userid.includes(" ") || username.includes(" ") || email.includes(" ") || password.includes(" ")) {
             alert('올바른 양식으로 입력해주세요.')
