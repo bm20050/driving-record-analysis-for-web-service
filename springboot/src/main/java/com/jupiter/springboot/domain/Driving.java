@@ -1,9 +1,6 @@
 package com.jupiter.springboot.domain;
 
 import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
-
 import javax.persistence.*;
 
 @Getter
