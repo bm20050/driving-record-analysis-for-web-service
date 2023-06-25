@@ -13,7 +13,7 @@ import java.util.List;
 @Entity
 @Getter
 @EntityListeners(AuditingEntityListener.class)
-public class UploadList {
+public class UploadList extends AuditingFields{
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "upload_id")
