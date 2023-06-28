@@ -6,35 +6,76 @@
 - 운전자의 급감가속 등의 위험운전행동 데이터를 이용하여 위험운전행동 건수 자료를 제공하고 이를 바탕으로 교육 및 안전습관의 개선에 기여하고자 한다.
 - 또한 머신러닝을 이용한 시공간에 대한 위험운전 정도 예측결과를 알려줌으로써 해당 구간 운전 시 경각심을 가질 수 있도록 한다.
 
-## 구조
-- `DA` : 데이터 분석
-- `BE` : API 및 DB 설계, Flask-Springboot-React간 파이프라인 구축
-- `FE` : 사용자 입력 및 시각화
+## 역할
+#### ⭐ DA : 데이터 분석
+- 데이터 전처리 및 라벨링
+- 머신러닝을 사용하여 예측모델 개발
+ 
+#### ⭐ BE : API 및 DB 설계, Flask-Springboot-React간 파이프라인 구축
+- DB 설계
+- API 설계
+- 사용자 인증
+- 예외처리
 
-| **React**                                    | **Spring Boot**                                              | **Flask**                                                    |
-| -------------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| - 날짜,버스,위험분류에 따른 검색결과 요청      | - DB에서 쿼리를 통해 요청결과 응답                             |                                                              |
-| (로그인 정보 필수)<br /> - 운행기록 파일 업로드 | - MultipartFile 객체로 User정보와 업로드 한 파일 정보를 받고 <br />- DB에 요청 내용 및 파일 리스트 입력 후 파일 목록 Flask로 전송 <br />- Flask 응답결과 React로 전송 | - 요청파일목록으로 실물파일을 읽어서<br /> - 데이터 전처리, 위험운전 분류 후 <br />결과 응답 |
-| (로그인정보 필수)<br /> - 날짜와 위치정보 전송  | - 리액트에서 받은 요청을 Flask로 전송 <br />- Flask 응답결과 React로 전송 | - 예측모델링을 통한 위험운전 결과 응답                         |
+#### ⭐ FE : 사용자 입력 및 시각화
+- ApexChart, Kakao지도를 이용한 시각화
+- Bootstrap을 이용한 CSS
+- 사용자 입력 1차 검증
+
+```mermaid
+sequenceDiagram
+    React->>SpringBoot: 요청 파라미터 전달
+    Note over React,SpringBoot: 날짜, 차량번호, 위험분류라벨
+    SpringBoot->>React: 쿼리 결과 응답
+    Note over React,SpringBoot: 속도, gps 등 상세정보
+```
+```mermaid
+sequenceDiagram
+    React->>SpringBoot: 파일 업로드
+    Note over React,SpringBoot: DTG로부터 나온 txt파일 다중 업로드
+    Note over SpringBoot: 파일은 로컬에 저장
+    SpringBoot->>Flask: 데이터 분석 및 처리 요청
+    Note over SpringBoot, Flask: 파일목록
+    Note over Flask: 파일목록으로 로컬에서 파일 읽고<br/> 데이터 분석 및 처리
+    Flask->>SpringBoot: 처리 결과 응답
+    Note over SpringBoot, Flask: 다른형식의 파일이 입력되면 예외처리
+    SpringBoot->>React: 처리 결과 응답
+    Note over React,SpringBoot: 위험운전 분류 결과 응답
+```
+
+```mermaid
+sequenceDiagram
+    React->>SpringBoot: 요청 파라미터 전달
+    Note over React,SpringBoot: 현재 시, 분, gpsX, gpsY
+    SpringBoot->>Flask: 요청 파라미터 전달
+    Note over SpringBoot, Flask: 현재 시, 분, gpsX, gpsY
+    Flask->>SpringBoot: 예측 결과 응답
+    Note over SpringBoot, Flask: 안전, 주의, 위험, 매우위험
+    SpringBoot->>React: 예측 결과 응답
+    Note over React,SpringBoot: 안전, 주의, 위험, 매우위험
+```
 ## 실행
-- DE
+#### ⭐ DA
 ```bash
-$ flask run
+$ (venv) pip install -r requirements.txt
+$ (venv) flask run
 ```
 
-- BE
+#### ⭐ BE
+- dependencies : `Spring Web` `Spring Data JPA` `MySQL Driver` `Lombok` `Validation `
 ```bash
-$ mvn spring-boot:run
+$ cd .\build\libs\
+$ java -jar .\springboot-0.0.1-SNAPSHOT.jar 
 ```
 
-- FE
-   - 실행 전 설치
+#### ⭐ FE
 ```bash
+# 실행 전 설치
 $ npm install axios
 $ npm install apexcharts
-```
-   - 실행
-```bash
+$ npm install bootstrap@5.3.0-alpha3
+
+# 실행
 $ npm start
 ```
 
