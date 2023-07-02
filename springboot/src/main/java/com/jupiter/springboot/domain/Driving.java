@@ -23,16 +23,16 @@ public class Driving {
     private String plate;
 
     @Column(name = "년")
-    private String year;
+    private int year;
 
     @Column(name = "월")
-    private String month;
+    private int month;
 
     @Column(name = "일")
-    private String day;
+    private int day;
 
     @Column(name = "시")
-    private String time;
+    private int time;
 
     @Column(name = "시분초")
     private String hms;
