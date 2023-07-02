@@ -94,7 +94,7 @@ $ npm start
 
 | **No** | **Method** | **URI**        | **Description**                              |
 | ------ | ---------- | -------------- | -------------------------------------------- |
-| 1      | **POST**   | api/totalCount | 위험운전 카테고리별 조회결과 반환            |
+| 1      | **POST**   | api/searchDriving | 위험운전 카테고리별 조회결과 반환            |
 | 2      | **POST**   | api/prediction | 시간, 위치정보 파라미터 전달 후응답결과 반환 |
 
 - uploadController
