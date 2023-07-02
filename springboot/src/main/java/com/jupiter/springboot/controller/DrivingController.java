@@ -20,7 +20,7 @@ public class DrivingController {
     @ApiOperation(value = "위험운전 조회", notes = "버스별(전체/개별), 위험별(전체/개별) 데이터 조회", response = Driving.class)
     @PostMapping("/api/totalCount")
     public ResponseEntity<List<Driving>> totalCount(@RequestBody ReqParams params) {
-        return ResponseEntity.ok().body(drivingService.totalCount(params));
+        return ResponseEntity.ok().body(drivingService.searchDriving(params));
     }
 
     @ApiOperation(value = "예측모델을 통한 위험운전 조회", response = String.class)
