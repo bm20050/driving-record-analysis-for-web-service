@@ -23,9 +23,9 @@ public class DrivingRepositoryImpl implements DrivingRepositoryCustom{
                 .where(
                         plateEq(reqParams.getBusNumber()),
                         dangerEq(reqParams.getDanger()),
-                        driving.year.eq(reqParams.getYear()),
-                        driving.month.eq(reqParams.getMonth()),
-                        driving.day.eq(reqParams.getDay())
+                        driving.year.eq(Integer.parseInt(reqParams.getYear())),
+                        driving.month.eq(Integer.parseInt(reqParams.getMonth())),
+                        driving.day.eq(Integer.parseInt(reqParams.getDay()))
                 )
                 .fetch();
     }
