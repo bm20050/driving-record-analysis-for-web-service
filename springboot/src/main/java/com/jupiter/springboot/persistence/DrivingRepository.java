@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
 
-public interface DrivingRepository extends JpaRepository<Driving, Long> {
+public interface DrivingRepository extends JpaRepository<Driving, Long>, DrivingRepositoryCustom {
 
     List<Driving> findByPlateAndYearAndMonthAndDay(String plate, String year, String month, String day);
 

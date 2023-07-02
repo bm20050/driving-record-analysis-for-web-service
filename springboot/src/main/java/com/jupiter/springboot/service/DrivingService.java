@@ -5,7 +5,6 @@ import com.jupiter.springboot.dto.PredReqParams;
 import com.jupiter.springboot.dto.ReqParams;
 import com.jupiter.springboot.persistence.DrivingRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
@@ -70,6 +69,10 @@ public class DrivingService {
                 return drivingRepository.findByPlateLikeAndYearAndMonthAndDayAndSuddenStop(plate, year, month, day, 1);
 
         }
+    }
+
+    public List<Driving> searchDriving(ReqParams params){
+        return drivingRepository.searchDriving(params);
     }
 
 
