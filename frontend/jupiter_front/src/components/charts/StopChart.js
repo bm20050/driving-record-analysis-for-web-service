@@ -1,7 +1,7 @@
 import ApexCharts from "apexcharts";
 import React, { useEffect, useState } from "react";
 
-const StopChart = (probs) => {
+const StopChart = (props) => {
 
     let [cat, setCat] = useState({});
 
@@ -21,7 +21,7 @@ const StopChart = (probs) => {
             },
         })
 
-        probs.chartData && probs.chartData.filter((i) => i.위험 === '급정지').map((j) => {
+        props.chartData && props.chartData.filter((i) => i.위험 === '급정지').map((j) => {
             let time = parseInt(j.시간)
             if (time < 7)
                 cat.stop['5-7'] += 1
@@ -140,7 +140,7 @@ const StopChart = (probs) => {
         };
 
 
-    }, [probs.chartData])
+    }, [props.chartData])
 
     return(
         

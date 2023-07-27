@@ -36,7 +36,7 @@ public class MemberController {
 
     @ApiOperation(value = "회원가입", response = HttpStatus.class)
     @PostMapping("/api/user/join")
-    public ResponseEntity<Object> join (@Valid @RequestBody MemberJoinDto params){
+    public ResponseEntity<HttpStatus> join (@Valid @RequestBody MemberJoinDto params){
 
         memberService.createMember(params);
 

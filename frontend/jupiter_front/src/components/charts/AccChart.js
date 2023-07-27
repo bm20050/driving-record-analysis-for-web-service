@@ -1,7 +1,7 @@
 import ApexCharts from "apexcharts";
 import React, { useEffect, useState } from "react";
 
-const AccChart = (probs) => {
+const AccChart = (props) => {
 
     let [cat, setCat] = useState({});
 
@@ -21,7 +21,7 @@ const AccChart = (probs) => {
             },
         })
 
-        probs.chartData && probs.chartData.filter((i) => i.위험 === '급가속').map((j) => {
+        props.chartData && props.chartData.filter((i) => i.위험 === '급가속').map((j) => {
             let time = parseInt(j.시간)
             if (time < 7)
                 cat.acc['5-7'] += 1
@@ -135,7 +135,7 @@ const AccChart = (probs) => {
         };
 
 
-    }, [probs.chartData])
+    }, [props.chartData])
 
     return(
         

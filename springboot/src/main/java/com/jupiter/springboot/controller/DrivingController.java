@@ -25,7 +25,7 @@ public class DrivingController {
 
     @ApiOperation(value = "예측모델을 통한 위험운전 조회", response = String.class)
     @PostMapping("/api/prediction")
-    public ResponseEntity<?> prediction(@RequestBody PredReqParams params){
+    public ResponseEntity<String> prediction(@RequestBody PredReqParams params){
         return ResponseEntity.ok().body(drivingService.transferPred(params));
     }
 

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 
 const { kakao } = window;
 
-const DrawingMap = (probs) => {
+const DrawingMap = (props) => {
 
     let [map, setMap] = useState();
     // console.log("map", probs.data)
@@ -27,7 +27,7 @@ const DrawingMap = (probs) => {
 
         })
 
-    }, [probs.prev, probs.selectView]);
+    }, [props.prev, props.selectView]);
 
 
     useEffect(() => {
@@ -36,16 +36,16 @@ const DrawingMap = (probs) => {
         //     return;
         // }
 
-        if (!probs.data) {
+        if (!props.data) {
             return;
         }
 
         // console.log('data', probs.data)
 
-        let suddenAcc = probs.data.filter((i) => i.suddenAcc)
-        let suddenDrop = probs.data.filter((i) => i.suddenDrop)
-        let suddenDeparture = probs.data.filter((i) => i.suddenDeparture)
-        let suddenStop = probs.data.filter((i) => i.suddenStop)
+        let suddenAcc = props.data.filter((i) => i.suddenAcc)
+        let suddenDrop = props.data.filter((i) => i.suddenDrop)
+        let suddenDeparture = props.data.filter((i) => i.suddenDeparture)
+        let suddenStop = props.data.filter((i) => i.suddenStop)
 
         // 마커 이미지
         let imgSuddenAcc = "https://github.com/beeguriri/driving-record-analysis-for-web-service/blob/main/frontend/jupiter_front/src/image/SuddenAcc.png?raw=true";
@@ -230,10 +230,10 @@ const DrawingMap = (probs) => {
             //     console.log(marker.idx+ ':' + marker.time + ':' + marker.title)
             //     temp.append(marker)
             // })
-            probs.setChartData(marker)
+            props.setChartData(marker)
         });
 
-    }, [probs.next])
+    }, [props.next])
 
 
     return (

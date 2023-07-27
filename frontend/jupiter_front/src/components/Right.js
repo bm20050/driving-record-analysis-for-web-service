@@ -4,7 +4,7 @@ import { Table } from "react-bootstrap";
 
 // import 'bootstrap/dist/css/bootstrap.min.css'
 
-const Right = (probs) => {
+const Right = (props) => {
 
     return (
         <>
@@ -58,7 +58,7 @@ const Right = (probs) => {
                     </Accordion>
 
                 </div>
-                <Chart chartData={probs.chartData} />
+                <Chart chartData={props.chartData} />
             </div>
         </>
     )
