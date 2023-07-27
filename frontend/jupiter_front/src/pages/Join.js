@@ -36,7 +36,7 @@ const Join = () => {
                 'password': password,
             })
             .then((response) => {
-                console.log(response.data)
+                // console.log(response.data)/
                 navigator('/login')
             })
             .catch((error) => {
