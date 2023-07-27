@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Button, Form } from "react-bootstrap";
 
 const Join = () => {
@@ -36,7 +36,7 @@ const Join = () => {
                 'password': password,
             })
             .then((response) => {
-                console.log(response.data)
+                // console.log(response.data)/
                 navigator('/login')
             })
             .catch((error) => {

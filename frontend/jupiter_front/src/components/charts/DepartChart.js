@@ -1,7 +1,7 @@
 import ApexCharts from "apexcharts";
 import React, { useEffect, useState } from "react";
 
-const DepartChart = (probs) => {
+const DepartChart = (props) => {
 
     let [cat, setCat] = useState({});
 
@@ -21,7 +21,7 @@ const DepartChart = (probs) => {
             },
         })
 
-        probs.chartData && probs.chartData.filter((i) => i.위험 === '급출발').map((j) => {
+        props.chartData && props.chartData.filter((i) => i.위험 === '급출발').map((j) => {
             let time = parseInt(j.시간)
             if (time < 7)
                 cat.dep['5-7'] += 1
@@ -137,7 +137,7 @@ const DepartChart = (probs) => {
         };
 
 
-    }, [probs.chartData])
+    }, [props.chartData])
 
     return(
         
