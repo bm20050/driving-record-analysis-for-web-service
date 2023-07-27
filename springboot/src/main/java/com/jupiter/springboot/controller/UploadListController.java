@@ -3,6 +3,7 @@ package com.jupiter.springboot.controller;
 import com.jupiter.springboot.domain.UploadList;
 import com.jupiter.springboot.dto.MemberLoginRespDto;
 import com.jupiter.springboot.dto.UploadUserDto;
+import com.jupiter.springboot.exception.NoUserException;
 import com.jupiter.springboot.exception.WrongFileException;
 import com.jupiter.springboot.service.UploadListService;
 import io.swagger.annotations.ApiOperation;
@@ -26,7 +27,7 @@ public class UploadListController {
 
     @ApiOperation(value = "파일 업로드", notes = "업로드 한 파일 플라스크로 전달하여 데이터 전처리 결과 응답", response = UploadList.class)
     @PostMapping("/api/uploadFiles")
-    public ResponseEntity<Object> uploadFiles(
+    public ResponseEntity<String> uploadFiles(
             @RequestPart(value = "userid") UploadUserDto userid,
             @RequestPart(value = "multipartFiles") MultipartFile[] multipartFiles, BindingResult bindingResult) throws WrongFileException {
 
@@ -35,7 +36,7 @@ public class UploadListController {
         try{
             fileListId = uploadListService.uploadFiles(userid.getUserid(), multipartFiles);
         } catch (Exception e) {
-            return new ResponseEntity<Object>(null, HttpStatus.CONFLICT);
+            throw new NoUserException("사용자 없음");
         }
 
         try{
