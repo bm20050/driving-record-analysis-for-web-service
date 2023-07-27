@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { Form, Button } from "react-bootstrap";
 
-const UploadForm = (probs) => {
+const UploadForm = (props) => {
 
     let fileList = []
 
@@ -55,7 +55,7 @@ const UploadForm = (probs) => {
             formData.append('multipartFiles', file);
         })
 
-        probs.setPrev(probs.prev + 1);
+        props.setPrev(props.prev + 1);
 
         await axios({
             method: "POST",
@@ -70,7 +70,7 @@ const UploadForm = (probs) => {
 
             // console.log("response ok")
             // console.log(response.data)
-            probs.setData(response.data)
+            props.setData(response.data)
             fileList = [] //첨부파일 초기화
 
         }).catch((error) => {
@@ -85,7 +85,7 @@ const UploadForm = (probs) => {
                 alert('다시 시도해주세요')
         });
 
-        probs.setNext(probs.next + 1);
+        props.setNext(props.next + 1);
 
     }
 

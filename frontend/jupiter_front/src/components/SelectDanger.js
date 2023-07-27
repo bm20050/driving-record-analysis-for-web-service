@@ -1,10 +1,10 @@
 import 'bootstrap/dist/css/bootstrap.min.css'
 import Form from 'react-bootstrap/Form';
 
-const SelectDanger = (probs) => {
+const SelectDanger = (props) => {
   return (
     <>
-      <Form.Select ref={probs.danger}>
+      <Form.Select ref={props.danger}>
         <option key="totalDan" value="totalDan">전체</option>
         <option key="suddenAcc" value="suddenAcc">급가속</option>
         <option key="suddenDrop" value="suddenDrop">급감속</option>

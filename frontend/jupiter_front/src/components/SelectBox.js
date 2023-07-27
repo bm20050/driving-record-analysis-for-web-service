@@ -3,22 +3,22 @@ import SelectPlate from "./SelectPlate";
 import SelectDanger from "./SelectDanger";
 
 
-const SelectBox = (probs) => {
+const SelectBox = (props) => {
 
     return (
         <>
             <form className="row gy-2 gx-3 align-items-center">
                 <div className="col-auto" id="calendar">
-                    <input className="form-select-sm" type="date" defaultValue={"2022-12-01"} ref={probs.reqDate} onChange={probs.handleDate} name="reqdate" style={{ border: "1px lightgray solid" }} />
+                    <input className="form-select-sm" type="date" defaultValue={"2022-12-01"} ref={props.reqDate} onChange={props.handleDate} name="reqdate" style={{ border: "1px lightgray solid" }} />
                 </div>
                 <div className="col-auto">
-                    <SelectPlate plate={probs.plate} />
+                    <SelectPlate plate={props.plate} />
                 </div>
                 <div className="col-auto">
-                    <SelectDanger danger={probs.danger} />
+                    <SelectDanger danger={props.danger} />
                 </div>
                 <div className="col-auto" id="button">
-                    <LoadingButton searchData={probs.searchData} next={probs.next} />
+                    <LoadingButton searchData={props.searchData} next={props.next} />
                 </div>
             </form>
         </>

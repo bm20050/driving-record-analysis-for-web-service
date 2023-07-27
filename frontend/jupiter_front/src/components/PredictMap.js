@@ -6,7 +6,7 @@ const { kakao } = window;
 let map = null;
 let marker = null;
 
-const PredictMap = (probs) => {
+const PredictMap = (props) => {
 
     // let [map, setMap] = useState();
 
@@ -22,7 +22,7 @@ const PredictMap = (probs) => {
 
             // 지도 그리기
             const options = {
-                center: new kakao.maps.LatLng(probs.y, probs.x), // 지도의 중심좌표
+                center: new kakao.maps.LatLng(props.y, props.x), // 지도의 중심좌표
                 level: 2 // 지도의 확대 레벨
             }
 
@@ -36,7 +36,7 @@ const PredictMap = (probs) => {
 
     useEffect(() => {
 
-        if (!probs.data)
+        if (!props.data)
             return;
 
         // 지도 호출
@@ -47,7 +47,7 @@ const PredictMap = (probs) => {
 
             // 지도 그리기
             const options = {
-                center: new kakao.maps.LatLng(probs.y, probs.x), // 지도의 중심좌표
+                center: new kakao.maps.LatLng(props.y, props.x), // 지도의 중심좌표
                 level: 2 // 지도의 확대 레벨
             }
 
@@ -68,7 +68,7 @@ const PredictMap = (probs) => {
 
         // 마커 생성
         marker = new kakao.maps.Marker({
-            position: new kakao.maps.LatLng(probs.y, probs.x),
+            position: new kakao.maps.LatLng(props.y, props.x),
             image: imgMarker,
         })
 
@@ -76,7 +76,7 @@ const PredictMap = (probs) => {
 
         marker.setMap(map)
 
-    }, [probs.y, probs.x])
+    }, [props.y, props.x])
 
 
     return (

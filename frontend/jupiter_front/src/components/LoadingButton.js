@@ -2,7 +2,7 @@ import Button from 'react-bootstrap/Button';
 import React, { useEffect, useState } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css'
 
-const LoadingButton = (probs) => {
+const LoadingButton = (props) => {
 
     const [isLoading, setLoading] = useState(false);
 
@@ -10,11 +10,11 @@ const LoadingButton = (probs) => {
         if (isLoading) {
             setLoading(false);
         }
-    }, [probs.next]);
+    }, [props.next]);
 
     const handleClick = () => {
         setLoading(true);
-        probs.searchData();
+        props.searchData();
     }
 
     return (
