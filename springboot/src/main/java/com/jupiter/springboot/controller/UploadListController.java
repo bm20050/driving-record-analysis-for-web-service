@@ -6,7 +6,7 @@ import com.jupiter.springboot.dto.UploadUserDto;
 import com.jupiter.springboot.exception.NoUserException;
 import com.jupiter.springboot.exception.WrongFileException;
 import com.jupiter.springboot.service.UploadListService;
-import io.swagger.annotations.ApiOperation;
+//import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -25,7 +25,7 @@ public class UploadListController {
 
     private final UploadListService uploadListService;
 
-    @ApiOperation(value = "파일 업로드", notes = "업로드 한 파일 플라스크로 전달하여 데이터 전처리 결과 응답", response = UploadList.class)
+//    @ApiOperation(value = "파일 업로드", notes = "업로드 한 파일 플라스크로 전달하여 데이터 전처리 결과 응답", response = UploadList.class)
     @PostMapping("/api/uploadFiles")
     public ResponseEntity<String> uploadFiles(
             @RequestPart(value = "userid") UploadUserDto userid,
